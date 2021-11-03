@@ -49,7 +49,7 @@ côté client, côté producteur, côté achat
 ### Admin
 - [ ] Faire tout ce qu'un client et un producteur peuvent faire
 
-## Structure des données
+## Vues
 ### Avis de bière
 1. Titre
 2. Date
@@ -90,29 +90,6 @@ côté client, côté producteur, côté achat
 * Mail
 * Pseudo
 ### Admin
-## Vues
-### Avis de bière
-1. Titre
-2. Date
-3. Note de la bière ★★★★★
-4. Caractéristiques gustatives de la bières
-    * (acidité, amertume, douceur, fruitée, gaz, ...)
-5. Ressenti personnel
-### Réponse à un avis
-1. Réponse du brasseur
-2. date
-### Description de bière
-1. Titre de la bière
-2. Images de la bière (max n images)
-3. Prix de la bière (seulement si bière revendiquée par un producteur)
-4. Description de la bière
-5. Avis
-### Brasserie
-1. Description
-2. Image
-3. Liste de bières
-4. Adresse
-5. Contact
 
 # Question
 1) Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
