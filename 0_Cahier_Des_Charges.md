@@ -1,30 +1,36 @@
 # Introduction & But
 
-Nous voulons créer une application pour découvrir, noter et commander des bières comme Ali Baba.
+Nous voulons créer une application pour découvrir, noter et commander des bières.
 
 côté client, côté producteur, côté achat
 
 @Jeff
 
-#  Description de l'application
+# Description de l'application
 ## Actions
 ### Visiteur
 - [ ] Consulter les descriptions de bières
 - [ ] Consulter les avis de bières
 - [ ] Rechercher les avis de bières
-- [ ] Découvrir les brasseries
+- [ ] Rechercher les brasseries
+- [ ] Consulter les pages de brasseries
 - [ ] Créer un compte client
 ### Client
 - [ ] Ajouter des avis bières (max n avis)
 - [ ] Modifier un avis de bière
 - [ ] Supprimer un avis
-- [ ] Ajouter des bières
+- [ ] Ajouter bière
 - [ ] Modifier bière ajoutée
+- [ ] ajouter une bière à sa liste de favoris
+- [ ] enlever une bière de la liste de favoris
+- [ ] consulter sa liste de favoris
 - [ ] supprimer son compte
 - [ ] modifier son compte
 - [ ] Migrer vers un compte pro
 - [ ] Se connecter
 - [ ] Se déconnecter
+- [ ] créer une commande de bières dans une brasserie
+- [ ] supprimer une commande de bière
 ### Producteur
 - [ ] Ajouter une description de bière
 - [ ] Modifier une description de bière
@@ -37,6 +43,9 @@ côté client, côté producteur, côté achat
 - [ ] Modifier page de brasserie
 - [ ] Supprimer la brasserie
 - [ ] Revendiquer une bière
+- [ ] accepter une commande
+- [ ] rejeter une commande
+- [ ] finaliser une commande
 ### Admin
 - [ ] Faire tout ce qu'un client et un producteur peuvent faire
 
@@ -72,7 +81,7 @@ côté client, côté producteur, côté achat
 * Adresse
 * Mail
 * Pseudo
-* avis
+* Avis
 ### producteur
 * Nom
 * Prénom
@@ -104,25 +113,6 @@ côté client, côté producteur, côté achat
 3. Liste de bières
 4. Adresse
 5. Contact
-## Fonctionnalités:
-### Client
-- [ ] Liste de bière
-- [ ] Noter une bière
-- [ ] Consulter des commentaires
-- [ ] Enregister les bières dégustées
-- [ ] Découvrir une brasserie
-- [ ] Lister les brasseries
-- [ ] S'abonner à un calendrier de bières
-- [ ] Commander des bières dans une brasserie
 
-### Producteur
-- [ ] Présenter des bières (producteurs)
-- [ ] Consulter les commandes
-- [ ] Modifier la liste de bières à vendre
-- [ ] Présenter le magasin
-
-### Admin
-- [ ] Commande dans une brasserie
-- [ ] Suivi de livraison de la bière
-- [ ] Achat
-- [ ] 
+# Question
+1) Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
