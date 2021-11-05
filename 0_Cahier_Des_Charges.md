@@ -1,4 +1,6 @@
-# Introduction & But
+# Projet BDR : The Beer Garden
+
+## Introduction & But
 
 L'intérêt pour la bière artisanale est grandissant, tant du point de vue des consommateurs, qui apprécient de manière grandissante ce type de produit, que du point de vue des brasseurs, qui sont de plus en plus nombreux. Cependant, face à une offre plétorique, il est difficile de s'y retrouver. Pour aider l'amateur de bières dans ses choix, nous voulons créer une application qui permette de découvrir, commenter et noter des bières. Au fil de l'utilisation de notre application et de la croissance de la base utilisateur, les visiteurs pourront choisir parmi les produits les plus à leur goût et les mieux notés.  
 Ils pourront à leur tour poster un commentaire et mettre une note ainsi que décrire les bières qu'ils dégustent. Ils pourront aussi consulter l'historique de leurs commentaires et ainsi rappeler à leur souvenir ce qu'ils ont bu !  
@@ -6,22 +8,30 @@ Quant aux brasseurs, ils pourront, s'ils le désirent, créer une page dédiée 
 Dans un second temps, notre application pourrait aussi offrir la possibilité de commander des bières.  
 Le présent document détaille les fonctionnalités de l'application ainsi que les différents éléments qui la constituent.
 
-# Description de l'application
+## Description de l'application
+
 L'application comportera quatre types d'acteurs:
+
 1. Les visiteurs: Ce sont des personnes non authentifiés qui auront le loisir de consulter les différentes rubriques de notre application.
 2. Les utilisateurs: Ils possèdent un compte qui leur octroient le droit, entre autre, de rédiger un avis ou de commander des bières.
 3. Les producteurs: Ce sont des utilisateurs qui jouisse des droits de gestion de brasserie. Ils pourront ainsi administrer une brasserie et gérer ses divers constituants.
 4. Les administrateurs: Conçu pour administrer l'application, ils ont tous les droits sur l'application et s'attèle au bon fonctionnement de la plateforme.
-## Acteurs
+
+### Acteurs
+
 Cette section détaille les différentes actions de chaque acteur.
-### Visiteur
+
+#### Visiteur
+
 * Consulter les descriptions de bières
 * Consulter les avis de bières
 * Rechercher les avis de bières
 * Rechercher les brasseries
 * Consulter les pages de brasseries
 * Créer un compte utilisateur
-### Utilisateur
+
+#### Utilisateur
+
 * Ajouter des avis bières (max n avis)
 * Modifier un avis de bière
 * Supprimer un avis
@@ -37,7 +47,9 @@ Cette section détaille les différentes actions de chaque acteur.
 * Se déconnecter
 * créer une commande de bières dans une brasserie
 * supprimer une commande de bière
-### Producteur
+
+#### Producteur
+
 * Ajouter une description de bière
 * Modifier une description de bière
 * Supprimer une description de bière
@@ -52,35 +64,49 @@ Cette section détaille les différentes actions de chaque acteur.
 * accepter une commande
 * rejeter une commande
 * finaliser une commande
-### Admin
+
+#### Admin
+
 * Faire tout ce qu'un utilisateur et un producteur peuvent faire
 
-## Vues
-### Avis de bière
+### Vues
+
+#### Avis de bière
+
 1. Titre
 2. Date
 3. Note de la bière ★★★★★
 4. Caractéristiques gustatives de la bières
     * (acidité, amertume, douceur, fruitée, gaz, ...)
 5. Ressenti personnel
-### Réponse à un avis
+
+#### Réponse à un avis
+
 1. Réponse du brasseur
 2. date
-### Description de bière
+
+#### Description de bière
+
 1. Titre de la bière
 2. Images de la bière (max n images)
 3. Prix de la bière (seulement si bière revendiquée par un producteur)
 4. Description de la bière
 5. Avis
-### Brasserie
+
+#### Brasserie
+
 1. Description
 2. Image
 3. Liste de bières
 4. Adresse
 5. Contact
-### visiteur
+
+#### visiteur
+
 * aucune donnée sauvegardée
-### utilisateur
+
+#### utilisateur
+
 * Nom
 * Prénom
 * Date de naissance
@@ -88,14 +114,19 @@ Cette section détaille les différentes actions de chaque acteur.
 * Mail
 * Pseudo
 * Avis
-### producteur
+
+#### producteur
+
 * Nom
 * Prénom
 * Date de naissance
 * Adresse
 * Mail
 * Pseudo
-### Admin
 
-# Question
+#### Admin
+
+
+## Question
+
 1) Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
