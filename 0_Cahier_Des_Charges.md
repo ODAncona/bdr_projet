@@ -23,6 +23,8 @@ Cette section détaille les différentes actions de chaque acteur.
 
 #### Visiteur
 
+Voici ce qu'un visiteur peut faire :
+
 * Consulter les descriptions de bières
 * Consulter les avis de bières
 * Rechercher les avis de bières
@@ -31,6 +33,8 @@ Cette section détaille les différentes actions de chaque acteur.
 * Créer un compte utilisateur
 
 #### Utilisateur
+
+Un utilisateur a les droits étendus suivant par rapport à un visiteur :
 
 * Ajouter des avis bières (max n avis)
 * Modifier un avis de bière
@@ -49,6 +53,9 @@ Cette section détaille les différentes actions de chaque acteur.
 * supprimer une commande de bière
 
 #### Producteur
+
+En plus des droits d'un utilisateur standards, un producteur peut être l'administrateur principal d'une page de brasserie qu'il aura crée.  
+A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.
 
 * Ajouter une description de bière
 * Modifier une description de bière
