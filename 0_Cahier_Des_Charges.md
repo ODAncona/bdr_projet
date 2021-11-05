@@ -82,9 +82,11 @@ Voici une liste des actions qu'il peut effectuer :
 
 #### Admin
 
-* Faire tout ce qu'un utilisateur et un producteur peuvent faire
+* Un administrateur peut faire tout ce qu'un utilisateur peuvent faire. A noter qu'il pourrait être judicieux de définir différents niveaux d'administrateur.
 
 ### Structure des données
+
+Cette section décrit les entités qui devraient constituer la base de donnée. La structure proposée ci-dessous est appelée à évoluer en fonction des questions qui pourraient surgir lors de l'établissement du modèle entité-association.
 
 #### Avis de bière
 
