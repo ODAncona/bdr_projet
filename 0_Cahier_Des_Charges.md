@@ -2,11 +2,7 @@
 
 ## Introduction & But
 
-L'intérêt pour la bière artisanale est grandissant, tant du point de vue des consommateurs, qui apprécient de manière grandissante ce type de produit, que du point de vue des brasseurs, qui sont de plus en plus nombreux. Cependant, face à une offre plétorique, il est difficile de s'y retrouver. Pour aider l'amateur de bières dans ses choix, nous voulons créer une application qui permette de découvrir, commenter et noter des bières. Au fil de l'utilisation de notre application et de la croissance de la base utilisateur, les visiteurs pourront choisir parmi les produits les plus à leur goût et les mieux notés.  
-Ils pourront à leur tour poster un commentaire et mettre une note ainsi que décrire les bières qu'ils dégustent. Ils pourront aussi consulter l'historique de leurs commentaires et ainsi rappeler à leur souvenir ce qu'ils ont bu !  
-Quant aux brasseurs, ils pourront, s'ils le désirent, créer une page dédiée à leur entreprise, répondre aux utilisateurs qui auraient commenté un de leur produit, ajouter des descriptions.  
-Dans un second temps, notre application pourrait aussi offrir la possibilité de commander des bières.  
-Le présent document détaille les fonctionnalités de l'application ainsi que les différents éléments qui la constituent.
+L'intérêt pour la bière artisanale est grandissant, tant du point de vue des consommateurs, qui apprécient ce type de produit, que du point de vue des brasseurs, qui sont de plus en plus nombreux. Cependant, face à une offre plétorique, il est difficile de s'y retrouver. Pour aider l'amateur de bières dans ses choix, nous voulons créer une application qui permette de découvrir, commenter et noter des bières. Au fil de l'utilisation de notre application et de la croissance de la base utilisateur, les visiteurs pourront choisir parmi les produits les plus à leur goût et les mieux notés. Ils pourront à leur tour poster un commentaire et mettre une note ainsi que décrire les bières qu'ils dégustent. Ils pourront aussi consulter l'historique de leurs commentaires et ainsi rappeler à leur souvenir ce qu'ils ont bu ! Quant aux brasseurs, ils pourront, s'ils le désirent, créer une page dédiée à leur entreprise, répondre aux utilisateurs qui auraient commenté un de leur produit, ajouter des descriptions. Dans un second temps, notre application pourrait aussi offrir la possibilité de commander des bières. Le présent document détaille les fonctionnalités de l'application ainsi que les différents éléments qui la constituent.
 
 ## Description de l'application
 
@@ -19,15 +15,15 @@ L'application comportera quatre types d'acteurs:
 
 L'application comportera plusieurs rubriques que l'on pourra consulter:
 
-1. Description de Bière: une page qui permet d'afficher tous les détails d'une bière.
-2. Avis de Bière: un commentaire que peut laisser un utilisateur
-3. Brasserie: c'est une page qui référence des bières plus les détails de l'établissement
-4. Gestion Utilisateur: une page qui contient les bières préférées des utilisateurs
-5. Gestion Brasserie: une page qui permet de modifier les détails affililés à l'entité.
+1. *Description de Bière*: une page qui permet d'afficher tous les détails d'une bière.
+2. *Avis de Bière*: un commentaire que peut laisser un utilisateur.
+3. *Brasserie*: c'est une page qui référence des bières plus les détails de l'établissement.
+4. *Gestion Utilisateur*: une page qui contient les bières préférées des utilisateurs et qui permet d'ajuster les préférences.
+5. *Gestion Brasserie*: une page qui permet de modifier les détails affililés à l'entité.
 
 ### Acteurs
 
-Cette section détaille les différentes actions de chaque acteur.
+Cette section détaille les différentes actions que peuvent effectuer chaque acteur.
 
 #### Visiteur
 
@@ -49,16 +45,16 @@ Un utilisateur a les droits étendus suivant par rapport à un visiteur :
 - Supprimer un avis
 - Ajouter bière
 - Modifier bière ajoutée
-- ajouter une bière à sa liste de favoris
-- enlever une bière de la liste de favoris
-- consulter sa liste de favoris
-- supprimer son compte
-- modifier son compte
+- Ajouter une bière à sa liste de favoris
+- Enlever une bière de sa liste de favoris
+- Consulter sa liste de favoris
+- Supprimer son compte
+- Modifier son compte
 - Migrer vers un compte pro
 - Se connecter
 - Se déconnecter
-- créer une commande de bières dans une brasserie
-- supprimer une commande de bière
+- Créer une commande de bières dans une brasserie
+- Supprimer une commande de bière
 
 #### Producteur
 
@@ -72,14 +68,14 @@ Voici une liste des actions qu'il peut effectuer :
 - Modifier une description de bière
 - Ajouter une réponse à un avis
 - Modifier la réponse à un avis
-- supprimer la réponse à un avis
+- Supprimer la réponse à un avis
 - Créer une page de brasserie
 - Modifier page de brasserie
 - Supprimer la brasserie
 - Revendiquer une bière
-- accepter une commande
-- rejeter une commande
-- finaliser une commande
+- Accepter une commande
+- Rejeter une commande
+- Finaliser une commande
 
 #### Admin
 
@@ -121,7 +117,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 #### Visiteur
 
-- aucune donnée sauvegardée
+- Aucune donnée sauvegardée
 
 #### Utilisateur
 
