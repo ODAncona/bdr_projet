@@ -17,6 +17,13 @@ L'application comportera quatre types d'acteurs:
 3. Les producteurs: Ce sont des utilisateurs qui jouisse des droits de gestion de brasserie. Ils pourront ainsi administrer une brasserie et gérer ses divers constituants.
 4. Les administrateurs: Conçu pour administrer l'application, ils ont tous les droits sur l'application et s'attèle au bon fonctionnement de la plateforme.
 
+L'application comportera plusieurs rubriques que l'on pourra consulter:
+1. Description de Bière: une page qui permet d'afficher tous les détails d'une bière.
+2. Avis de Bière: un commentaire que peut laisser un utilisateur
+3. Brasserie: c'est une page qui référence des bières plus les détails de l'établissement
+4. Gestion Utilisateur: une page qui contient les bières préférées des utilisateurs
+5. Gestion Brasserie: une page qui permet de modifier les détails affililés à l'entité.
+
 ### Acteurs
 
 Cette section détaille les différentes actions de chaque acteur.
@@ -76,7 +83,7 @@ A noter qu'une description de bière n'est pas la même chose qu'un avis laissé
 
 * Faire tout ce qu'un utilisateur et un producteur peuvent faire
 
-### Vues
+### Structure des données
 
 #### Avis de bière
 
