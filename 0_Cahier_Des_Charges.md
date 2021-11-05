@@ -1,3 +1,11 @@
+---
+title: "Projet BDR : The Beer Garden"
+titlepage: true
+author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
+date: "5 novembre 2021"
+keywords: [BDR]
+...
+
 # Projet BDR : The Beer Garden
 
 ## Introduction & But
@@ -93,7 +101,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 - 1. Titre
 - 2. Date
-- 3. Note de la bière ★★★★★
+- 3. Note de la bière
 - 4. Caractéristiques gustatives de la bières
      (acidité, amertume, douceur, fruitée, gaz, ...)
 - 5. Ressenti personnel
@@ -154,4 +162,4 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 ## Conclusion
 
-En définitive, nous avons établi le cahier des charges pour une application web de découverte et de gestion de bières. Cette application mettra en relation des amateurs et des professionnels de bières afin qu'ils partagent leurs avis respectifs sur différentes bières, des producteurs qui en plus de promouvoir leur bieres et récolter les avis des utilisateurs dessus, pourront les vendre. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Par la suite, nous prioriserons le côté réseau social de l'application, en d'autre terme toute la partie liée au partage/echange d'informations inter-acteur au détriment du côté commercial de l'application. Celui-ci ne sera implémenté que si le temps nous le permet. Les spécifications ainsi faites nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante.
+En définitive, nous avons établi le cahier des charges pour une application web de découverte et de gestion de bières. Cette application mettra en relation des amateurs et des professionnels de bières afin qu'ils partagent leurs avis respectifs sur différentes bières, des producteurs qui en plus de promouvoir leur bieres et récolter les avis des utilisateurs dessus, pourront les vendre. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Par la suite, nous prioriserons le côté réseau social de l'application, en d'autre terme toute la partie liée au partage/echange d'informations inter-acteur au détriment du côté commercial de l'application. Celui-ci ne sera implémenté que si le temps nous le permet. Les spécifications ainsi faites nous permettrons de faire prochainement le diagramme EA (entité-association) de la base de données correspondante.
