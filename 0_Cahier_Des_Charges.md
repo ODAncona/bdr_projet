@@ -91,17 +91,17 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 #### Avis de bière
 
-* 1. Titre
-* 2. Date
-* 3. Note de la bière ★★★★★
-* 4. Caractéristiques gustatives de la bières
-(acidité, amertume, douceur, fruitée, gaz, ...)
-* 5. Ressenti personnel
+- 1. Titre
+- 2. Date
+- 3. Note de la bière ★★★★★
+- 4. Caractéristiques gustatives de la bières
+     (acidité, amertume, douceur, fruitée, gaz, ...)
+- 5. Ressenti personnel
 
 #### Réponse à un avis
 
-* Réponse du brasseur
-* Date
+- Réponse du brasseur
+- Date
 
 #### Description de bière
 
@@ -143,6 +143,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 - Pseudo
 
 #### Admin
+
 - Nom
 - Prénom
 - Date de naissance
@@ -150,7 +151,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 - Mail
 - Pseudo
 - Droit
+
 ## Conclusion
 
-En définitive, nous avons établi le cahier des charges pour une plateforme de découverte et de gestion de bières. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Ces actions correspondent aux fonctionnalités que nous allons implémenter avec la marque (facultatif) pour celles qui seront implémentées si le temps nous le permet. Ces spécifications nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante
-todo : dire ce qui est obligatoire(partie reseau social) et ce qui est facultatif(partie liee à la vente)
+En définitive, nous avons établi le cahier des charges pour une application web de découverte et de gestion de bières. Cette application mettra en relation des amateurs et des professionnels de bières afin qu'ils partagent leurs avis respectifs sur différentes bières, des producteurs qui en plus de promouvoir leur bieres et récolter les avis des utilisateurs dessus, pourront les vendre. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Par la suite, nous prioriserons le côté réseau social de l'application, en d'autre terme toute la partie liée au partage/echange d'informations inter-acteur au détriment du côté commercial de l'application. Celui-ci ne sera implémenté que si le temps nous le permet. Les spécifications ainsi faites nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante.
