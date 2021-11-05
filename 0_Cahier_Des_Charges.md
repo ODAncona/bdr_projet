@@ -91,39 +91,39 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 #### Avis de bière
 
-1. Titre
-2. Date
-3. Note de la bière ★★★★★
-4. Caractéristiques gustatives de la bières
-   - (acidité, amertume, douceur, fruitée, gaz, ...)
-5. Ressenti personnel
+* 1. Titre
+* 2. Date
+* 3. Note de la bière ★★★★★
+* 4. Caractéristiques gustatives de la bières
+(acidité, amertume, douceur, fruitée, gaz, ...)
+* 5. Ressenti personnel
 
 #### Réponse à un avis
 
-1. Réponse du brasseur
-2. date
+* Réponse du brasseur
+* Date
 
 #### Description de bière
 
-1. Titre de la bière
-2. Images de la bière (max n images)
-3. Prix de la bière (seulement si bière revendiquée par un producteur)
-4. Description de la bière
-5. Avis
+- Titre de la bière
+- Images de la bière (max n images)
+- Prix de la bière (seulement si bière revendiquée par un producteur)
+- Description de la bière
+- Avis
 
 #### Brasserie
 
-1. Description
-2. Image
-3. Liste de bières
-4. Adresse
-5. Contact
+- Description
+- Image
+- Liste de bières
+- Adresse
+- Contact
 
-#### visiteur
+#### Visiteur
 
 - aucune donnée sauvegardée
 
-#### utilisateur
+#### Utilisateur
 
 - Nom
 - Prénom
@@ -133,7 +133,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 - Pseudo
 - Avis
 
-#### producteur
+#### Producteur
 
 - Nom
 - Prénom
@@ -143,11 +143,13 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 - Pseudo
 
 #### Admin
-
-## Question
-
-1. Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
-
+- Nom
+- Prénom
+- Date de naissance
+- Adresse
+- Mail
+- Pseudo
+- Droit
 ## Conclusion
 
 En définitive, nous avons établi le cahier des charges pour une plateforme de découverte et de gestion de bières. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Ces actions correspondent aux fonctionnalités que nous allons implémenter avec la marque (facultatif) pour celles qui seront implémentées si le temps nous le permet. Ces spécifications nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante
