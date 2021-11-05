@@ -62,7 +62,8 @@ Un utilisateur a les droits étendus suivant par rapport à un visiteur :
 #### Producteur
 
 En plus des droits d'un utilisateur standards, un producteur peut être l'administrateur principal d'une page de brasserie qu'il aura crée.  
-A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.
+A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.  
+Voici une liste des actions qu'il peut effectuer :
 
 * Ajouter une description de bière
 * Modifier une description de bière
