@@ -26,16 +26,18 @@ L'application comportera quatre types d'acteurs:
 L'application comportera plusieurs rubriques que l'on pourra consulter:
 
 1. **Description de Bière** : une page qui permet d'afficher tous les détails d'une bière.
-2. **Avis de Bière** : un commentaire que peut laisser un utilisateur.
+2. **Avis sur une Bière** : un commentaire que peut laisser un utilisateur.
 3. **Brasserie** : c'est une page qui référence des bières accompagnés des détails de l'établissement.
 4. **Gestion Utilisateur** : une page qui contient les bières préférées des utilisateurs et utilisatrices et qui permet d'ajuster les préférences du compte.
 5. **Gestion Brasserie** : une page qui permet de modifier les détails relatifs à l'établissement.
 
-### Acteurs
+***
+
+### __Acteurs__
 
 Cette section détaille les différentes actions que peuvent effectuer chaque acteur.
 
-#### Visiteur
+#### *Visiteur*  \linebreak
 
 Voici ce qu'un visiteur peut faire :
 
@@ -46,7 +48,7 @@ Voici ce qu'un visiteur peut faire :
 - Consulter les pages de brasseries
 - Créer un compte utilisateur
 
-#### Utilisateur
+#### *Utilisateur*  \linebreak
 
 L'utilisateur peut notamment donner un avis sur une bière. Si la bière qu'il veut commenter n'est pas présente dans la base de donnée, il doit d'abord l'ajouter. Il a aussi la possibilité de gérer une liste de favoris. De manière plus exhaustive, il dispose des droits étendus suivant par rapport à un visiteur :
 
@@ -60,7 +62,7 @@ L'utilisateur peut notamment donner un avis sur une bière. Si la bière qu'il v
 - Se connecter et se déconnecter ;
 - Créer une commande de bières dans une brasserie ou supprimer une commande.
 
-#### Producteur
+#### *Producteur* \linebreak
 
 En plus des droits d'un utilisateur standard, un producteur peut être le gérant ou la gérante principal-e d'une page de brasserie qu'il aura créée.  
 A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.  
@@ -74,29 +76,32 @@ Voici une liste des actions qu'il peut effectuer en plus de celles d'un utilisat
 - Inviter un utilisateur à co-administrer sa page de brasserie ;
 - Accepter, finalise ou rejeter une commande.
 
-#### Administrateur
+#### *Administrateur* \linebreak
 
 - Un administrateur peut faire tout ce qu'un utilisateur peut faire.
+
+
+***
+
 
 ### Structure des données
 
 Cette section décrit les entités qui devraient constituer la base de donnée. La structure proposée ci-dessous est appelée à évoluer en fonction des questions qui pourraient surgir lors de l'établissement du modèle entité-association.
 
-#### Avis de bière
+#### *Avis sur une bière :*
 
-- 1. Titre
-- 2. Date
-- 3. Note de la bière (entre 1 et 5)
-- 4. Caractéristiques gustatives de la bières
+- Titre et date
+- Note de la bière (entre 1 et 5)
+- Caractéristiques gustatives de la bières
      (acidité, amertume, douceur, fruitée, gaz, ...)
-- 5. Ressenti personnel
+- Ressenti personnel
 
-#### Réponse à un avis
+#### *Réponse à un avis :*
 
 - Réponse du brasseur
 - Date
 
-#### Description de bière
+#### *Description de bière :*
 
 - Titre de la bière
 - Images de la bière (max n images)
@@ -104,40 +109,37 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 - Description de la bière
 - Avis
 
-#### Brasserie
+#### *Brasserie :*
 
 - Description
 - Image
 - Liste de bières
-- Adresse
-- Contact
+- Adresse postale et adresse mail de contact
 
-#### Visiteur
+#### *Visiteur :*
 
 - Aucune donnée sauvegardée
 
-#### Utilisateur
+#### *Utilisateur*
 
 - Nom, prénom et pseudonyme
 - Date de naissance
-- Adresse
-- Mail
-- Avis
+- Adresse postale et adresse mail
+- Avis déposés sur des bières
 
-#### Producteur
-
-- Nom, prénom et pseudonyme
-- Date de naissance
-- Adresse
-- Mail
-
-#### Admin
+#### *Producteur*
 
 - Nom, prénom et pseudonyme
 - Date de naissance
-- Adresse
-- Mail
-- Droit
+- Adresse postale et adresse mail
+
+#### *Admin*
+
+- Nom, prénom et pseudonyme
+- Date de naissance
+- Adresse postale et adresse mail
+
+***
 
 ## Conclusion
 
