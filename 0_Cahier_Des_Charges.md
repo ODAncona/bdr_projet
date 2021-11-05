@@ -15,7 +15,7 @@ L'application comportera quatre types d'acteurs:
 1. Les visiteurs: Ce sont des personnes non authentifiés qui auront le loisir de consulter les différentes rubriques de notre application.
 2. Les utilisateurs: Ils possèdent un compte qui leur octroient le droit, entre autre, de rédiger un avis ou de commander des bières.
 3. Les producteurs: Ce sont des utilisateurs qui jouisse des droits de gestion de brasserie. Ils pourront ainsi administrer une brasserie et gérer ses divers constituants.
-4. Les administrateurs: Conçu pour administrer l'application, ils ont tous les droits sur l'application et s'attèle au bon fonctionnement de la plateforme.
+4. Les administrateurs: Ils ont tous les droits sur l'application et s'attèlent au bon fonctionnement de la plateforme.
 
 ### Acteurs
 
