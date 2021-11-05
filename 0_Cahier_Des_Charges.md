@@ -1,10 +1,11 @@
 # Introduction & But
 
-Nous voulons créer une application pour découvrir, noter et commander des bières.
-
-côté client, côté producteur, côté achat
-
-@Jeff
+L'intérêt pour la bière artisanale est grandissant, tant  du point de vues des consommateurs, qui aprécient de plus en plus ce type de produit, que du point de vue des brasseurs, qui sont de plus en plus nombreux.  
+Cependant, face à une offre plétorique, il est difficile de s'y retrouver. Pour aider l'amateur de bières dans ses choix, nous voulons créer une application qui permette de découvrir, commenter et noter des bières. Au fil de l'utilisation de notre application et de la croissance de la base utilisateur, les visiteurs pourront choisir parmi les produits les plus à leur goût et les mieux notés.  
+Ils pourront à leur tour poster un commentaire et mettre une note ainsi que décrire les bières qu'ils dégustent. Ils pourront aussi consulter l'historique de leurs commentaires et ainsi rappeler à leur souvenir ce qu'ils ont bu !  
+Quant aux brasseurs, ils pourront, s'ils le désirent, créer une page dédiée à leur entreprise, répondre aux utilisateurs qui auraient commenté un de leur produit, ajouter des descriptions.  
+Dans un second temps, notre application pourrait aussi offrir la possibilité de commander des bières.  
+Le présent document détaille les fonctionnalités de l'application ainsi que les différents éléments qui la constituent.
 
 # Description de l'application
 ## Actions
