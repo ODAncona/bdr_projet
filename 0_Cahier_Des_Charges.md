@@ -21,6 +21,8 @@ L'application comportera quatre types d'acteurs:
 3. Les producteurs et productrices : Ce sont des utilisateurs ou utilisatrices qui jouissent des droits de gestion de la brasserie. Ils pourront ainsi administrer une brasserie et gérer ses divers constituants.
 4. Les administrateurs ou administratrices : Ils et elles ont tous les droits sur l'application et s'attèlent au bon fonctionnement de la plateforme.
 
+\pagebreak
+
 L'application comportera plusieurs rubriques que l'on pourra consulter:
 
 1. **Description de Bière** : une page qui permet d'afficher tous les détails d'une bière.
