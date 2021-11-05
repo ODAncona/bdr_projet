@@ -18,6 +18,7 @@ L'application comportera quatre types d'acteurs:
 4. Les administrateurs: Ils ont tous les droits sur l'application et s'attèlent au bon fonctionnement de la plateforme.
 
 L'application comportera plusieurs rubriques que l'on pourra consulter:
+
 1. Description de Bière: une page qui permet d'afficher tous les détails d'une bière.
 2. Avis de Bière: un commentaire que peut laisser un utilisateur
 3. Brasserie: c'est une page qui référence des bières plus les détails de l'établissement
@@ -32,32 +33,32 @@ Cette section détaille les différentes actions de chaque acteur.
 
 Voici ce qu'un visiteur peut faire :
 
-* Consulter les descriptions de bières
-* Consulter les avis de bières
-* Rechercher les avis de bières
-* Rechercher les brasseries
-* Consulter les pages de brasseries
-* Créer un compte utilisateur
+- Consulter les descriptions de bières
+- Consulter les avis de bières
+- Rechercher les avis de bières
+- Rechercher les brasseries
+- Consulter les pages de brasseries
+- Créer un compte utilisateur
 
 #### Utilisateur
 
 Un utilisateur a les droits étendus suivant par rapport à un visiteur :
 
-* Ajouter des avis bières (max n avis)
-* Modifier un avis de bière
-* Supprimer un avis
-* Ajouter bière
-* Modifier bière ajoutée
-* ajouter une bière à sa liste de favoris
-* enlever une bière de la liste de favoris
-* consulter sa liste de favoris
-* supprimer son compte
-* modifier son compte
-* Migrer vers un compte pro
-* Se connecter
-* Se déconnecter
-* créer une commande de bières dans une brasserie
-* supprimer une commande de bière
+- Ajouter des avis bières (max n avis)
+- Modifier un avis de bière
+- Supprimer un avis
+- Ajouter bière
+- Modifier bière ajoutée
+- ajouter une bière à sa liste de favoris
+- enlever une bière de la liste de favoris
+- consulter sa liste de favoris
+- supprimer son compte
+- modifier son compte
+- Migrer vers un compte pro
+- Se connecter
+- Se déconnecter
+- créer une commande de bières dans une brasserie
+- supprimer une commande de bière
 
 #### Producteur
 
@@ -65,24 +66,24 @@ En plus des droits d'un utilisateur standards, un producteur peut être l'admini
 A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.  
 Voici une liste des actions qu'il peut effectuer :
 
-* Ajouter une description de bière
-* Modifier une description de bière
-* Supprimer une description de bière
-* Modifier une description de bière
-* Ajouter une réponse à un avis
-* Modifier la réponse à un avis
-* supprimer la réponse à un avis
-* Créer une page de brasserie
-* Modifier page de brasserie
-* Supprimer la brasserie
-* Revendiquer une bière
-* accepter une commande
-* rejeter une commande
-* finaliser une commande
+- Ajouter une description de bière
+- Modifier une description de bière
+- Supprimer une description de bière
+- Modifier une description de bière
+- Ajouter une réponse à un avis
+- Modifier la réponse à un avis
+- supprimer la réponse à un avis
+- Créer une page de brasserie
+- Modifier page de brasserie
+- Supprimer la brasserie
+- Revendiquer une bière
+- accepter une commande
+- rejeter une commande
+- finaliser une commande
 
 #### Admin
 
-* Un administrateur peut faire tout ce qu'un utilisateur peuvent faire. A noter qu'il pourrait être judicieux de définir différents niveaux d'administrateur.
+- Un administrateur peut faire tout ce qu'un utilisateur peuvent faire. A noter qu'il pourrait être judicieux de définir différents niveaux d'administrateur.
 
 ### Structure des données
 
@@ -94,7 +95,7 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 2. Date
 3. Note de la bière ★★★★★
 4. Caractéristiques gustatives de la bières
-    * (acidité, amertume, douceur, fruitée, gaz, ...)
+   - (acidité, amertume, douceur, fruitée, gaz, ...)
 5. Ressenti personnel
 
 #### Réponse à un avis
@@ -120,30 +121,34 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 
 #### visiteur
 
-* aucune donnée sauvegardée
+- aucune donnée sauvegardée
 
 #### utilisateur
 
-* Nom
-* Prénom
-* Date de naissance
-* Adresse
-* Mail
-* Pseudo
-* Avis
+- Nom
+- Prénom
+- Date de naissance
+- Adresse
+- Mail
+- Pseudo
+- Avis
 
 #### producteur
 
-* Nom
-* Prénom
-* Date de naissance
-* Adresse
-* Mail
-* Pseudo
+- Nom
+- Prénom
+- Date de naissance
+- Adresse
+- Mail
+- Pseudo
 
 #### Admin
 
-
 ## Question
 
-1) Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
+1. Est-ce qu'il ne faudrait pas prévoir plusieurs administrateur d'une brasserie ? Plusieurs comptes producteurs liés à une brasserie.
+
+## Conclusion
+
+En définitive, nous avons établi le cahier des charges pour une plateforme de découverte et de gestion de bières. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Ces actions correspondent aux fonctionnalités que nous allons implémenter avec la marque (facultatif) pour celles qui seront implémentées si le temps nous le permet. Ces spécifications nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante
+todo : dire ce qui est obligatoire(partie reseau social) et ce qui est facultatif(partie liee à la vente)
