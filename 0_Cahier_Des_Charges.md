@@ -144,3 +144,13 @@ Cette section décrit les entités qui devraient constituer la base de donnée. 
 ## Conclusion
 
 En définitive, nous avons établi le cahier des charges pour une application web de découverte et de gestion de bières. Cette application mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières. Des producteurs et productrices pourront promouvoir leurs bières et récolter les avis des utilisateurs et utilisatrices sur leurs produits, ainsi que de les vendre. Pour ce faire, nous avons énuméré les différents acteurs que notre système comportera ainsi que leurs actions liées. Par la suite, l'emphase sera portée sur le côté catalogue social de l'application, en d'autre terme toute la partie liée au partage/échange d'informations inter-acteurs. L'aspect commercial de la plateforme, sera implémenté uniquement si le temps nous le permet. Les spécifications ainsi faites nous permettrons de faire prochainement le diagramme EA(entité-association) de la base de données correspondante.
+
+
+#TODO
+revendication de la bière
+ajout de composition de la bière
+admin à mettre de côté car charge de travail
+Pousser le côté des recherches +++
+suggestion
+commande de bière
+Eviter code mais ajouter modélisation
