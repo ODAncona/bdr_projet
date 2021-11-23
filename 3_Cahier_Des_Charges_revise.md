@@ -23,7 +23,6 @@ L'application comportera quatre types d'acteurs:
 1. Les visiteurs: Ce sont des personnes non authentifiées qui auront le loisir de consulter les différentes rubriques de notre application.
 2. Les utilisateurs et utilisatrices : Ils et elles possèdent un compte qui leur octroie le droit, entre autre, de rédiger un avis et/ou de commander des bières.
 3. Les brasseurs : Ce sont des utilisateurs ou utilisatrices qui jouissent des droits de gestion de la brasserie. Ils pourront ainsi administrer une brasserie et gérer ses divers constituants.
-4. Les administrateurs ou administratrices : Ils et elles ont tous les droits sur l'application et s'attèlent au bon fonctionnement de la plateforme.
 
 \pagebreak
 
@@ -62,8 +61,6 @@ Voici ce qu'un visiteur peut faire :
 - Rechercher des bières
 - Rechercher des brasseries
 
-
-
 #### *Utilisateur*  \linebreak
 
 L'utilisateur peut notamment donner un avis sur une bière. Si la bière qu'il veut commenter n'est pas présente dans la base de donnée, il doit d'abord l'ajouter. Il a aussi la possibilité de gérer une liste de favoris. De manière plus exhaustive, il dispose des droits étendus suivant par rapport à un visiteur :
@@ -90,11 +87,6 @@ Voici une liste des actions qu'il peut effectuer en plus de celles d'un utilisat
 - Revendiquer une bière qu'un utilisateur aurait ajoutée ;
 - Inviter un utilisateur à co-administrer sa page de brasserie ;
 - Accepter, finalise ou rejeter une commande.
-
-#### *Administrateur* \linebreak
-
-- Un administrateur peut faire tout ce qu'un utilisateur peut faire.
-
 
 ***
 
