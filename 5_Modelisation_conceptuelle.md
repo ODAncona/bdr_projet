@@ -1,3 +1,11 @@
+---
+title: "Projet BDR : The Beer Garden"
+titlepage: true
+author: [Herycka Akoumba, Olivier D'Ancona, Jean-François Pasche]
+date: "26 novembre 2021"
+keywords: [BDR]
+...
+
 # Beergarden Modélisation Conceptuelle
 
 ## Table des matières
@@ -12,9 +20,7 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 ### Explications complémentaires
 
-
-- Un utilisateur peut poster un nouveau review seulement après 1 année à dater de son précédant review.
-
+#### Person, Review, Beer
 - Lorsqu'un utilisateur veut commenter une bière, une vérification est faite sur le nom de la bière et de la brasserie. Si la brasserie existe déjà dans la base de donnée, mais pas la bière, alors la bière doit préalablement être ajoutée au catalogue. Si ni la bière, ni la brasserie exite, les deux doivent être ajoutés préalablement au catalogue. Si les deux existent, le commentaire peut être ajouté directement. Ce processus est sensé permettre la minimisation des doublons.
 - Une bière avec un prix de 0 signifie que celui-ci n'a été défini par aucun utilisateur.
 
@@ -66,9 +72,10 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 - Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
 
   
-## Adaptations
-Quelques adaptations ont du être faites par rapport au cahier des charges. La possibilité de supprimer un compte a été remplacée par la possibilité de désactiver un compte. Cela évitera la suppression des commentaires d'un client qui supprimerait son compte. A ce stade, la question se pose de séparer l'entité `Person` en deux entités `Person` et `PersonInfos`, avec dans la première le pseudonyme et le mot de passe et dans la seconde toutes les autres informations. Cela permettrait de lier `Person` à `Order`, `Beer_Review`, `Beer` et non `PersonInfos`. Ainsi, on pourrait supprimer les informations personnelles d'un utilisateur sans affecter les relations avec les différentes entités.  
-En revanche, un brasseur peut supprimer les informations contenues dans `BreweryInfos` sans que cela n'affecte les commandes passées dans une brasserie, car celles-ci sont liées à l'entité `Brewery`, dont les instances ne pourront pas être supprimées.
+## Points à discuter
+Quelques adaptations ont du être faites par rapport au cahier des charges. La possibilité de supprimer un compte a été remplacée par la possibilité de désactiver un compte. Cela évitera la suppression des commentaires d'un client qui supprimerait son compte. A ce stade, la question se pose de séparer l'entité `Person` en deux entités `Person` et `PersonInfos`, avec dans la première le pseudonyme et le mot de passe et dans la seconde toutes les autres informations. Cela permettrait de lier `Person` à `Order`, `Beer_Review`, `Beer` et non `PersonInfos`. Ainsi, on pourrait supprimer les informations personnelles d'un utilisateur sans affecter ses relations avec les différentes entités.  
+En revanche, un brasseur peut supprimer les informations contenues dans `BreweryInfos` sans que cela n'affecte les commandes passées dans une brasserie, car celles-ci sont liées à l'entité `Brewery`, dont les instances ne pourront pas être supprimées.  
+Enfin, le rôle d'administrateur a été retiré, car il n'apporte pas grand chose du point de vue de la base de donnée mais demanderait beacoup de travail du point de vue de l'interface utilisateur.
 
 ## Conclusion
 Le cahier des charges n'est pas complétement res, 
