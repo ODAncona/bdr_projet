@@ -70,9 +70,7 @@ L'utilisateur peut notamment donner un avis sur une bière. Si la bière qu'il v
 - Modifier une bière qu'il lui-même ajoutée ;
 - Ajouter une bière à sa liste de favoris ou l'en retirer ;
 - Consulter sa liste de favoris ;
-- Modifier ou supprimer son compte ;
 - Migrer vers un compte pro ;
-- Se connecter et se déconnecter ;
 - Créer une commande de bières dans une brasserie ou supprimer une commande.
 
 #### *brasseur* \linebreak
