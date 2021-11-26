@@ -12,23 +12,68 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 ### Explications complémentaires
 
-Le champ isClaimed dans Beer est un champs précalculé. En effet, l'information existe déjà en soi dans la base de donnée. Il suffit de contrôler lors d'une revendication que la bière n'existe pas déjà dans une brasserie. Cependant, afin de trouver cette information il faut faire une requête sur toutes les bières et toutes les brasseries ce qui peut être cher en terme de calcul. Afin de simplifier les requêtes et la charge de calcul, nous avons décidé d'ajouter ce champs qui est relativement léger.
 
-la relation entre brasserie et commande et redondante car on peut retrouver les commandes d'une bière grâce à une jointure avec la table bière et commande.
-Nous avons décidé de ne pas gérer les différents types d'adresse : livraison, facturation
+- Un utilisateur peut poster un nouveau review seulement après 1 année à dater de son précédant review.
+
+- Lorsqu'un utilisateur veut commenter une bière, une vérification est faite sur le nom de la bière et de la brasserie. Si la brasserie existe déjà dans la base de donnée, mais pas la bière, alors la bière doit préalablement être ajoutée au catalogue. Si ni la bière, ni la brasserie exite, les deux doivent être ajoutés préalablement au catalogue. Si les deux existent, le commentaire peut être ajouté directement. Ce processus est sensé permettre la minimisation des doublons.
+- Une bière avec un prix de 0 signifie que celui-ci n'a été défini par aucun utilisateur.
+
+#### Brewery
+- `claimed` est un champ booléen. `false` signifie que la brasserie n'a pas été revendiquée.
+- Lorsqu'un brasseur revendique une brasserie, les droits de modification de modification des bières de cette brasserie lui sont transférés par une modification de la relation `modify` entre `Person` et `Beer`. Le champ `claimed` de l'entité `Brewery` passe à true.
+- Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
+
 ### Contraintes intégrité
-  - Un utilisateur ne devrait pas créer de doublon de bière non revendiqué et lorsqu'un brasseur revendique une bière il pourra revendiquer toutes les bières des utilisateurs
-  - Un avis ne peut pas être créé avant la date de publication de la bière
-  - Une personne ne peut pas avoir une date de naissance < today()-18ans;
-  - Lorsqu'un brasseur revendique une bière, les droits d'auteurs sur la bière sont transférés. L'auteur de la bière deviendra un simple utilisateur.
-  - Un utilisateur ne peux pas déterminer de prix à une nouvelle bière. Seulement un brasseur pourra le faire.
-  - Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné
-  - Un utilisateur peut poster un nouveau review seulement après 1 année à dater de son précédant review.
-  - Un brasseur ne peut pas revendiquer des bières déjà revendiquées
-  - Lorsqu'un utilisateur crée une bière, elle peut être revendiquée
-  - Lorsqu'un brasseur supprime son compte, la brasserie ne sera pas supprimée mais désactivée.
-  - Une brasserie peut être supprimée seulement si elle n'est pas liée à une commande.
-  - Si un brasseur n'a pas de brasserie il ne peut pas revandiquer de bière.
+
+#### Person
+- La date de naissance doit correspondre à un âge de plus de 18 ans.
+- Le pseudo doit être unique
+- L'email doit être unique
+
+#### Beer
+- Le prix doit être supérieur ou égal à 0.
+
+#### Review
+- La date de création doit être inférieure à la date actuelle.
+- La date de création doit être supérieure à la date de création d'une bière.
+
+#### Beer_Review
+- Le score doit être compris entre 1 et 5.
+- L'acidité, l'amertume, la douceur et la pétillance ont des valeurs comprises entre 1 et 10.
+
+#### Beer_Review_Answer
+- `useFull` et `useLess` doivent être supérieurs ou égals à 0.
+- Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné.
+
+#### Beer - Person (favoris)
+- La date d'ajout dans les favoris doit être inférieure à la date actuelle.
+
+#### Beer - Order
+- La quantité doit être supérieure à 0.
+
+#### Brewery
+- Deux brasseries ne peuvent pas avoir le même nom.
+- Une brasserie peut être supprimée seulement si elle n'est pas liée à une commande.
+
+#### Address
+- Le numéro de rue doit être supérieur à 0.
+- Le numéro postal doit être supérieur à 0.
+
+#### Order
+- La date de création doit être inférieur à la date actuelle.
+
+#### Brewery_Infos
+- Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
+
+  
+## Adaptations
+Quelques adaptations ont du être faites par rapport au cahier des charges. La possibilité de supprimer un compte a été remplacée par la possibilité de désactiver un compte. Cela évitera la suppression des commentaires d'un client qui supprimerait son compte. A ce stade, la question se pose de séparer l'entité `Person` en deux entités `Person` et `PersonInfos`, avec dans la première le pseudonyme et le mot de passe et dans la seconde toutes les autres informations. Cela permettrait de lier `Person` à `Order`, `Beer_Review`, `Beer` et non `PersonInfos`. Ainsi, on pourrait supprimer les informations personnelles d'un utilisateur sans affecter les relations avec les différentes entités.  
+En revanche, un brasseur peut supprimer les informations contenues dans `BreweryInfos` sans que cela n'affecte les commandes passées dans une brasserie, car celles-ci sont liées à l'entité `Brewery`, dont les instances ne pourront pas être supprimées.
+
 ## Conclusion
-  Dans cette ébauche, nous avons représenté notre schéma entité association et indiqué toutes les contraintes d'intégrité ainsi que les relations.
+Le cahier des charges n'est pas complétement res, 
+
+Cette décision a été prise afin qu'il n'y ait pas de pertes d'informations 
+
+Dans cette ébauche, nous avons représenté notre schéma entité association et indiqué toutes les contraintes d'intégrité ainsi que les relations.
  
