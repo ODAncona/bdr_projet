@@ -89,5 +89,5 @@ En revanche, un brasseur peut supprimer les informations contenues dans `Brewery
 Enfin, le rôle d'administrateur a été retiré, car il n'apporte pas grand chose du point de vue de la base de donnée mais demanderait beacoup de travail du point de vue de l'interface utilisateur.
 
 ## Conclusion
-La création du modèle EA nous a mené à remettre en cause certains aspects du cahier des charges, plus précisément la possibilité de supprémer un compte.
+La création du modèle EA nous a mené à remettre en cause certains aspects du cahier des charges, plus précisément la possibilité de supprémer un compte. Ce point reste en susoend
  
