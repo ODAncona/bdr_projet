@@ -37,14 +37,15 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 - L'email doit être unique
 
 #### Beer
-- Le prix doit être supérieur ou égal à 0.
+- Le prix doit être supérieur ou égal à 0 lorsqu'il est défini
+- Le prix est nullable
 
 #### Review
 - La date de création doit être inférieure à la date actuelle.
 - La date de création doit être supérieure à la date de création d'une bière.
 
 #### Beer_Review
-- Le score doit être compris entre 1 et 5.
+- Le score doit être compris entre 2 et 10. (1 correspond à une demi étoile)
 - L'acidité, l'amertume, la douceur et la pétillance ont des valeurs comprises entre 1 et 10.
 
 #### Beer_Review_Answer
@@ -53,41 +54,47 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 #### Beer - Person (favoris)
 - La date d'ajout dans les favoris doit être inférieure à la date actuelle.
+- La date d'ajout dans les favoris doit être supérieure à la date de création de la bière.
 
 #### Beer - Order
 - La quantité doit être supérieure à 0.
+- La date de création de bière doit être égale ou inférieure à la date actuelle.
 
 #### Brewery
-- Deux brasseries ne peuvent pas avoir le même nom.
+- Le nom de la brasserie doit être unique.
 - Une brasserie peut être supprimée seulement si elle n'est pas liée à une commande.
+- Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
 
 #### Address
 - Le numéro de rue doit être supérieur à 0.
 - Le numéro postal doit être supérieur à 0.
 
 #### Order
-- La date de création doit être inférieur à la date actuelle.
+- La date de commande doit être inférieur ou égale la date actuelle.
+- La date de commande doit être supérieure à la date de création de la bière.
 
 #### Brewery_Infos
 - Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
 
-
 ## Choix de conception
+
 ### Explications complémentaires
+
 #### Person, Review, Beer
-- Lorsqu'un utilisateur veut laisser un avis sur une bière, une vérification est faite sur le nom de la bière et de la brasserie. Si la brasserie existe déjà dans la base de donnée, mais pas la bière, alors la bière doit préalablement être ajoutée au catalogue. Si ni la bière, ni la brasserie exite, les deux doivent être ajoutés préalablement au catalogue. Si les deux existent, le commentaire peut être ajouté directement. Ce processus est sensé permettre la minimisation des doublons.
-- Une bière avec un prix de 0 signifie que celui-ci n'a été défini par aucun utilisateur.
+
+- Lorsqu'un utilisateur veut laisser un avis sur une bière, une vérification est faite sur le nom de la bière et de la brasserie. Si la brasserie existe déjà dans la base de donnée, mais pas la bière, alors la bière doit préalablement être ajoutée au catalogue. Si ni la bière, ni la brasserie existe, les deux doivent être ajoutés préalablement au catalogue. Si les deux existent, le commentaire peut être ajouté directement.
 
 #### Brewery
+
 - `claimed` est un champ booléen. `false` signifie que la brasserie n'a pas été revendiquée.
 - Lorsqu'un brasseur revendique une brasserie, les droits de modification des bières de cette brasserie lui sont transférés par une modification de la relation `modify` entre `Person` et `Beer`. Le champ `claimed` de l'entité `Brewery` passe à true.
-- Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
 
 ### Remarques sur le cahier des charges
-Quelques adaptations ont du être faites par rapport au cahier des charges. La possibilité de supprimer un compte a été remplacée par la possibilité de désactiver un compte. Cela évitera la suppression des commentaires d'un client qui supprimerait son compte. A ce stade, la question se pose de séparer l'entité `Person` en deux entités `Person` et `PersonInfos`, avec dans la première le pseudonyme et le mot de passe et dans la seconde toutes les autres informations. Cela permettrait de lier `Person` à `Order`, `Beer_Review`, `Beer` et non `PersonInfos`. Ainsi, on pourrait supprimer les informations personnelles d'un utilisateur sans affecter ses relations avec les différentes entités.  
+
+Quelques adaptations ont du être faites par rapport au cahier des charges. La possibilité de supprimer un compte a été remplacée par la possibilité de désactiver un compte. Cela évitera la suppression des commentaires d'un client qui supprimerait son compte.
 En revanche, un brasseur peut supprimer les informations contenues dans `BreweryInfos` sans que cela n'affecte les commandes passées dans une brasserie, car celles-ci sont liées à l'entité `Brewery`, dont les instances ne pourront pas être supprimées.  
 Enfin, le rôle d'administrateur a été retiré, car il n'apporte pas grand chose du point de vue de la base de donnée mais demanderait beacoup de travail du point de vue de l'interface utilisateur.
 
 ## Conclusion
-La création du modèle EA nous a mené à remettre en cause certains aspects du cahier des charges, plus précisément la possibilité de supprémer un compte. Ce point reste en susoend
- 
+
+La création du modèle EA nous a mené à remettre en cause certains aspects du cahier des charges, plus précisément la manière de supprimer un compte. A ce stade, la question se pose de séparer l'entité `Person` en deux entités `Person` et `PersonInfos`, avec dans la première le pseudonyme et le mot de passe et dans la seconde toutes les autres informations. Cela permettrait de lier `Person` à `Order`, `Beer_Review`, `Beer` et non `PersonInfos`. Ainsi, on pourrait supprimer les informations personnelles d'un utilisateur sans affecter ses relations avec les différentes entités.
