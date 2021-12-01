@@ -6,7 +6,7 @@ date: "26 novembre 2021"
 keywords: [BDR]
 ...
 
-# Beergarden : Modélisation conceptuelle
+# The Beer Garden : Modélisation conceptuelle
 
 ## Table des matières
 
@@ -34,24 +34,22 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 #### Person
 - La date de naissance doit correspondre à un âge de plus de 18 ans.
-- Le pseudo doit être unique
-- L'email doit être unique
 
 #### Beer
 - Le prix doit être supérieur ou égal à 0 lorsqu'il est défini
-- Le prix est nullable
 
 #### Review
 - La date de création doit être inférieure à la date actuelle.
 - La date de création doit être supérieure à la date de création d'une bière.
 
 #### Beer_Review
-- Le score doit être compris entre 2 et 10. (1 correspond à une demi étoile)
+- Le score doit être compris entre 2 et 10.
 - L'acidité, l'amertume, la douceur et la pétillance ont des valeurs comprises entre 1 et 10.
 
 #### Beer_Review_Answer
 - `useFull` et `useLess` doivent être supérieurs ou égals à 0.
 - Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné.
+- Seuls les brasseurs actifs peuvent donner une réponse.
 
 #### Beer - Person (favoris)
 - La date d'ajout dans les favoris doit être inférieure à la date actuelle.
@@ -63,7 +61,6 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 #### Brewery
 - Le nom de la brasserie doit être unique.
-- Une brasserie peut être supprimée seulement si elle n'est pas liée à une commande.
 - Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
 
 #### Address
@@ -80,10 +77,6 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 ## Choix de conception
 
 ### Explications complémentaires
-
-#### Person, Review, Beer
-
-- Lorsqu'un utilisateur veut laisser un avis sur une bière, une vérification est faite sur le nom de la bière et de la brasserie. Si la brasserie existe déjà dans la base de donnée, mais pas la bière, alors la bière doit préalablement être ajoutée au catalogue. Si ni la bière, ni la brasserie existe, les deux doivent être ajoutés préalablement au catalogue. Si les deux existent, le commentaire peut être ajouté directement.
 
 #### Brewery
 
