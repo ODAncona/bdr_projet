@@ -1,0 +1,106 @@
+set client_encoding to 'UTF8';
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Image CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Brasserie CASCADE;
+CREATE TABLE Brasserie (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Commande CASCADE;
+CREATE TABLE Commande (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS InfoBrasserie CASCADE;
+CREATE TABLE InfoBrasserie (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Adresse CASCADE;
+CREATE TABLE Adresse (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TypeBière CASCADE;
+CREATE TABLE TypeBière (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Bière CASCADE;
+CREATE TABLE Bière (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Personne CASCADE;
+CREATE TABLE Personne (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Brasseur CASCADE;
+CREATE TABLE Brasseur (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Avis CASCADE;
+CREATE TABLE Avis (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS AvisBière CASCADE;
+CREATE TABLE AvisBière (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS RéponseAvisBière CASCADE;
+CREATE TABLE RéponseAvisBière (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS BièrePersonne CASCADE;
+CREATE TABLE BièrePersonne (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS CommandeBière CASCADE;
+CREATE TABLE CommandeBière (
+	no SMALLSERIAL,
+);
+/*------------------------------------------------------------------*/
