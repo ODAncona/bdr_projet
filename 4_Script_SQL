@@ -1,0 +1,67 @@
+set client_encoding to 'UTF8';
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS Image CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TailleImage CASCADE;
+CREATE TABLE TailleImage (
+	no SMALLSERIAL,
+	nom VARCHAR(50) NOT NULL,
+	codePays CHAR(2) NOT NULL,
+	codeEquipe CHAR(3),
+	CONSTRAINT PK_Coureur PRIMARY KEY (no)
+);
+/*------------------------------------------------------------------*/

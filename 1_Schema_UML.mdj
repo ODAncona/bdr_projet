@@ -18,7 +18,6 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Esquisse",
-					"defaultDiagram": true,
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -5434,7 +5433,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Images",
+					"name": "Image",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -8244,7 +8243,7 @@
 											"top": 234,
 											"width": 115.62890625,
 											"height": 13,
-											"text": "Images"
+											"text": "Image"
 										},
 										{
 											"_type": "LabelView",
@@ -11588,7 +11587,7 @@
 											"top": 239,
 											"width": 62.8671875,
 											"height": 13,
-											"text": "typeBière"
+											"text": "TypeBière"
 										},
 										{
 											"_type": "LabelView",
@@ -15056,7 +15055,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "typeBière",
+					"name": "TypeBière",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
