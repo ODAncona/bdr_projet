@@ -18,7 +18,6 @@ keywords: [BDR]
   3.1. Explications complémentaires
   3.2. Remarques sur le cahier des charges
 4. Conclusion
-5. Annexe : schéma EA grand format
 
 ## Introduction
 
@@ -28,12 +27,15 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 ### Schéma EA
 
-![Modélisation de "The Beer Garden"](6_schemaEA.png)
+![Modélisation de "The Beer Garden"](6b_schemaEA_FR.png)
 
 ### Contraintes d'intégrité
 
 #### Personne
 - La date de naissance doit correspondre à un âge de plus de 18 ans.
+
+#### Brasseur
+- Un brasseur désactivé ne peut pas répondre à un avis de bière.
 
 #### Bière
 - Le prix doit être supérieur ou égal à 0 lorsqu'il est défini
@@ -60,12 +62,12 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 - La date de création de bière doit être égale ou inférieure à la date actuelle.
 
 #### Brasserie
-- Le nom de la brasserie doit être unique.
 - Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
 
-#### Address
+#### Adresse
 - Le numéro de rue doit être supérieur à 0.
 - Le numéro postal doit être supérieur à 0.
+- Si un utilisateur ajoute une adresse d'envoi, elle doit être différente de l'adresse de facturation.
 
 #### Commande
 - La date de commande doit être inférieur ou égale la date actuelle.
@@ -73,6 +75,7 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 #### Info_Brasserie
 - Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
+- le rayon doit être supérieur ou égal à 0.
 
 ## Choix de conception
 
