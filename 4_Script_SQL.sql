@@ -21,11 +21,13 @@ CREATE TABLE Image (
 );
 /*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
 ALTER TABLE Image
 ADD CONSTRAINT FK_idTailleImage
 FOREIGN KEY (idTailleImage)
 REFERENCES TailleImage (id)
 ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS ImageBrasserie CASCADE;
@@ -36,6 +38,7 @@ CREATE TABLE Image (
 	
 );
 /*------------------------------------------------------------------*/
+
 ALTER TABLE ImageBrasserie
 ADD CONSTRAINT FK_IdImage
 FOREIGN KEY (idImage)
@@ -85,7 +88,6 @@ ON UPDATE CASCADE;
 
 
 /*------------------------------------------------------------------*/
-
 DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SMALLSERIAL,
@@ -111,20 +113,6 @@ CREATE TABLE InfoBrasserie (
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Adresse CASCADE;
-CREATE TABLE Adresse (
-	no SMALLSERIAL,
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS TypeBière CASCADE;
-CREATE TABLE TypeBière (
-	no SMALLSERIAL,
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
 	no SMALLSERIAL,
@@ -135,8 +123,8 @@ CREATE TABLE Bière (
 DROP TABLE IF EXISTS Personne CASCADE;
 CREATE TABLE Personne (
 	id SMALLSERIAL,
-	prenom VARCHAR(20) NOT NULL,
-	nom VARCHAR(20) NOT NULL,
+	prenom VARCHAR(30) NOT NULL,
+	nom VARCHAR(30) NOT NULL,
 	genre CHAR(1),
 	pseudo VARCHAR(20) UNIQUE NOT NULL, 
 	bdate DATE,
@@ -144,12 +132,11 @@ CREATE TABLE Personne (
 	motDePasse VARCHAR(20) UNIQUE,
 	idAdresse SMALLSERIAL NOT NULL,
 	CONSTRAINT PK_Personne PRIMARY KEY (id)
-		
 );
-
 /*------------------------------------------------------------------*/
+
 ALTER TABLE Personne
-ADD CONSTRAINT FK_Personne
+ADD CONSTRAINT FK_Personne_idAdresse
 FOREIGN KEY (idAdresse)
 REFERENCES Adresse (id)
 ON DELETE SET NULL
@@ -166,7 +153,6 @@ CREATE TABLE BierePersonne (
 	CONSTRAINT PK_BierePersonne PRIMARY KEY (idPersonne,idBrasserie,nomBiere)
 	
 );
-
 /*------------------------------------------------------------------*/
 
 ALTER TABLE BierePersonne
@@ -189,24 +175,24 @@ FOREIGN KEY (nomBiere)
 REFERENCES Biere (nomBiere)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
-/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
 	idPersonne SMALLSERIAL,
-	actif BOOLEAN
+	actif BOOLEAN,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
 /*------------------------------------------------------------------*/
+
 ALTER TABLE Brasseur
 ADD CONSTRAINT FK_Brasseur
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
+
 /*------------------------------------------------------------------*/
-
-
 DROP TABLE IF EXISTS Avis CASCADE;
 CREATE TABLE Avis (
 	id SMALLSERIAL,
@@ -215,8 +201,6 @@ CREATE TABLE Avis (
 	idBrasserie SMALLSERIAL,
 	nomBière VARCHAR(20) NOT NULL,
 	CONSTRAINT PK_Avis PRIMARY KEY (id)
-	
-	
 /*La date de creation d'un avis doit être mise automatiquement*/
 );
 /*------------------------------------------------------------------*/
