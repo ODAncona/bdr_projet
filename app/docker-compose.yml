@@ -1,38 +1,20 @@
-version:            '3.1'
+version:            '3.8'
 services:
-  frontend:
-    container_name: beergarden
-    depends_on:
-      - database
-      - server
-    image:          beergarden-frontend
-    build:
-    context:        ./frontend
-    dockerfile:     frontend.dockerfile
-    ports:
-      - "80:80"
   database:
     container_name: postgres
-    image:          postgres
-    ports:
-      - "27017:27017"
-  server:
-    container_name: clockmachine-api
-    image:          clockmachine-api
-    build:
-    context:        ./backend
-    dockerfile:     backend.dockerfile
+    image:          postgres:14.1
     environment:
-      - NODE_ENV=production
+      - POSTGRES_USER=default
+      - POSTGRES_PASSWORD=default
+      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
-      - "3000:3000"
+      - "5430:5432"
   web:
-    image:          nginx:latest
-    ports:- "8080:80"
+    build: .
+    container_name: php_web
+    depends_on:
+      - database
+    ports:
+      - "8080:80"
     volumes:
-      - ./code:/code
-      - ./site.conf:/etc/nginx/conf.d/site.conf
-    links:
-      - php
-  php:
-    image:          php:7-fpm
+      - ./src-php/:/var/www/html/
