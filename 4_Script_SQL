@@ -1,32 +1,13 @@
 set client_encoding to 'UTF8';
 
 /*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS TailleImage CASCADE;
-CREATE TABLE TailleImage (
-	id SMALLSERIAL,
-	nomTaille SMALLINT,
-	CONSTRAINT PK_TailleImage PRIMARY KEY (id)
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Image CASCADE;
 CREATE TABLE Image (
 	id SMALLSERIAL,
 	nomFichier VARCHAR(20) UNIQUE NOT NULL,
 	titre VARCHAR(20),
-	idTailleImage SMALLSERIAL NOT NULL CHECK(idTailleImage > 0),
 	CONSTRAINT PK_Image PRIMARY KEY (id)
-	
 );
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Image
-ADD CONSTRAINT FK_idTailleImage
-FOREIGN KEY (idTailleImage)
-REFERENCES TailleImage (id)
-ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -35,19 +16,18 @@ CREATE TABLE Image (
 	idImage SMALLSERIAL,
 	idBrasserie SMALLSERIAL NOT NULL,
 	CONSTRAINT PK_ImageBrasserie PRIMARY KEY (idImage)
-	
 );
 /*------------------------------------------------------------------*/
 
 ALTER TABLE ImageBrasserie
-ADD CONSTRAINT FK_IdImage
+ADD CONSTRAINT FK_ImageBrasserie_idImage
 FOREIGN KEY (idImage)
 REFERENCES Image (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE ImageBrasserie
-ADD CONSTRAINT FK_ImageBrasserie
+ADD CONSTRAINT FK_ImageBrasserie_idBrasserie
 FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
 ON DELETE SET NULL
@@ -58,43 +38,40 @@ DROP TABLE IF EXISTS ImageBiere CASCADE;
 CREATE TABLE ImageBiere (
 	idImage SMALLSERIAL,
 	biereIdBrasserie SMALLSERIAL NOT NULL,
-	nomBiere VARCHAR(20) NOT NULL,
+	nomBière VARCHAR(20) NOT NULL,
 	CONSTRAINT PK_ImageBiere PRIMARY KEY (idImage)
-	
 );
 
 /*------------------------------------------------------------------*/
 
 ALTER TABLE ImageBiere
-ADD CONSTRAINT FK_idImage
+ADD CONSTRAINT FK_ImageBiere_idImage
 FOREIGN KEY (idImage)
 REFERENCES Image (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE ImageBiere
-ADD CONSTRAINT FK_ImageBiere
+ADD CONSTRAINT FK_ImageBiere_biereIdBrasserie
 FOREIGN KEY (bièreIdBrasserie)
-REFERENCES Biere (idBrasserie)
+REFERENCES Bière (idBrasserie)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE ImageBiere
-ADD CONSTRAINT FK_NomBiere
-FOREIGN KEY (nomBière)
+ADD CONSTRAINT FK_ImageBiere_nomBière
+FOREIGN KEY (nomBièreImage)
 REFERENCES Biere (nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
-
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SMALLSERIAL,
 	nom VARCHAR(20) NOT NULL,
-	revendiquée BOOLEAN,
+	revendiquée BOOLEAN DEFAULT false,
 	CONSTRAINT PK_Brasserie PRIMARY KEY (id)
-	
 );
 /*------------------------------------------------------------------*/
 
@@ -115,9 +92,37 @@ CREATE TABLE InfoBrasserie (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
-	no SMALLSERIAL,
+	idBrasserie SMALLSERIAL,
+  nomBière VARCHAR(30),
+  prix REAL(5,2),
+  dateEnregistrement DATE,
+  description TEXT,
+  nomTypeBière VARCHAR(30) NOT NULL,
+  idPersonne SMALLSERIAL NOT NULL,
+  CONSTRAINT PK_Bière PRIMARY KEY (idBrasserie,nomBière)
 );
 /*------------------------------------------------------------------*/
+
+ALTER TABLE Bière
+ADD CONSTRAINT FK_Bière_idBrasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Brasserie (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Bière
+ADD CONSTRAINT FK_Bière_nomTypeBière
+FOREIGN KEY (nomTypeBière)
+REFERENCES TypeBière (nom)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Bière
+ADD CONSTRAINT FK_Bière_idPersonne
+FOREIGN KEY (idPersonne)
+REFERENCES Personne (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Personne CASCADE;
@@ -186,7 +191,7 @@ CREATE TABLE Brasseur (
 /*------------------------------------------------------------------*/
 
 ALTER TABLE Brasseur
-ADD CONSTRAINT FK_Brasseur
+ADD CONSTRAINT FK_Brasseur_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
 ON DELETE SET NULL
@@ -235,13 +240,13 @@ CREATE TABLE RéponseAvisBière (
 
 /*------------------------------------------------------------------*/
 
+
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS CommandeBière CASCADE;
 CREATE TABLE CommandeBière (
 	no SMALLSERIAL,
 );
 /*------------------------------------------------------------------*/
-
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Adresse CASCADE;
@@ -252,6 +257,15 @@ CREATE TABLE Adresse (
 	codePostal INTEGER,
 	ville VARCHAR(20) NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)	
+);
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS TypeBière CASCADE;
+CREATE TABLE TypeBière (
+	nom VARCHAR(20),
+  description TEXT,
+	CONSTRAINT PK_TypeBière PRIMARY KEY (nom)	
 );
 /*------------------------------------------------------------------*/
 
