@@ -1,12 +1,12 @@
 version: '3.8'
 services:
   database:
+    build: ./docker/pgsql/
     container_name: postgres
-    image:          postgres:14.1
     environment:
       - POSTGRES_USER=default
       - POSTGRES_PASSWORD=default
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=Beergarden
     ports:
       - "5430:5432"
   web:
