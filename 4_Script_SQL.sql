@@ -75,12 +75,32 @@ CREATE TABLE Brasserie (
 );
 /*------------------------------------------------------------------*/
 
+CREATE TYPE Status AS ENUM ('OUVERT', 'EN_COURS', 'TERMINÉ', 'ANNULÉ');
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande CASCADE;
 CREATE TABLE Commande (
-	no SMALLSERIAL,
+	id SMALLSERIAL,
+	dateCreation DATE,
+	status Status,
+	idBrasserie SMALLSERIAL NOT NULL,
+	idPersonne SMALLSERIAL NOT NULL,
+	CONSTRAINT PK_Commande PRIMARY KEY (id)	
 );
 /*------------------------------------------------------------------*/
+ALTER TABLE Commande
+ADD CONSTRAINT FK_Commande_idBrasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Brasserie (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Commande
+ADD CONSTRAINT FK_Commande_idPersonne
+FOREIGN KEY (idPersonne)
+REFERENCES Personne (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS InfoBrasserie CASCADE;
@@ -250,16 +270,36 @@ ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS AvisBière CASCADE;
 CREATE TABLE AvisBière (
-	no SMALLSERIAL,
+	idAvis SMALLSERIAL,
+	score SMALLINT,
+	acidité SMALLINT,
+	amertume SMALLINT,
+	douceur SMALLINT,
+	pétillance SMALLINT,
+	idPersonne SMALSERIAL NOT NULL,
+	CONSTRAINT PK_AvisBière PRIMARY KEY (idAvis)		
 );
 /*------------------------------------------------------------------*/
+ALTER TABLE AvisBière
+ADD CONSTRAINT FK_AvisBière_idAvis
+FOREIGN KEY (AvisBière)
+REFERENCES Avis (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE AvisBière
+ADD CONSTRAINT FK_AvisBière_idPersonne
+FOREIGN KEY (idPersonne)
+REFERENCES Personne (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS RéponseAvisBière CASCADE;
 CREATE TABLE RéponseAvisBière (
 	idAvis SMALLSERIAL,
-	utile BOOLEAN,
-	inutile BOOLEAN,
+	utile INTEGER,
+	inutile INTEGER,
 	idAvisBiere SMALLSERIAL UNIQUE NOT NULL,
 	idBrasseur SMALLSERIAL NOT NULL,
 	CONSTRAINT PK_RéponseAvisBière PRIMARY KEY (idAvis)	
@@ -294,9 +334,35 @@ ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS CommandeBière CASCADE;
 CREATE TABLE CommandeBière (
-	no SMALLSERIAL,
+	idCommande SMALLSERIAL,
+	idBrasserie SMALLSERIAL,
+	nomBière VARCHAR(30),
+	quantité SMALLINT NOT NULL,
+	CONSTRAINT PK_CommandeBière PRIMARY KEY (idCommande, idBrasserie, nomBière)	
+	/* CHECK (quantite > 0)*/
 );
 /*------------------------------------------------------------------*/
+
+ALTER TABLE CommandeBière
+ADD CONSTRAINT FK_CommandeBière_idCommande
+FOREIGN KEY (idCommande)
+REFERENCES Commande (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE CommandeBière
+ADD CONSTRAINT FK_CommandeBière_idBrasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Brasserie (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE CommandeBière
+ADD CONSTRAINT FK_CommandeBière_nomBière
+FOREIGN KEY (nomBière)
+REFERENCES Bière (nomBière)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Adresse CASCADE;
@@ -308,6 +374,31 @@ CREATE TABLE Adresse (
 	ville VARCHAR(20) NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)	
 );
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+DROP TABLE IF EXISTS CommandeAdresse CASCADE;
+CREATE TABLE CommandeAdresse (
+	idCommande SMALLSERIAL,
+	idAdresse SMALLSERIAL NOT NULL,	
+	CONSTRAINT PK_CommandeAdresse PRIMARY KEY (idCommande)	
+);
+/*------------------------------------------------------------------*/
+
+ALTER TABLE CommandeAdresse
+ADD CONSTRAINT FK_CommandeAdresse_idCommande
+FOREIGN KEY (idCommande)
+REFERENCES Commande (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+
+ALTER TABLE CommandeAdresse
+ADD CONSTRAINT FK_CommandeAdresse_idAdresse
+FOREIGN KEY (idAdresse)
+REFERENCES Adresse (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
