@@ -163,8 +163,8 @@ CREATE TABLE Avis (
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Avis_Bière CASCADE;
-CREATE TABLE Avis_Bière (
+DROP TABLE IF EXISTS AvisBière CASCADE;
+CREATE TABLE AvisBière (
 	idAvis SERIAL,
 	score SMALLINT,
 	acidité SMALLINT,
@@ -172,7 +172,7 @@ CREATE TABLE Avis_Bière (
 	douceur SMALLINT,
 	pétillance SMALLINT,
 	idPersonne SERIAL NOT NULL,
-	CONSTRAINT PK_Avis_Bière PRIMARY KEY (idAvis)
+	CONSTRAINT PK_AvisBière PRIMARY KEY (idAvis)
 );
 /*------------------------------------------------------------------*/
 
@@ -180,8 +180,8 @@ CREATE TABLE Avis_Bière (
 DROP TABLE IF EXISTS RéponseAvisBière CASCADE;
 CREATE TABLE RéponseAvisBière (
 	idAvis SERIAL,
-	utile INTEGER,
-	inutile INTEGER,
+	utile INTEGER DEFAULT 0,
+	inutile INTEGER DEFAULT 0,
 	idAvisBière SERIAL NOT NULL,
 	idBrasseur SERIAL NOT NULL,
 	CONSTRAINT PK_RéponseAvisBière PRIMARY KEY (idAvis)
@@ -248,8 +248,8 @@ ALTER TABLE Personne
 ADD CONSTRAINT FK_Personne_idAdresse
 FOREIGN KEY (idAdresse)
 REFERENCES Adresse (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -257,8 +257,8 @@ ALTER TABLE Brasseur
 ADD CONSTRAINT FK_Brasseur_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -266,22 +266,23 @@ ALTER TABLE Bière
 ADD CONSTRAINT FK_Bière_idBrasserie
 FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Bière
 ADD CONSTRAINT FK_Bière_nomTypeBière
 FOREIGN KEY (nomTypeBière)
 REFERENCES TypeBière (nom)
-ON DELETE SET NULL
+ON DELETE RESTRICT
+-- On veut pouvoir changer le nom d'un type de bière
 ON UPDATE CASCADE;
 
 ALTER TABLE Bière
 ADD CONSTRAINT FK_Bière_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -289,15 +290,15 @@ ALTER TABLE Image_Brasserie
 ADD CONSTRAINT FK_Image_Brasserie_idImage
 FOREIGN KEY (idImage)
 REFERENCES Image (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Image_Brasserie
 ADD CONSTRAINT FK_Image_Brasserie_idBrasserie
 FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -305,15 +306,15 @@ ALTER TABLE InfoBrasserie
 ADD CONSTRAINT FK_InfoBrasserie_idBrasserie
 FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE InfoBrasserie
 ADD CONSTRAINT FK_InfoBrasserie_idAdresse
 FOREIGN KEY (idAdresse)
 REFERENCES Adresse (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -321,31 +322,32 @@ ALTER TABLE Commande
 ADD CONSTRAINT FK_Commande_idBrasserie
 FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Commande
 ADD CONSTRAINT FK_Commande_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Avis_Bière
-ADD CONSTRAINT FK_Avis_Bière_idAvis
+-- Héritage
+ALTER TABLE AvisBière
+ADD CONSTRAINT FK_AvisBière_idAvis
 FOREIGN KEY (idAvis)
 REFERENCES Avis (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE CASCADE
+ON UPDATE RESTRICT;
 
-ALTER TABLE Avis_Bière
-ADD CONSTRAINT FK_Avis_Bière_idPersonne
+ALTER TABLE AvisBière
+ADD CONSTRAINT FK_AvisBière_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE CASCADE
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -353,21 +355,22 @@ ALTER TABLE RéponseAvisBière
 ADD CONSTRAINT FK_RéponseAvisBière_idAvis
 FOREIGN KEY (idAvis)
 REFERENCES Avis(id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE CASCADE
+ON UPDATE RESTRICT;
 
 ALTER TABLE RéponseAvisBière
 ADD CONSTRAINT FK_RéponseAvisBière_idAvisBière
 FOREIGN KEY (idAvisBière)
-REFERENCES Avis_Bière(idAvis)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+REFERENCES AvisBière(idAvis)
+-- Si on supprime un avis, on supprime la réponse
+ON DELETE CASCADE
+ON UPDATE RESTRICT;
 
 ALTER TABLE RéponseAvisBière
 ADD CONSTRAINT FK_RéponseAvisBière_idBrasseur
 FOREIGN KEY (idBrasseur)
-REFERENCES Brasseur(idPersonne )
-ON DELETE SET NULL
+REFERENCES Brasseur(idPersonne)
+ON DELETE CASCADE
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
@@ -376,15 +379,15 @@ ALTER TABLE Commande_Adresse
 ADD CONSTRAINT FK_Commande_Adresse_idCommande
 FOREIGN KEY (idCommande)
 REFERENCES Commande (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Commande_Adresse
 ADD CONSTRAINT FK_Commande_Adresse_idAdresse
 FOREIGN KEY (idAdresse)
 REFERENCES Adresse (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -392,14 +395,15 @@ ALTER TABLE Commande_Bière
 ADD CONSTRAINT FK_Commande_Bière_idCommande
 FOREIGN KEY (idCommande)
 REFERENCES Commande(id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Commande_Bière
 ADD CONSTRAINT FK_Commande_Bière_Bière
 FOREIGN KEY (idBrasserie, nomBière)
 REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE SET NULL
+ON DELETE RESTRICT
+-- Mise à jour dans le cas où l'on changerait le nom de la bière
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
@@ -408,14 +412,15 @@ ALTER TABLE Image_Bière
 ADD CONSTRAINT FK_Image_Bière_idImage
 FOREIGN KEY (idImage)
 REFERENCES Image(id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Image_Bière
 ADD CONSTRAINT FK_Image_Bière_Bière
 FOREIGN KEY (bièreIdBrasserie, nomBière)
 REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE SET NULL
+ON DELETE RESTRICT
+-- Mise à jour dans le cas où l'on changerait le nom de la bière
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
@@ -424,23 +429,25 @@ ALTER TABLE Bière_Personne
 ADD CONSTRAINT FK_Bière_Personne_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
 
 ALTER TABLE Bière_Personne
 ADD CONSTRAINT FK_Bière_Personne_Bière
 FOREIGN KEY (idBrasserie, nomBière)
 REFERENCES Bière (idBrasserie, nomBière)
-ON DELETE SET NULL
+ON DELETE RESTRICT
+-- Mise à jour dans le cas où l'on changerait le nom de la bière
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
 ALTER TABLE Avis
-ADD CONSTRAINT FK_Avis_Bière
+ADD CONSTRAINT FK_AvisBière
 FOREIGN KEY (idBrasserie, nomBière)
 REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE SET NULL
+ON DELETE RESTRICT
+-- Mise à jour dans le cas où l'on changerait le nom de la bière
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
@@ -448,11 +455,30 @@ ON UPDATE CASCADE;
 /*  CHECK*/
 /*------------------------------------------------------------------*/
 
-ALTER TABLE Commande_Bière ADD CONSTRAINT CK_Commande_Bière_quantité
-CHECK(quantité > 0);
+ALTER TABLE Bière
+ADD CONSTRAINT CK_Bière_prix CHECK(prix > 0);
 
-ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_numéro
-CHECK(numéro > 0);
+ALTER TABLE AvisBière
+ADD CONSTRAINT CK_AvisBière_score CHECK(score > 1),
+ADD CONSTRAINT CK_AvisBière_acidité CHECK(acidité > 0 AND acidité < 11),
+ADD CONSTRAINT CK_AvisBière_amertume CHECK(amertume > 0 AND amertume < 11),
+ADD CONSTRAINT CK_AvisBière_douceur CHECK(douceur > 0 AND douceur < 11),
+ADD CONSTRAINT CK_AvisBière_pétillance CHECK(pétillance > 0 AND pétillance < 11);
 
-ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_codePostal
-CHECK(codePostal > 0);
+ALTER TABLE RéponseAvisBière
+ADD CONSTRAINT CK_RéponseAvisBière_utile CHECK(utile >= 0),
+ADD CONSTRAINT CK_RéponseAvisBière_inutile CHECK(inutile >= 0);
+
+ALTER TABLE Commande_Bière
+ADD CONSTRAINT CK_Commande_Bière_quantité CHECK(quantité > 0);
+
+ALTER TABLE Adresse
+ADD CONSTRAINT CK_Adresse_numéro CHECK(numéro > 0),
+ADD CONSTRAINT CK_Adresse_codePostal CHECK(codePostal > 0);
+
+ALTER TABLE InfoBrasserie
+ADD CONSTRAINT CK_InfoBrasserie_latitude
+CHECK(latitude >= -180 AND latitude <= 180),
+ADD CONSTRAINT CK_InfoBrasserie_longitude
+CHECK(longitude >= -180 AND longitude <= 180),
+ADD CONSTRAINT CK_InfoBrasserie_rayon CHECK(rayon >= 0);
