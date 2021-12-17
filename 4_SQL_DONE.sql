@@ -1,17 +1,19 @@
 set client_encoding to 'UTF8';
 
+CREATE DOMAIN STRING AS STRING;
+
 /* TABLES */
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Personne CASCADE;
 CREATE TABLE Personne (
 	id SERIAL,
-	prénom VARCHAR(30) NOT NULL,
-	nom VARCHAR(30) NOT NULL,
+	prénom STRING NOT NULL,
+	nom STRING NOT NULL,
 	genre CHAR(1),
-	pseudo VARCHAR(30) UNIQUE NOT NULL, 
+	pseudo STRING UNIQUE NOT NULL, 
 	bdate DATE,
-	courriel VARCHAR(30) UNIQUE,
-	motDePasse VARCHAR(30) UNIQUE,
+	courriel STRING UNIQUE,
+	motDePasse STRING UNIQUE,
 	idAdresse SERIAL NOT NULL,
 	CONSTRAINT PK_Personne PRIMARY KEY (id)
 );
@@ -30,8 +32,8 @@ CREATE TABLE Brasseur (
 DROP TABLE IF EXISTS Image CASCADE;
 CREATE TABLE Image (
 	id SERIAL,
-	nomFichier VARCHAR(20) UNIQUE NOT NULL,
-	titre VARCHAR(20),
+	nomFichier STRING UNIQUE NOT NULL,
+	titre STRING,
 	CONSTRAINT PK_Image PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -50,7 +52,7 @@ DROP TABLE IF EXISTS Image_Bière CASCADE;
 CREATE TABLE Image_Bière (
 	idImage SERIAL,
 	BièreIdBrasserie SERIAL NOT NULL,
-	nomBière VARCHAR(30) NOT NULL,
+	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
 );
 /*------------------------------------------------------------------*/
@@ -59,7 +61,7 @@ CREATE TABLE Image_Bière (
 DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SERIAL,
-	nom VARCHAR(30) NOT NULL,
+	nom STRING NOT NULL,
 	revendiquée BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasserie PRIMARY KEY (id)
 );
@@ -68,7 +70,7 @@ CREATE TABLE Brasserie (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS TypeBière CASCADE;
 CREATE TABLE TypeBière (
-	nom VARCHAR(30),
+	nom STRING,
   	description TEXT,
 	CONSTRAINT PK_TypeBière PRIMARY KEY (nom)
 );
@@ -78,11 +80,11 @@ CREATE TABLE TypeBière (
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
   idBrasserie SERIAL UNIQUE,
-  nomBière VARCHAR(30) UNIQUE,
+  nomBière STRING UNIQUE,
   prix NUMERIC(5,2),
   dateEnregistrement DATE,
   description TEXT,
-  nomTypeBière VARCHAR(30) UNIQUE NOT NULL,
+  nomTypeBière STRING UNIQUE NOT NULL,
   idPersonne SERIAL UNIQUE NOT NULL,
   CONSTRAINT PK_Bière PRIMARY KEY (idBrasserie, nomBière)
 );
@@ -106,10 +108,10 @@ CREATE TABLE InfoBrasserie (
 DROP TABLE IF EXISTS Adresse CASCADE;
 CREATE TABLE Adresse (
 	id SERIAL,
-	rue VARCHAR(30),
+	rue STRING,
 	numéro INTEGER CHECK(numéro > 0),
 	codePostal INTEGER CHECK(codePostal > 0),
-	ville VARCHAR(30) NOT NULL,
+	ville STRING NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -142,7 +144,7 @@ DROP TABLE IF EXISTS Commande_Bière CASCADE;
 CREATE TABLE Commande_Bière (
 	idCommande SERIAL,
 	idBrasserie SERIAL,
-	nomBière VARCHAR(30),
+	nomBière STRING,
 	quantité SMALLINT NOT NULL CHECK(quantité > 0),
 	CONSTRAINT PK_Commande_Bière PRIMARY KEY (idCommande, idBrasserie, nomBière)
 );
@@ -155,7 +157,7 @@ CREATE TABLE Avis (
 	contenu TEXT,
 	dateCréation DATE,
 	idBrasserie SERIAL,
-	nomBière VARCHAR(30) NOT NULL,
+	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Avis PRIMARY KEY (id)
 	/*La date de creation d'un avis doit être mise automatiquement*/
 );
@@ -192,7 +194,7 @@ DROP TABLE IF EXISTS Bière_Personne CASCADE;
 CREATE TABLE Bière_Personne (
 	idPersonne SERIAL,
 	idBrasserie SERIAL,
-	nomBière VARCHAR(30),
+	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
 	CONSTRAINT PK_Bière_Personne PRIMARY KEY (idPersonne, idBrasserie, nomBière)
 
@@ -337,7 +339,6 @@ REFERENCES Commande (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 
-
 ALTER TABLE Commande_Adresse
 ADD CONSTRAINT FK_Commande_Adresse_idAdresse
 FOREIGN KEY (idAdresse)
@@ -355,9 +356,16 @@ ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE Commande_Bière
+ADD CONSTRAINT FK_Commande_Bière_nomBière
+FOREIGN KEY (nomBière)
+REFERENCES Bière(nomBière)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Commande_Bière
 ADD CONSTRAINT FK_Commande_Bière_idBrasserie
 FOREIGN KEY (idBrasserie)
-REFERENCES Brasserie(id)
+REFERENCES Bière(idBrasserie)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
@@ -416,5 +424,3 @@ REFERENCES Bière(nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
-
-
