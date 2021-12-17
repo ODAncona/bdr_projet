@@ -218,11 +218,6 @@ ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
 
 /*------------------------------------------------------------------*/
 ALTER TABLE Bière 
-ADD CONSTRAINT UC_Bière_nomBière UNIQUE (nomBière);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Bière 
 ADD CONSTRAINT UC_Bière_nomTypeBière UNIQUE (nomTypeBière);
 /*------------------------------------------------------------------*/
 
