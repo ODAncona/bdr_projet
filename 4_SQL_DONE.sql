@@ -10,7 +10,7 @@ CREATE TABLE Personne (
 	prénom STRING NOT NULL,
 	nom STRING NOT NULL,
 	genre CHAR(1),
-	pseudo STRING NOT NULL, 
+	pseudo STRING NOT NULL,
 	bdate DATE,
 	courriel STRING,
 	motDePasse STRING,
@@ -71,7 +71,7 @@ CREATE TABLE Brasserie (
 DROP TABLE IF EXISTS TypeBière CASCADE;
 CREATE TABLE TypeBière (
 	nom STRING,
-  	description TEXT,
+  description TEXT,
 	CONSTRAINT PK_TypeBière PRIMARY KEY (nom)
 );
 /*------------------------------------------------------------------*/
@@ -196,7 +196,6 @@ CREATE TABLE Bière_Personne (
 	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
 	CONSTRAINT PK_Bière_Personne PRIMARY KEY (idPersonne, idBrasserie, nomBière)
-
 );
 /*------------------------------------------------------------------*/
 
@@ -207,48 +206,43 @@ CREATE TABLE Bière_Personne (
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE RéponseAvisBière 
+ALTER TABLE RéponseAvisBière
 ADD CONSTRAINT UC_RéponseAvisBière_idAvisBière UNIQUE (idAvisBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière 
+ALTER TABLE Bière
 ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière 
+ALTER TABLE Bière
 ADD CONSTRAINT UC_Bière_nomTypeBière UNIQUE (nomTypeBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière 
+ALTER TABLE Bière
 ADD CONSTRAINT UC_Bière_idPersonne UNIQUE (idPersonne);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE RéponseAvisBière 
-ADD CONSTRAINT UC_RéponseAvisBière_idAvisBière UNIQUE (idAvisBière);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Personne 
+ALTER TABLE Personne
 ADD CONSTRAINT UC_Personne_pseudo UNIQUE (pseudo);
 
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Personne 
+ALTER TABLE Personne
 ADD CONSTRAINT UC_Personne_courriel UNIQUE (courriel);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Personne 
+ALTER TABLE Personne
 ADD CONSTRAINT UC_Personne_motDePasse UNIQUE (motDePasse);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-/* FOREIN KEY*/
+/* FOREIGN KEY*/
 /*------------------------------------------------------------------*/
 ALTER TABLE Personne
 ADD CONSTRAINT FK_Personne_idAdresse
@@ -482,11 +476,11 @@ ON UPDATE CASCADE;
 /*  CHECK*/
 /*------------------------------------------------------------------*/
 
-ALTER TABLE Commande_Bière ADD CONSTRAINT CK_Commande_Bière_quantité 
+ALTER TABLE Commande_Bière ADD CONSTRAINT CK_Commande_Bière_quantité
 CHECK(quantité > 0);
 
-ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_numéro 
+ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_numéro
 CHECK(numéro > 0);
 
-ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_codePostal 
+ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_codePostal
 CHECK(codePostal > 0);
