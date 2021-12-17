@@ -109,8 +109,8 @@ DROP TABLE IF EXISTS Adresse CASCADE;
 CREATE TABLE Adresse (
 	id SERIAL,
 	rue STRING,
-	numéro INTEGER CHECK(numéro > 0),
-	codePostal INTEGER CHECK(codePostal > 0),
+	numéro INTEGER,
+	codePostal INTEGER,
 	ville STRING NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)
 );
@@ -145,7 +145,7 @@ CREATE TABLE Commande_Bière (
 	idCommande SERIAL,
 	idBrasserie SERIAL,
 	nomBière STRING,
-	quantité SMALLINT NOT NULL CHECK(quantité > 0),
+	quantité SMALLINT NOT NULL,
 	CONSTRAINT PK_Commande_Bière PRIMARY KEY (idCommande, idBrasserie, nomBière)
 );
 /*------------------------------------------------------------------*/
@@ -495,6 +495,3 @@ CHECK(numéro > 0);
 
 ALTER TABLE Adresse ADD CONSTRAINT CK_Adresse_codePostal 
 CHECK(codePostal > 0);
-
-
-
