@@ -1,6 +1,6 @@
 set client_encoding to 'UTF8';
 
-CREATE DOMAIN STRING AS STRING;
+CREATE DOMAIN STRING AS VARCHAR(30);
 
 /* TABLES */
 /*------------------------------------------------------------------*/
