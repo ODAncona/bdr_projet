@@ -396,16 +396,9 @@ ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE Commande_Bière
-ADD CONSTRAINT FK_Commande_Bière_nomBière
-FOREIGN KEY (nomBière)
-REFERENCES Bière(nomBière)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
-
-ALTER TABLE Commande_Bière
-ADD CONSTRAINT FK_Commande_Bière_idBrasserie
-FOREIGN KEY (idBrasserie)
-REFERENCES Bière(idBrasserie)
+ADD CONSTRAINT FK_Commande_Bière_Bière
+FOREIGN KEY (idBrasserie, nomBière)
+REFERENCES Bière(idBrasserie, nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
@@ -419,16 +412,9 @@ ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_BièreIdBrasserie
-FOREIGN KEY (bièreIdBrasserie)
-REFERENCES Bière(idBrasserie)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
-
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_nomBière
-FOREIGN KEY (nomBière)
-REFERENCES Bière(nomBière)
+ADD CONSTRAINT FK_Image_Bière_Bière
+FOREIGN KEY (bièreIdBrasserie, nomBière)
+REFERENCES Bière(idBrasserie, nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
@@ -442,32 +428,18 @@ ON DELETE SET NULL
 ON UPDATE CASCADE;
 
 ALTER TABLE Bière_Personne
-ADD CONSTRAINT FK_Bière_Personne_idBrasserie
-FOREIGN KEY (idBrasserie)
-REFERENCES Bière (idBrasserie)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
-
-ALTER TABLE Bière_Personne
-ADD CONSTRAINT FK_Bière_Personne_nomBière
-FOREIGN KEY (nomBière)
-REFERENCES Bière (nomBière)
+ADD CONSTRAINT FK_Bière_Personne_Bière
+FOREIGN KEY (idBrasserie, nomBière)
+REFERENCES Bière (idBrasserie, nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
 ALTER TABLE Avis
-ADD CONSTRAINT FK_Avis_nomBière
-FOREIGN KEY (nomBière)
-REFERENCES Bière(nomBière)
-ON DELETE SET NULL
-ON UPDATE CASCADE;
-
-ALTER TABLE Avis
-ADD CONSTRAINT FK_Avis_idBrasserie
-FOREIGN KEY (idBrasserie)
-REFERENCES Bière(idBrasserie)
+ADD CONSTRAINT FK_Avis_Bière
+FOREIGN KEY (idBrasserie, nomBière)
+REFERENCES Bière(idBrasserie, nomBière)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
