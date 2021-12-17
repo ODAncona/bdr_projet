@@ -21,7 +21,7 @@ CREATE TABLE Personne (
 DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
 	idPersonne SERIAL,
-	actif BOOLEAN,
+	actif BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
 /*------------------------------------------------------------------*/
@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SERIAL,
 	nom VARCHAR(30) NOT NULL,
-	revendiquée BOOLEAN DEFAULT false,
+	revendiquée BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasserie PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -77,13 +77,13 @@ CREATE TABLE TypeBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
-  idBrasserie SERIAL,
-  nomBière VARCHAR(30),
+  idBrasserie SERIAL UNIQUE,
+  nomBière VARCHAR(30) UNIQUE,
   prix NUMERIC(5,2),
   dateEnregistrement DATE,
   description TEXT,
-  nomTypeBière VARCHAR(30) NOT NULL,
-  idPersonne SERIAL NOT NULL,
+  nomTypeBière VARCHAR(30) UNIQUE NOT NULL,
+  idPersonne SERIAL UNIQUE NOT NULL,
   CONSTRAINT PK_Bière PRIMARY KEY (idBrasserie, nomBière)
 );
 /*------------------------------------------------------------------*/
@@ -107,8 +107,8 @@ DROP TABLE IF EXISTS Adresse CASCADE;
 CREATE TABLE Adresse (
 	id SERIAL,
 	rue VARCHAR(30),
-	numéro INTEGER,
-	codePostal INTEGER,
+	numéro INTEGER CHECK(numéro > 0),
+	codePostal INTEGER CHECK(codePostal > 0),
 	ville VARCHAR(30) NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)
 );
@@ -143,9 +143,8 @@ CREATE TABLE Commande_Bière (
 	idCommande SERIAL,
 	idBrasserie SERIAL,
 	nomBière VARCHAR(30),
-	quantité SMALLINT NOT NULL,
+	quantité SMALLINT NOT NULL CHECK(quantité > 0),
 	CONSTRAINT PK_Commande_Bière PRIMARY KEY (idCommande, idBrasserie, nomBière)
-	/* CHECK (quantite > 0)*/
 );
 /*------------------------------------------------------------------*/
 
@@ -200,37 +199,6 @@ CREATE TABLE Bière_Personne (
 );
 /*------------------------------------------------------------------*/
 
-
-/* INDEX */
-/*------------------------------------------------------------------*/
-CREATE INDEX FK_ImageBrasserie_idImage ON Image(id ASC);
-CREATE INDEX FK_ImageBrasserie_idBrasserie ON Brasserie(id ASC);
-CREATE INDEX FK_ImageBière_idImage ON Image(id ASC);
-CREATE INDEX FK_ImageBière_BièreIdBrasserie ON Bière(idBrasserie ASC);
-CREATE INDEX FK_Commande_idBrasserie ON Brasserie(id ASC);
-CREATE INDEX FK_Commande_idPersonne ON Personne(id ASC);
-CREATE INDEX FK_InfoBrasserie_idBrasserie ON Brasserie(id ASC);
-CREATE INDEX FK_InfoBrasserie_idAdresse ON Adresse(id ASC);
-CREATE INDEX FK_Bière_idBrasserie ON Brasserie(id ASC);
-CREATE INDEX FK_Bière_nomTypeBière ON Image(id ASC);
-CREATE INDEX FK_Bière_idPersonne ON Image(id ASC);
-CREATE INDEX FK_Personne_idAdresse ON Image(id ASC);
-CREATE INDEX FK_idPersonne ON Image(id ASC);
-CREATE INDEX FK_idBrasserie ON Image(id ASC);
-CREATE INDEX FK_nomBière ON Image(id ASC);
-CREATE INDEX FK_Brasseur_idPersonne ON Image(id ASC);
-CREATE INDEX FK_Avis_nomBière ON Image(id ASC);
-CREATE INDEX FK_AvisBière_idAvis ON Image(id ASC);
-CREATE INDEX FK_AvisBière_idPersonne ON Image(id ASC);
-CREATE INDEX FK_RéponseAvisBière_idAvis ON Image(id ASC);
-CREATE INDEX FK_RéponseAvisBière_idBrasseur ON Image(id ASC);
-CREATE INDEX FK_CommandeBière_idCommande ON Image(id ASC);
-CREATE INDEX FK_CommandeBière_idBrasserie ON Image(id ASC);
-CREATE INDEX FK_CommandeBière_nomBière ON Image(id ASC);
-CREATE INDEX FK_CommandeAdresse_idCommande ON Image(id ASC);
-CREATE INDEX FK_CommandeAdresse_idAdresse ON Image(id ASC);
-/*------------------------------------------------------------------*/
-
 /* CONTRAINTES */
 
 /*------------------------------------------------------------------*/
@@ -273,8 +241,6 @@ REFERENCES Personne (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
-
-
 
 /*------------------------------------------------------------------*/
 ALTER TABLE Image_Brasserie
@@ -358,7 +324,7 @@ ON UPDATE CASCADE;
 ALTER TABLE RéponseAvisBière
 ADD CONSTRAINT FK_RéponseAvisBière_idBrasseur
 FOREIGN KEY (idBrasseur)
-REFERENCES Personne(id)
+REFERENCES Brasseur(idPersonne )
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
@@ -394,6 +360,61 @@ FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie(id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
-
-//manque un truc ici
 /*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+ALTER TABLE Image_Bière
+ADD CONSTRAINT FK_Image_Bière_idImage
+FOREIGN KEY (idImage)
+REFERENCES Image(id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Image_Bière
+ADD CONSTRAINT FK_Image_Bière_BièreIdBrasserie
+FOREIGN KEY (bièreIdBrasserie)
+REFERENCES Bière(idBrasserie)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Image_Bière
+ADD CONSTRAINT FK_Image_Bière_nomBière
+FOREIGN KEY (nomBière)
+REFERENCES Bière(nomBière)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+ALTER TABLE Bière_Personne
+ADD CONSTRAINT FK_Bière_Personne_idPersonne
+FOREIGN KEY (idPersonne)
+REFERENCES Personne (id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Bière_Personne
+ADD CONSTRAINT FK_Bière_Personne_idBrasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Bière (idBrasserie)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+ALTER TABLE Bière_Personne
+ADD CONSTRAINT FK_Bière_Personne_nomBière
+FOREIGN KEY (nomBière)
+REFERENCES Bière (nomBière)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+ALTER TABLE Avis
+ADD CONSTRAINT FK_Avis_nomBière
+FOREIGN KEY (nomBière)
+REFERENCES Bière(nomBière)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
+
+
