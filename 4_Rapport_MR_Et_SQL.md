@@ -18,7 +18,7 @@ keywords: [BDR]
 
 ## 1. Introduction
 
-Dans cette étape du projet, nous entrons un peu plus dans le concret. Il s'agissait en effet d'écrire le script SQL permettant de créer la base de données. A partir de là, nous avons généré un schéma relationnel de la base de données au moyen du logiciel DBeaver. Ce rapport présente nos résultats.
+Dans cette étape du projet, nous entrons un peu plus dans le concret. Il s'agissait en effet d'écrire le script SQL permettant de créer la base de données. A partir de là, nous avons généré un schéma relationnel de la base de données au moyen du logiciel DBeaver. Ce rapport présente nos résultats.  
 
 ## 2. Script SQL
 
@@ -32,7 +32,7 @@ Il y quelques exceptions par rapport à ces clauses. Premièrement, dans le cadr
 
 ## 4. Contraintes d'intégrité
 
-Les contraintes d'intégrité suivantes devront être ajoutées à l'aide de triggers.
+Les contraintes d'intégrité suivantes devront être ajoutées à l'aide de triggers.  
 
 ### Brasseur
 
@@ -43,7 +43,7 @@ Les contraintes d'intégrité suivantes devront être ajoutées à l'aide de tri
 - La date de création doit être inférieure à la date actuelle.
 - La date de création doit être supérieure à la date de création d'une bière.
 
-### Réponse_Avis_Bière
+### RéponseAvisBière
 
 - Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné.
 - Seuls les brasseurs actifs peuvent donner une réponse.
@@ -80,4 +80,4 @@ Les contraintes d'intégrité suivantes devront être ajoutées à l'aide de tri
 
 ## 5. Conclusion
 
-Le passage au modèle relationnel nous a mené à la création d'une base de donnée de 17 tables. La difficulté principale a été d'écrire un script cohérent et qui respecte bien le modèle entité-relation. Comme question spécifique à cette étape à résoudre, metionnons le choix des clauses `ON DELETE` et `ON CASCADE`, pour lequel il a fallut bien réfléchir à la pertinance d'autoriser des modifications ou des suppressions.
+Le passage au modèle relationnel nous a mené à la création d'une base de donnée de 17 tables. La difficulté principale a été d'écrire un script cohérent et qui respecte bien le modèle entité-relation. Comme question spécifique à cette étape à résoudre, metionnons le choix des clauses `ON DELETE` et `ON CASCADE`, pour lequel il a fallut bien réfléchir à la pertinance d'autoriser des modifications ou des suppressions. Par rapport aux closes `CHECK`, nous n'avons mis en place que les plus évidentes. En outre, l'héritage de la relation Avis n'est pas encore vérifié par un trigger. Il reste donc quelques éléments avant que le sctipt sql soit complet.
