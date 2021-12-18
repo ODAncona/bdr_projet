@@ -1,55 +1,35 @@
 <?php
+$DB_CLIENT;
 
-
-$servername = "postgres";
-$username = "default";
-$password = "default";
-$dbname = "beergarden";
-$port = "5432";
-$conn;
-
-
-function executeQuery(string $sql = null, PDO $connection) {
-    $query = null;
-    try {
-        $query = $connection->query($sql);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-        exit;
-    }
-    return $query;
+try {
+    $DB_CLIENT = require_once("connexion-db.php");
+} catch (PDOException $e) {
+    $noErreur = 500;
+    $message = "Erreur de base de donnée";
+    require("vues/error.php");
+    exit;
 }
 
-try{
-   $conn = new PDO("pgsql:host=$servername;port=$port;dbname=$dbname",$username,$password);
-   $conn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-   echo "Connected succesfully\n";
-} catch(PDOException $e) {
-   echo "Connection failed: " . $e -> getMessage();
-   exit;
+$request;
+if (isset($_SERVER['REDIRECT_URL'])) {
+    $request = $_SERVER['REDIRECT_URL'];
+} else {
+    $request = $_SERVER['REQUEST_URI'];
 }
 
 
-$sql = 'DROP TABLE IF EXISTS test';
-$query = executeQuery($sql, $conn);
-var_dump($query);
+session_start();
 
-$sql = 'CREATE TABLE test (
-    id SERIAL,
-    nom VARCHAR(30),
-    CONSTRAINT pk_test PRIMARY KEY (id)
-);';
-
-$query = executeQuery($sql, $conn);
-var_dump($query);
-
-$sql = "INSERT INTO test (nom) VALUES ('Charles');"; 
-executeQuery($sql, $conn);
-
-$sql = "SELECT * FROM test;";
-
-$query = executeQuery($sql, $conn);
-
-foreach ($query as $key => $value) {
-    var_dump($value);
+switch ($request) {
+    case '/':
+        require("controllers/home-controller.php");
+        break;
+    case '/login':
+        require('controllers/login-controller.php');
+        break;
+    default:
+        $noErreur = 404;
+        $message  = 'Page non trouvée !';
+        require("vues/error.php");
+        break;
 }
