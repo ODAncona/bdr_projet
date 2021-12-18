@@ -1,4 +1,4 @@
-FROM php:8-apache
+FROM php:8.1-apache
 RUN apt-get update && apt-get install -y libpq-dev
 # installation du client php postgres
 RUN docker-php-ext-install pdo pdo_pgsql pgsql
@@ -10,3 +10,5 @@ RUN sed -i -e 's/;extension=pdo_pgsql/extension=pdo_pgsql/' /usr/local/etc/php/p
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+
+RUN a2enmod rewrite
