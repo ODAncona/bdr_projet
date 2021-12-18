@@ -71,7 +71,7 @@ CREATE TABLE Brasserie (
 DROP TABLE IF EXISTS TypeBière CASCADE;
 CREATE TABLE TypeBière (
 	nom STRING,
-  description TEXT,
+    description TEXT,
 	CONSTRAINT PK_TypeBière PRIMARY KEY (nom)
 );
 /*------------------------------------------------------------------*/
