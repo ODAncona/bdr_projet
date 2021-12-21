@@ -14,7 +14,7 @@ CREATE TABLE Personne (
 	bdate DATE,
 	courriel STRING,
 	motDePasse STRING,
-	idAdresse SERIAL NOT NULL,
+	idAdresse INTEGER NOT NULL,
 	CONSTRAINT PK_Personne PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -22,7 +22,7 @@ CREATE TABLE Personne (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
-	idPersonne SERIAL,
+	idPersonne INTEGER,
 	actif BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
@@ -32,28 +32,12 @@ CREATE TABLE Brasseur (
 DROP TABLE IF EXISTS Image CASCADE;
 CREATE TABLE Image (
 	id SERIAL,
+	idBrasserie INTEGER,
+	nomBière STRING,
+	idBrasserieBière INTEGER,
 	nomFichier STRING NOT NULL,
 	titre STRING,
 	CONSTRAINT PK_Image PRIMARY KEY (id)
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Image_Brasserie CASCADE;
-CREATE TABLE Image_Brasserie (
-	idImage SERIAL,
-	idBrasserie SERIAL NOT NULL,
-	CONSTRAINT PK_Image_Brasserie PRIMARY KEY (idImage)
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Image_Bière CASCADE;
-CREATE TABLE Image_Bière (
-	idImage SERIAL,
-	BièreIdBrasserie SERIAL NOT NULL,
-	nomBière STRING NOT NULL,
-	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
 );
 /*------------------------------------------------------------------*/
 
@@ -79,13 +63,13 @@ CREATE TABLE TypeBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
-  idBrasserie SERIAL,
+  idBrasserie INTEGER,
   nomBière STRING,
   prix NUMERIC(5,2),
   dateEnregistrement DATE,
   description TEXT,
   nomTypeBière STRING NOT NULL,
-  idPersonne SERIAL NOT NULL,
+  idPersonne INTEGER NOT NULL,
   CONSTRAINT PK_Bière PRIMARY KEY (idBrasserie, nomBière)
 );
 /*------------------------------------------------------------------*/
@@ -98,8 +82,8 @@ CREATE TABLE InfoBrasserie (
 	longitude NUMERIC(6,2),
 	latitude NUMERIC(6,2),
 	rayon NUMERIC(6,2),
-	idBrasserie SERIAL NOT NULL,
-	idAdresse SERIAL NOT NULL,
+	idBrasserie INTEGER NOT NULL,
+	idAdresse INTEGER NOT NULL,
 	CONSTRAINT PK_InfoBrasserie PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -124,8 +108,8 @@ CREATE TABLE Commande (
 	id SERIAL,
 	dateCréation DATE,
 	status Status,
-	idBrasserie SERIAL NOT NULL,
-	idPersonne SERIAL NOT NULL,
+	idBrasserie INTEGER NOT NULL,
+	idPersonne INTEGER NOT NULL,
 	CONSTRAINT PK_Commande PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -133,8 +117,8 @@ CREATE TABLE Commande (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Adresse CASCADE;
 CREATE TABLE Commande_Adresse (
-	idCommande SERIAL,
-	idAdresse SERIAL NOT NULL,
+	idCommande INTEGER,
+	idAdresse INTEGER NOT NULL,
 	CONSTRAINT PK_Commande_Adresse PRIMARY KEY (idCommande)
 );
 /*------------------------------------------------------------------*/
@@ -142,8 +126,8 @@ CREATE TABLE Commande_Adresse (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Bière CASCADE;
 CREATE TABLE Commande_Bière (
-	idCommande SERIAL,
-	idBrasserie SERIAL,
+	idCommande INTEGER,
+	idBrasserie INTEGER,
 	nomBière STRING,
 	quantité SMALLINT NOT NULL,
 	CONSTRAINT PK_Commande_Bière PRIMARY KEY (idCommande, idBrasserie, nomBière)
@@ -156,7 +140,7 @@ CREATE TABLE Avis (
 	id SERIAL,
 	contenu TEXT,
 	dateCréation DATE,
-	idBrasserie SERIAL,
+	idBière INTEGER,
 	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Avis PRIMARY KEY (id)
 );
@@ -165,13 +149,13 @@ CREATE TABLE Avis (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS AvisBière CASCADE;
 CREATE TABLE AvisBière (
-	idAvis SERIAL,
+	idAvis INTEGER,
 	score SMALLINT,
 	acidité SMALLINT,
 	amertume SMALLINT,
 	douceur SMALLINT,
 	pétillance SMALLINT,
-	idPersonne SERIAL NOT NULL,
+	idPersonne INTEGER NOT NULL,
 	CONSTRAINT PK_AvisBière PRIMARY KEY (idAvis)
 );
 /*------------------------------------------------------------------*/
@@ -179,11 +163,11 @@ CREATE TABLE AvisBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS RéponseAvisBière CASCADE;
 CREATE TABLE RéponseAvisBière (
-	idAvis SERIAL,
+	idAvis INTEGER,
 	utile INTEGER DEFAULT 0,
 	inutile INTEGER DEFAULT 0,
-	idAvisBière SERIAL NOT NULL,
-	idBrasseur SERIAL NOT NULL,
+	idAvisBière INTEGER NOT NULL,
+	idBrasseur INTEGER NOT NULL,
 	CONSTRAINT PK_RéponseAvisBière PRIMARY KEY (idAvis)
 );
 /*------------------------------------------------------------------*/
@@ -191,8 +175,8 @@ CREATE TABLE RéponseAvisBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière_Personne CASCADE;
 CREATE TABLE Bière_Personne (
-	idPersonne SERIAL,
-	idBrasserie SERIAL,
+	idPersonne INTEGER,
+	idBrasserie INTEGER,
 	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
 	CONSTRAINT PK_Bière_Personne PRIMARY KEY (idPersonne, idBrasserie, nomBière)
@@ -281,22 +265,6 @@ ALTER TABLE Bière
 ADD CONSTRAINT FK_Bière_idPersonne
 FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Image_Brasserie
-ADD CONSTRAINT FK_Image_Brasserie_idImage
-FOREIGN KEY (idImage)
-REFERENCES Image (id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-
-ALTER TABLE Image_Brasserie
-ADD CONSTRAINT FK_Image_Brasserie_idBrasserie
-FOREIGN KEY (idBrasserie)
-REFERENCES Brasserie (id)
 ON DELETE RESTRICT
 ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
@@ -408,23 +376,6 @@ ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_idImage
-FOREIGN KEY (idImage)
-REFERENCES Image(id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_Bière
-FOREIGN KEY (bièreIdBrasserie, nomBière)
-REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE RESTRICT
--- Mise à jour dans le cas où l'on changerait le nom de la bière
-ON UPDATE CASCADE;
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
 ALTER TABLE Bière_Personne
 ADD CONSTRAINT FK_Bière_Personne_idPersonne
 FOREIGN KEY (idPersonne)
@@ -447,7 +398,22 @@ ADD CONSTRAINT FK_AvisBière
 FOREIGN KEY (idBrasserie, nomBière)
 REFERENCES Bière(idBrasserie, nomBière)
 ON DELETE RESTRICT
--- Mise à jour dans le cas où l'on changerait le nom de la bière
+ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+ALTER TABLE Image
+ADD CONSTRAINT FK_Brasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Brasserie(id)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
+
+ALTER TABLE Image
+ADD CONSTRAINT FK_Bière
+FOREIGN KEY (idBrasserieBière, nomBière)
+REFERENCES Bière(idBrasserie, nomBière)
+ON DELETE RESTRICT
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
