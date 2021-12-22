@@ -8,46 +8,73 @@ class Personne {
 
     private array $data = [];
 
-
-    public function __construct(private PDO $dbClient, private string $pseudo, private string $motDePasse, bool $nvUser = false)
+    public function __construct(private PDO $dbClient)
     {
-
-        if (!$nvUser) {
-            $this->retrouverUtilisateur();
-        }
-        
     }
+    
+    public function fetchById($userId)
+    {
+        try {
+            $this->fetch('id', $userId);
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+
+    public function fetchByPseudo($pseudo)
+    {
+        try {
+            $this->fetch('pseudo', $pseudo);
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+
+    public function checkPassword(string $expextedPassword)
+    {
+        $password = isset($this->data['motdepasse']) ? $this->data['motdepasse'] : "";
+        return $expextedPassword == $password;
+    }
+
+    // Getters
 
     public function getId() : int
     {
         return $this->data['id'];
     }
-    
-    private function retrouverUtilisateur()
+
+    public function isAuthenticated()
     {
-        $this->pseudo = $this->dbClient->quote($this->pseudo);
-        $sql  = 'SELECT * FROM personne WHERE pseudo = ' . $this->pseudo;
+        return !empty($this->data);
+    }
+
+    public function __toString()
+    {
+        $surname = $this->testIndex($this->data, 'prénom');
+        $name = $this->testIndex($this->data, 'nom');
+        return $surname . ' ' . $name;
+    }
+
+
+    private function fetch($idKey, $idValue)
+    {
+        $idValue = $this->dbClient->quote($idValue);
+        $sql  = "SELECT * FROM personne WHERE $idKey = $idValue";
 
         // throws PDOException
         $this->data = $this->dbClient->query($sql)->fetchAll();
 
         if (!empty($this->data)) {
             $this->data = $this->data[0];
-        }
-
-        if (!isset($this->data['pseudo']) /*|| $this->data['pseudo'] != $this->pseudo)*/) {
-            throw new Exception("Cet utilisateur n'existe pas !");
-        }
-
-        if (!$this->verifierMotDePasse()) {
-            throw new Exception("Le mot de passe est incorrect !");
+        } else {
+            throw new PDOException("Cet utilisateur n'existe pas !");
         }
 
     }
 
-    private function verifierMotDePasse()
+    private function testIndex($array, $index)
     {
-       return $this->motDePasse == $this->data["motdepasse"];
+        return isset($array[$index]) ? $array[$index] : "";
     }
 
 }   

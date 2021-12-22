@@ -5,14 +5,18 @@ class Session {
     public function __construct (private PDO $dbClient, private string $ssid)
     {
 
-        $sql  = "SELECT idpersonne FROM SessionActive WHERE idSession =  '$ssid' ";
         $ssid = $this->dbClient->quote($ssid);
+        $sql  = "SELECT idpersonne FROM SessionActive WHERE idSession =  '$ssid' ";
         try {
 
             $PDOStatement = $this->dbClient->query($sql, PDO::FETCH_ASSOC);
             $data = $PDOStatement->fetchAll();
 
-            $this->idUtilisateur = $data[0]['idpersonne'];
+            if (count($data) > 0) {
+                $this->idUtilisateur = $data[0]['idpersonne'];
+            } else {
+                $this->idUtilisateur = 0;
+            }
 
         } catch (PDOException $e) {
             $this->idUtilisateur = 0;
@@ -27,9 +31,11 @@ class Session {
 
     public function enregistrer($idUtilisateur)
     {
-        $this->idUtilisateur = $this->dbClient->quote($idUtilisateur);
-        $sql = "INSERT INTO SessionActive VALUES ('$this->ssid', $this->idUtilisateur)";
-        $this->dbClient->query($sql);
+        $this->idUtilisateur = intval($this->dbClient->quote($idUtilisateur));
+        if ($this->idUtilisateur > 0) {
+            $sql = "INSERT INTO SessionActive VALUES ('$this->ssid', $this->idUtilisateur)";
+            $this->dbClient->query($sql);
+        }
     }
 
 }
