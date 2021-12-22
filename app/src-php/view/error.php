@@ -9,6 +9,7 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Erreur <?= $noErreur ?> : <?= $message ?></h1>
+    <h1>Erreur <?= $noErreur ?></h1>
+    <p><?= $message ?></p>
 </body>
 </html>
