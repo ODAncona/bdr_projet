@@ -1,13 +1,11 @@
 /* 1. Les clients ayant fait au moins une réservation dans un hôtel se trouvant dans la ville dans laquelle ils habitent. */
-SELECT DISTINCT *
+SELECT DISTINCT Client.*
 FROM Client
 INNER JOIN Réservation ON Réservation.idClient = Client.id
 INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
 WHERE Client.idVille = Hôtel.idVille
 
 /* 2. Le prix minimum et le prix maximum pour passer une nuit dans une chambre d'hôtel dans la ville d'Interlaken.*/
-  SELECT *
-  FROM Hôtel;
 
 /* 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage. Classer les résultats par ordre croissant du prix moyen */
 SELECT étage,
@@ -19,12 +17,16 @@ GROUP BY étage
 ORDER BY "Prix moyen par étage" ASC;
 
 /* 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.*/
-SELECT *
-FROM Hôtel;
+SELECT DISTINCT Hôtel.nom
+FROM Hôtel
+INNER JOIN Chambre ON Chambre.idHôtel = Hôtel.id
+INNER JOIN Chambre_equipement ON Chambre_equipement.idChambre = chambre.idHôtel
+WHERE nomEquipement='Baignoire'
+  AND quantité >1
 
 /* 5. L'hôtel qui a le plus de tarifs de chambres différents. */
-SELECT *
-FROM Hôtel;
+  SELECT *
+  FROM Hôtel;
 
 /* 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées. */
 SELECT Client.id AS "id client",
