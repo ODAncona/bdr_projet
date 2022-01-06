@@ -79,8 +79,12 @@ WHERE nbréservationparville.nbséjour >= ALL
      FROM nbréservationparville);
 
 /* 10. Les chambres réservées pour la nuit du 24 décembre (de cette année). */
-SELECT *
-FROM Hôtel;
+SELECT DISTINCT Chambre.*
+FROM Chambre
+INNER JOIN Réservation ON Réservation.idChambre = Chambre.idHôtel
+AND Réservation.numérochambre = Chambre.numéro
+WHERE Réservation.datearrivée <= '2021-12-24'
+  AND Réservation.datearrivée + Réservation.nbnuits >= '2021-12-24'
 
 /* 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.*/
 SELECT *
