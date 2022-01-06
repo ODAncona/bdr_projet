@@ -1,5 +1,7 @@
 /* 1. Les clients ayant fait au moins une réservation dans un hôtel se trouvant dans la ville dans laquelle ils habitent. */
-SELECT DISTINCT Client.*
+SELECT DISTINCT Client.id AS "Id Client",
+                Client.nom AS "Nom Client",
+                Client.prénom AS "Prénom Client"
 FROM Client
 INNER JOIN Réservation ON Réservation.idClient = Client.id
 INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
@@ -17,7 +19,7 @@ GROUP BY étage
 ORDER BY "Prix moyen par étage" ASC;
 
 /* 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.*/
-SELECT DISTINCT Hôtel.nom
+SELECT DISTINCT Hôtel.nom AS "Nom Hôtel"
 FROM Hôtel
 INNER JOIN Chambre ON Chambre.idHôtel = Hôtel.id
 INNER JOIN Chambre_equipement ON Chambre_equipement.idChambre = chambre.idHôtel
@@ -25,8 +27,8 @@ WHERE nomEquipement='Baignoire'
   AND quantité >1
 
 /* 5. L'hôtel qui a le plus de tarifs de chambres différents. */
-  SELECT *
-  FROM Hôtel;
+SELECT *
+FROM Hôtel;
 
 /* 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées. */
 SELECT Client.id AS "id client",
@@ -45,14 +47,24 @@ GROUP BY Client.id,
 HAVING COUNT(*) > 1;
 
 /* 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.*/
-SELECT *
-FROM Hôtel;
+SELECT DISTINCT Membre.*
+FROM Membre
+INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
+WHERE Hôtel.nom = 'Kurz Alpinhotel'
+EXCEPT
+SELECT DISTINCT Membre.*
+FROM Membre
+INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
+INNER JOIN Réservation ON Membre.idclient = Réservation.idClient
+WHERE Hôtel.nom = 'Kurz Alpinhotel'
+  AND Réservation.dateRéservation >= Membre.depuis;
 
 /* 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels). */
 SELECT *
 FROM Hôtel;
 
-/* 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations. */ WITH nbréservationparville AS
+/* 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations. */
+WITH nbréservationparville AS
   (SELECT Hôtel.idVille AS idville,
           COUNT(Hôtel.idVille) AS "nbséjour"
    FROM Hôtel
@@ -74,7 +86,8 @@ FROM Hôtel;
 SELECT *
 FROM Hôtel;
 
-/* 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.*/ WITH nbChambreParHôtel AS
+/* 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.*/
+WITH nbChambreParHôtel AS
   (SELECT Hôtel.id AS "idhôtel",
           Hôtel.nom AS "nomhôtel",
           COUNT(Hôtel.id) AS "nbchambres"
