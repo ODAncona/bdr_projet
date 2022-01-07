@@ -116,8 +116,30 @@ FROM Hôtel;
 elles ont été faites à l'avance (avant la date d'arrivée) ainsi que si la réservation a été faite
 en tant que membre de l'hôtel. Trier les résultats par ordre des réservations (en 1 er celles
 faites le plus à l’avance), puis par clients (ordre croissant du nom puis du prénom).*/
-SELECT *
-FROM Hôtel;
+WITH clientRoyal AS
+  (SELECT DISTINCT Réservation.*
+   FROM Réservation
+   INNER JOIN Hôtel ON Hôtel.id = Réservation.idChambre
+   INNER JOIN Membre ON Membre.idClient = Réservation.idClient
+   WHERE Hôtel.nom = 'Hôtel Royal' )
+
+
+SELECT DISTINCT Réservation.dateArrivée - Réservation.dateRéservation AS Avance,
+                Client.nom AS "Nom Client",
+                Client.prénom AS "Prénom Client",
+                Réservation.NuméroChambre AS "Numéro Chambre",
+                Réservation.dateArrivée AS "Date arrivée",
+                Réservation.dateRéservation AS "Date réservation",
+                Réservation.nbnuits AS "Nombre nuits",
+                Réservation.nbPersonnes AS "Nombre personnes"
+FROM Hôtel
+INNER JOIN Réservation ON Réservation.idChambre = Hôtel.id
+INNER JOIN Membre ON Réservation.idChambre = Membre.idHôtel
+INNER JOIN Client ON Réservation.idClient = Client.id
+WHERE Hôtel.nom = 'Hôtel Royal'
+ORDER BY Avance ASC,
+         Client.nom ASC,
+         Client.prénom DESC;
 
 /* 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal". */
 SELECT SUM(Chambre.prixParNuit * Réservation.nbNuits) AS "Prix Total des réservation de l'Hôtel Royal"
