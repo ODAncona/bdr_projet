@@ -76,11 +76,85 @@ WHERE nbChambreParHôtel.nbchambres > (SELECT
 		AND hôtel.id = nbChambreParHôtel.idhôtel);
 
 /* 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal". */
+-- Variante 1
+SELECT SUM(sommes.somme)
+FROM (
+	SELECT SUM(Chambre.prixParNuit * Réservation.nbNuits * (100 - Hôtel.rabaisMembre) / 100) AS somme
+	FROM Réservation
+		INNER JOIN Hôtel
+			ON Réservation.idChambre = Hôtel.id
+		INNER JOIN Chambre
+			ON (Réservation.idChambre, Réservation.numéroChambre)
+					= (Chambre.idHôtel, Chambre.numéro)
+		INNER JOIN Membre
+			ON (Réservation.idChambre, Réservation.idClient)
+									= (Membre.idHôtel, Membre.idClient)
+	WHERE Hôtel.nom = 'Hôtel Royal' AND Réservation.dateRéservation > Membre.depuis
+	UNION
+	SELECT SUM(Chambre.prixParNuit * Réservation.nbNuits) AS somme
+	FROM Réservation
+		INNER JOIN Hôtel
+			ON Réservation.idChambre = Hôtel.id
+		INNER JOIN Chambre
+			ON (Réservation.idChambre, Réservation.numéroChambre)
+				= (Chambre.idHôtel, Chambre.numéro)
+		LEFT JOIN Membre
+			ON (Réservation.idChambre, Réservation.idClient)
+				= (Membre.idHôtel, Membre.idClient)
+	WHERE Hôtel.nom = 'Hôtel Royal' AND (Membre.idHôtel IS NULL OR Réservation.dateRéservation <= Membre.depuis)
+) AS sommes;
+
+-- Variante 2
+WITH réservationHôtelRoyal AS (
+	SELECT
+		Réservation.idClient,
+		Réservation.dateRéservation,
+		Réservation.nbNuits,
+		Chambre.prixParNuit,
+		Hôtel.rabaisMembre,
+		Membre.depuis AS membredepuis
+	FROM Réservation
+		INNER JOIN Hôtel
+			ON Réservation.idChambre = Hôtel.id
+		INNER JOIN Chambre
+			ON (Réservation.idChambre, Réservation.numéroChambre)
+				= (Chambre.idHôtel, Chambre.numéro)
+		LEFT JOIN Membre
+			ON (Réservation.idChambre, Réservation.idClient)
+				= (Membre.idHôtel, Membre.idClient)
+	WHERE Hôtel.nom = 'Hôtel Royal'
+)
+
+SELECT SUM(sommes.somme)
+FROM (
+	SELECT
+		SUM(réservationHôtelRoyal.prixParNuit * réservationHôtelRoyal.nbNuits
+			* (100 - réservationHôtelRoyal.rabaisMembre) / 100) AS somme
+	FROM réservationHôtelRoyal
+	WHERE réservationHôtelRoyal.membredepuis IS NOT NULL
+		AND réservationHôtelRoyal.dateRéservation > réservationHôtelRoyal.membredepuis
+	UNION
+	SELECT
+		SUM(réservationHôtelRoyal.prixParNuit * réservationHôtelRoyal.nbNuits) AS somme
+	FROM réservationHôtelRoyal
+	WHERE réservationHôtelRoyal.membredepuis IS NULL
+		OR réservationHôtelRoyal.dateRéservation <= réservationHôtelRoyal.membredepuis
+) AS sommes;
+
+-- Variante 3
 SELECT
-	SUM(Chambre.prixParNuit * Réservation.nbNuits) AS "Prix Total des réservation de l'Hôtel Royal"
+	SUM(CASE WHEN Réservation.dateRéservation > membre.depuis
+		THEN Chambre.prixParNuit * Réservation.nbNuits
+			* (100 - Hôtel.rabaisMembre) / 100
+		ELSE Chambre.prixParNuit * Réservation.nbNuits
+		END)
 FROM Réservation
 	INNER JOIN Hôtel
-		ON (Réservation.idChambre, Hôtel.nom) = (Hôtel.id, 'Hôtel Royal')
+		ON Réservation.idChambre = Hôtel.id
 	INNER JOIN Chambre
-		ON Réservation.idChambre = Chambre.idHôtel
-		AND Réservation.numéroChambre = Chambre.numéro;
+		ON (Réservation.idChambre, Réservation.numéroChambre)
+			= (Chambre.idHôtel, Chambre.numéro)
+	LEFT JOIN Membre
+		ON (Réservation.idChambre, Réservation.idClient)
+			= (Membre.idHôtel, Membre.idClient)
+WHERE Hôtel.nom = 'Hôtel Royal';
