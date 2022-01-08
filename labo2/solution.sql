@@ -5,108 +5,159 @@ SELECT DISTINCT Client.id AS "Id Client",
 FROM Client
 INNER JOIN Réservation ON Réservation.idClient = Client.id
 INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
-WHERE Client.idVille = Hôtel.idVille
+WHERE Client.idVille = Hôtel.idVille;
 
 /* 2. Le prix minimum et le prix maximum pour passer une nuit dans une chambre d'hôtel dans la ville d'Interlaken.*/
+SELECT MIN(prixParNuit) AS "Prix Minimum",
+       MAX(prixParNuit) AS "Prix Maximum"
+FROM Chambre
+INNER JOIN Hôtel ON Chambre.idHôtel = Hôtel.id
+INNER JOIN Ville ON Hôtel.idVille = Ville.id
+WHERE Ville.nom = 'Interlaken';
 
-/* 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage. Classer les résultats par ordre croissant du prix moyen */
-SELECT étage,
-       AVG(prixparnuit) AS "Prix moyen par étage"
+/* 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage.
+Classer les résultats par ordre croissant du prix moyen */
+SELECT Hôtel.nom AS "Nom Hôtel",
+       étage,
+       ROUND(AVG(prixparnuit), 2) AS "Prix moyen par étage"
 FROM chambre
 INNER JOIN hôtel ON chambre.idhôtel = hôtel.id
-AND hôtel.nom = 'JungFrau Petrus Palace'
-GROUP BY étage
-ORDER BY "Prix moyen par étage" ASC;
+WHERE hôtel.nom = 'JungFrau Petrus Palace'
+GROUP BY Chambre.étage,
+         Hôtel.nom
+ORDER BY "Prix moyen par étage";
 
 /* 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.*/
 SELECT DISTINCT Hôtel.nom AS "Nom Hôtel"
 FROM Hôtel
-INNER JOIN Chambre ON Chambre.idHôtel = Hôtel.id
-INNER JOIN Chambre_equipement ON Chambre_equipement.idChambre = chambre.idHôtel
-WHERE nomEquipement='Baignoire'
-  AND quantité >1
+INNER JOIN Chambre_Equipement ON Hôtel.id = Chambre_Equipement.idChambre
+WHERE Chambre_Equipement.nomEquipement='Baignoire'
+  AND Chambre_Equipement.quantité > 1;
 
 /* 5. L'hôtel qui a le plus de tarifs de chambres différents. */
+WITH tarifHôtel AS
+  (SELECT Hôtel.nom AS "Nom Hôtel",
+          COUNT(DISTINCT Chambre.prixParNuit) AS "nbtarif"
+   FROM Chambre
+   INNER JOIN Hôtel ON Hôtel.id = Chambre.idHôtel
+   GROUP BY Hôtel.nom)
 SELECT *
-FROM Hôtel;
+FROM tarifHôtel
+ORDER BY tarifHôtel.nbtarif DESC
+LIMIT 1;
 
 /* 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées. */
-SELECT Client.id AS "id client",
-       Client.nom AS "nom client",
-       Client.prénom AS "prénom client",
-       Hôtel.nom AS "nom hôtel",
-       Réservation.numéroChambre AS "numéro chambre"
+SELECT Client.id AS "Id Client",
+       Client.nom AS "Nom Client",
+       Client.prénom AS "Prénom Client",
+       Hôtel.nom AS "Nom Hôtel",
+       Réservation.numéroChambre AS "Numéro Chambre"
 FROM Client
 INNER JOIN Réservation ON Client.id = Réservation.idClient
 INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
 GROUP BY Client.id,
-         Client.nom,
-         Client.prénom,
          Réservation.numéroChambre,
-         Hôtel.nom
+         Hôtel.id
 HAVING COUNT(*) > 1;
 
 /* 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.*/
-SELECT DISTINCT Membre.*
-FROM Membre
-INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
-WHERE Hôtel.nom = 'Kurz Alpinhotel'
-EXCEPT
-SELECT DISTINCT Membre.*
-FROM Membre
-INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
-INNER JOIN Réservation ON Membre.idclient = Réservation.idClient
-WHERE Hôtel.nom = 'Kurz Alpinhotel'
-  AND Réservation.dateRéservation >= Membre.depuis;
+WITH request AS
+  (SELECT DISTINCT Membre.*
+   FROM Membre
+   INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
+   WHERE Hôtel.nom = 'Kurz Alpinhotel'
+   EXCEPT SELECT DISTINCT Membre.*
+   FROM Membre
+   INNER JOIN Hôtel ON Membre.idHôtel = Hôtel.id
+   INNER JOIN Réservation ON Membre.idclient = Réservation.idClient
+   WHERE Hôtel.nom = 'Kurz Alpinhotel'
+     AND Réservation.dateRéservation >= Membre.depuis )
 
-/* 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels). */
-SELECT *
-FROM Hôtel;
+SELECT Client.id AS "Id Client",
+       Client.nom AS "Nom Client",
+       Client.prénom AS "Prénom Client"
+FROM request
+INNER JOIN Client ON Client.id = request.idClient;
+
+/* 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale
+(nombre de places des lits de leurs hôtels). */
+SELECT Ville.nom AS "Villes",
+       SUM(Lit.nbPlaces * Chambre_Equipement.quantité) AS "Capacité accueil"
+FROM Ville
+INNER JOIN Hôtel ON Ville.id = Hôtel.idVille
+INNER JOIN Chambre_Equipement ON Hôtel.id = Chambre_Equipement.idChambre
+INNER JOIN Lit ON Chambre_Equipement.nomEquipement = Lit.nomEquipement
+GROUP BY Ville.nom
+ORDER BY SUM(Lit.nbPlaces * Chambre_Equipement.quantité) DESC;
 
 /* 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations. */
-WITH nbréservationparville AS
-  (SELECT Hôtel.idVille AS idville,
-          COUNT(Hôtel.idVille) AS "nbséjour"
+WITH nbSéjourParVille AS
+  (SELECT Hôtel.idVille,
+          COUNT(Hôtel.idVille) AS nbSéjour
    FROM Hôtel
    INNER JOIN Réservation ON Hôtel.id = Réservation.idChambre
    GROUP BY Hôtel.idVille)
-SELECT Ville.id AS "id ville",
-       Ville.nom AS "nom ville"
+SELECT Ville.nom AS "Ville",
+       nbSéjourParVille.nbSéjour
 FROM Ville
-INNER JOIN nbréservationparville ON Ville.id = nbréservationparville.idville
-WHERE nbréservationparville.nbséjour >= ALL
-    (SELECT DISTINCT nbréservationparville.nbséjour
-     FROM nbréservationparville);
+INNER JOIN nbSéjourParVille ON Ville.id = nbSéjourParVille.idVille
+WHERE nbSéjourParVille.nbSéjour >= ALL
+    (SELECT DISTINCT nbSéjourParVille.nbSéjour
+     FROM nbSéjourParVille);
 
 /* 10. Les chambres réservées pour la nuit du 24 décembre (de cette année). */
-SELECT DISTINCT Chambre.*
+SELECT DISTINCT Hôtel.nom AS "Nom Hôtel",
+                Chambre.Numéro
 FROM Chambre
+INNER JOIN Hôtel ON Chambre.idHôtel = Hôtel.id
 INNER JOIN Réservation ON Réservation.idChambre = Chambre.idHôtel
-AND Réservation.numérochambre = Chambre.numéro
-WHERE Réservation.datearrivée <= '2021-12-24'
-  AND Réservation.datearrivée + Réservation.nbnuits >= '2021-12-24'
+AND Réservation.numéroChambre = Chambre.numéro
+WHERE Réservation.dateArrivée <= '2021-12-24'
+  AND Réservation.dateArrivée + Réservation.nbNuits >= '2021-12-24'
 
 /* 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.*/
-SELECT *
-FROM Hôtel;
+SELECT Réservation.idClient AS "Id Client",
+       Client.nom AS "Nom Client",
+       Client.prénom AS "Prénom Client",
+       Hôtel.nom AS "Nom Hôtel",
+       Réservation.numéroChambre AS "Numéro Chambre",
+       TO_CHAR(Réservation.dateRéservation, 'DD/MM/YYYY') AS "Date Réservation",
+       TO_CHAR(Réservation.dateArrivée, 'DD/MM/YYYY') AS "Date Arrivée",
+       Réservation.nbNuits,
+       Réservation.nbPersonnes
+FROM Réservation
+INNER JOIN CLient ON Réservation.idClient = Client.id
+INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
+INNER JOIN Chambre_Equipement ON Réservation.numéroChambre = Chambre_Equipement.numéroChambre
+AND Réservation.idChambre = Chambre_Equipement.idChambre
+INNER JOIN Lit ON Chambre_Equipement.nomEquipement = Lit.nomEquipement
+GROUP BY réservation.idclient,
+         Client.nom,
+         Client.prénom,
+         Hôtel.nom,
+         réservation.numérochambre,
+         réservation.dateréservation,
+         réservation.datearrivée,
+         Réservation.nbNuits,
+         Réservation.nbPersonnes
+HAVING SUM(Chambre_Equipement.quantité) > Réservation.nbPersonnes ;
 
 /* 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.*/
 WITH nbChambreParHôtel AS
-  (SELECT Hôtel.id AS "idhôtel",
-          Hôtel.nom AS "nomhôtel",
-          COUNT(Hôtel.id) AS "nbchambres"
+  (SELECT Hôtel.id AS idHôtel,
+          Hôtel.nom AS nomHôtel,
+          COUNT(Hôtel.id) AS nbChambres
    FROM Chambre
    INNER JOIN Hôtel ON Chambre.idHôtel = Hôtel.id
    GROUP BY Hôtel.id)
-SELECT nbChambreParHôtel.idhôtel AS "id hôtel",
-       nbChambreParHôtel.nomhôtel AS "nom hôtel"
+SELECT nbChambreParHôtel.nomHôtel AS Nom
 FROM nbChambreParHôtel
-WHERE nbChambreParHôtel.nbchambres >
-    (SELECT COUNT(Hôtel.id) AS "nbchambre"
+WHERE nbChambreParHôtel.nbChambres >
+    (SELECT COUNT(Hôtel.id) AS nbChambres
      FROM Chambre_Equipement
      INNER JOIN Hôtel ON Chambre_Equipement.idChambre = hôtel.id
-     WHERE nomequipement = 'TV'
-       AND hôtel.id = nbChambreParHôtel.idhôtel);
+     WHERE nomEquipement = 'TV'
+       AND hôtel.id = nbChambreParHôtel.idHôtel);
 
 /* 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.*/
 SELECT *
@@ -122,9 +173,9 @@ WITH clientRoyal AS
    INNER JOIN Hôtel ON Hôtel.id = Réservation.idChambre
    INNER JOIN Membre ON Membre.idClient = Réservation.idClient
    WHERE Hôtel.nom = 'Hôtel Royal' )
-
-
 SELECT DISTINCT Réservation.dateArrivée - Réservation.dateRéservation AS Avance,
+                Membre.depuis AS "Est Membre",
+                Client.id AS "Id Client",
                 Client.nom AS "Nom Client",
                 Client.prénom AS "Prénom Client",
                 Réservation.NuméroChambre AS "Numéro Chambre",
@@ -134,8 +185,9 @@ SELECT DISTINCT Réservation.dateArrivée - Réservation.dateRéservation AS Ava
                 Réservation.nbPersonnes AS "Nombre personnes"
 FROM Hôtel
 INNER JOIN Réservation ON Réservation.idChambre = Hôtel.id
-INNER JOIN Membre ON Réservation.idChambre = Membre.idHôtel
 INNER JOIN Client ON Réservation.idClient = Client.id
+LEFT JOIN Membre ON Réservation.idClient = Membre.idClient
+AND Réservation.idChambre = Membre.idHôtel
 WHERE Hôtel.nom = 'Hôtel Royal'
 ORDER BY Avance ASC,
          Client.nom ASC,
