@@ -194,20 +194,18 @@ ORDER BY Avance ASC,
          Client.prénom DESC;
 
 /* 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal". */
-
-SELECT
-	SUM(CASE WHEN Réservation.dateRéservation > membre.depuis
-		THEN Chambre.prixParNuit * Réservation.nbNuits
-			* (100 - Hôtel.rabaisMembre) / 100
-		ELSE Chambre.prixParNuit * Réservation.nbNuits
-		END)
+SELECT SUM(CASE
+							 --Rabais Membre
+               WHEN Réservation.dateRéservation > membre.depuis THEN Chambre.prixParNuit * Réservation.nbNuits * (100 - Hôtel.rabaisMembre) / 100
+							 -- Sans Rabais
+               ELSE Chambre.prixParNuit * Réservation.nbNuits
+           END)
 FROM Réservation
-	INNER JOIN Hôtel
-		ON Réservation.idChambre = Hôtel.id
-	INNER JOIN Chambre
-		ON (Réservation.idChambre, Réservation.numéroChambre)
-			= (Chambre.idHôtel, Chambre.numéro)
-	LEFT JOIN Membre
-		ON (Réservation.idChambre, Réservation.idClient)
-			= (Membre.idHôtel, Membre.idClient)
+INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
+INNER JOIN Chambre ON (Réservation.idChambre,
+                       Réservation.numéroChambre) = (Chambre.idHôtel,
+                                                     Chambre.numéro)
+LEFT JOIN Membre ON (Réservation.idChambre,
+                     Réservation.idClient) = (Membre.idHôtel,
+                                              Membre.idClient)
 WHERE Hôtel.nom = 'Hôtel Royal';
