@@ -160,8 +160,37 @@ WHERE nbChambreParHôtel.nbChambres >
        AND hôtel.id = nbChambreParHôtel.idHôtel);
 
 /* 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.*/
-SELECT *
-FROM Hôtel;
+SELECT Hôtel.nom AS "Nom Hôtel",
+       Chambre_Equipement.numéroChambre AS "Numéro Chambre"
+FROM Hôtel
+INNER JOIN Chambre_Equipement ON Chambre_Equipement.idChambre = Hôtel.id
+LEFT JOIN Lit ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
+WHERE Chambre_Equipement.nomEquipement='TV'
+  AND Chambre_Equipement.quantité > 1
+  AND Chambre_Equipement.numéroChambre IN
+    (SELECT Chambre_Equipement.numéroChambre AS "Numéro Chambre"
+     FROM Hôtel
+     INNER JOIN Chambre_Equipement ON Chambre_Equipement.idChambre = Hôtel.id
+     INNER JOIN Lit ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
+     WHERE Lit.nbPlaces = 2
+       AND Chambre_Equipement.quantité = 1);
+
+/* 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.*/
+SELECT Hôtel.nom AS "Nom Hôtel",
+       Chambre_Equipement.numéroChambre AS "Numéro Chambre"
+FROM Hôtel
+INNER JOIN Chambre_Equipement ON Chambre_Equipement.idChambre = Hôtel.id
+LEFT JOIN Lit ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
+WHERE Chambre_Equipement.nomEquipement='TV'
+  AND Chambre_Equipement.quantité > 1
+INTERSECT
+SELECT Hôtel.nom AS "Nom Hôtel",
+       Chambre_Equipement.numéroChambre AS "Numéro Chambre"
+FROM Hôtel
+INNER JOIN Chambre_Equipement ON Chambre_Equipement.idChambre = Hôtel.id
+INNER JOIN Lit ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
+WHERE Lit.nbPlaces = 2
+  AND Chambre_Equipement.quantité = 1;
 
 /* 14. Pour l'hôtel "Hôtel Royal", lister toutes les réservations en indiquant de combien de jours
 elles ont été faites à l'avance (avant la date d'arrivée) ainsi que si la réservation a été faite
