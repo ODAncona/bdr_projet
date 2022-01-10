@@ -28,7 +28,7 @@ GROUP BY Chambre.étage,
 ORDER BY "Prix moyen par étage";
 
 /* 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.*/
-SELECT DISTINCT Hôtel.nom AS "Nom Hôtel"
+SELECT DISTINCT Hôtel.nom AS "Hôtels ayant plus dune baignoire dans une chambre"
 FROM Hôtel
 INNER JOIN Chambre_Equipement ON Hôtel.id = Chambre_Equipement.idChambre
 WHERE Chambre_Equipement.nomEquipement='Baignoire'
@@ -143,7 +143,7 @@ GROUP BY réservation.idclient,
 HAVING SUM(Chambre_Equipement.quantité) > Réservation.nbPersonnes ;
 
 /* 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.*/
-SELECT Hôtel.nom
+SELECT Hôtel.nom AS "Hôtels ayant des chambres sans TV"
 FROM Hôtel
 INNER JOIN Chambre ON Chambre.idHôtel = Hôtel.id
 WHERE (Chambre.idHôtel, Chambre.numéro) NOT IN (
@@ -209,12 +209,13 @@ ORDER BY Avance ASC,
          Client.prénom DESC;
 
 /* 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal". */
+
 SELECT SUM(CASE
 							 --Rabais Membre
                WHEN Réservation.dateRéservation > membre.depuis THEN Chambre.prixParNuit * Réservation.nbNuits * (100 - Hôtel.rabaisMembre) / 100
 							 -- Sans Rabais
                ELSE Chambre.prixParNuit * Réservation.nbNuits
-           END)
+           END) AS "Prix total reservations"
 FROM Réservation
 INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
 INNER JOIN Chambre ON (Réservation.idChambre,
