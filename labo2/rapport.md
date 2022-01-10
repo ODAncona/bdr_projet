@@ -70,11 +70,8 @@ WHERE
   AND Chambre_Equipement.quantité > 1;
 ```
 
-<<<<<<< HEAD
 ![résultat](capturesSolutions/4.png)
 
-=======
->>>>>>> f8bf0a9586be60ec490a221f4c001ac24a51593d
 ### 5. L'hôtel qui a le plus de tarifs de chambres différents.
 
 ```SQL
@@ -119,12 +116,9 @@ HAVING
   COUNT(*) > 1;
 ```
 
-<<<<<<< HEAD
 ![résultat](capturesSolutions/6.png)
 
 
-=======
->>>>>>> f8bf0a9586be60ec490a221f4c001ac24a51593d
 ### 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.
 
 ```SQL
@@ -406,3 +400,6 @@ WHERE
 ```
 
 ![résultat](capturesSolutions/15.png)
+
+## Conclusion
+Ce laboratoire nous a permis d'explorer les multiples possibilités des requêtes `SELECT`en SQL. Le plus grand défi a été certaines fois d'obtenir des résultats cohérents, d'autre fois d'écrire des reqêtes pas trop longues.
