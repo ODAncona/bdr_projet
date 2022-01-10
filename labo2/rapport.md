@@ -1,10 +1,13 @@
 # BDR : Laboratoire no 2
+
 ## Introduction
+
 Pour ce laboratoire, nous avions comme donnée un schéma entité-association d'une base de donnée ainsi que le script permettant de la créer et de remplir ses tables. Nous avions ensuite 15 requêtes à effectuer dessus. Le but de ce travail était plus exactement de pratiquer les requêtes `SELECT`. Ce rapport présente les requêtes que nous avons écrites ainsi que des captures d'écran des résultats obtenus. Nous retranscrivons avant chaque requête ce qui était textuellement demandé.
 
 ## Résultats
 
 ### 1. Les clients ayant fait au moins une réservation dans un hôtel se trouvant dans la ville dans laquelle ils habitent.
+
 ```SQL
 SELECT
   DISTINCT Client.id AS "Id Client",
@@ -20,6 +23,7 @@ WHERE
 ![résultat](capturesSolutions/1.png)
 
 ### 2. Le prix minimum et le prix maximum pour passer une nuit dans une chambre d'hôtel dans la ville d'Interlaken.
+
 ```SQL
 SELECT
   MIN(prixParNuit) AS "Prix Minimum",
@@ -34,6 +38,7 @@ WHERE
 ![résultat](capturesSolutions/2.png)
 
 ### 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage. Classer les résultats par ordre croissant du prix moyen.
+
 ```SQL
 SELECT
   Hôtel.nom AS "Nom Hôtel",
@@ -53,6 +58,7 @@ ORDER BY
 ![résultat](capturesSolutions/3.png)
 
 ### 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.
+
 ```SQL
 SELECT
   DISTINCT Hôtel.nom AS "Hôtel ayant plus d'une baignoire dans une chambre"
@@ -64,9 +70,13 @@ WHERE
   AND Chambre_Equipement.quantité > 1;
 ```
 
+<<<<<<< HEAD
 ![résultat](capturesSolutions/4.png)
 
+=======
+>>>>>>> f8bf0a9586be60ec490a221f4c001ac24a51593d
 ### 5. L'hôtel qui a le plus de tarifs de chambres différents.
+
 ```SQL
 WITH tarifHôtel AS (
   SELECT
@@ -88,8 +98,8 @@ LIMIT
 ```
 ![résultat](capturesSolutions/5.png)
 
-
 ### 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées.
+
 ```SQL
 SELECT
   Client.id AS "Id Client",
@@ -109,10 +119,14 @@ HAVING
   COUNT(*) > 1;
 ```
 
+<<<<<<< HEAD
 ![résultat](capturesSolutions/6.png)
 
 
+=======
+>>>>>>> f8bf0a9586be60ec490a221f4c001ac24a51593d
 ### 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.
+
 ```SQL
 WITH MembresAlpine AS(
   SELECT
@@ -147,8 +161,8 @@ WHERE
 ```
 ![résultat](capturesSolutions/7.png)
 
-
 ### 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels).
+
 ```SQL
 SELECT
   Ville.nom AS "Villes",
@@ -164,8 +178,10 @@ ORDER BY
   SUM(Lit.nbPlaces * Chambre_Equipement.quantité) DESC;
 ```
 
+![résultat](capturesSolutions/8.png)
 
 ### 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations.
+
 ```SQL
 WITH nbSéjourParVille AS (
   SELECT
@@ -192,8 +208,10 @@ WHERE
   );
 ```
 
+![résultat](capturesSolutions/9.png)
 
 ### 10. Les chambres réservées pour la nuit du 24 décembre (de cette année).
+
 ```SQL
 WITH CurrentYear AS (
   SELECT
@@ -224,8 +242,10 @@ WHERE
   )
 ```
 
+![résultat](capturesSolutions/10.png)
 
 ### 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.
+
 ```SQL
 SELECT
   Réservation.idClient AS "Id Client",
@@ -258,9 +278,10 @@ HAVING
   SUM(Chambre_Equipement.quantité) > Réservation.nbPersonnes;
 ```
 
-
+![résultat](capturesSolutions/11.png)
 
 ### 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.
+
 ```SQL
 SELECT
   Hôtel.nom AS "Hôtels avec chambres sans TV"
@@ -281,8 +302,10 @@ GROUP BY
   Hôtel.nom;
 ```
 
+![résultat](capturesSolutions/12.png)
 
 ### 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.
+
 ```SQL
   WITH ChambresLausanne AS (
     SELECT
@@ -318,9 +341,10 @@ WHERE
   );
 ```
 
-
+![résultat](capturesSolutions/13.png)
 
 ### 14. Pour l'hôtel "Hôtel Royal", lister toutes les réservations en indiquant de combien de jours elles ont été faites à l'avance (avant la date d'arrivée) ainsi que si la réservation a été faite en tant que membre de l'hôtel. Trier les résultats par ordre des réservations (en 1 er celles faites le plus à l’avance), puis par clients (ordre croissant du nom puis du prénom).
+
 ```SQL
 WITH clientRoyal AS (
   SELECT
@@ -357,8 +381,10 @@ ORDER BY
   Client.prénom DESC;
 ```
 
+![résultat](capturesSolutions/14.png)
 
 ### 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal".
+
 ```SQL
 SELECT
   SUM(
@@ -379,3 +405,4 @@ WHERE
   Hôtel.nom = 'Hôtel Royal';
 ```
 
+![résultat](capturesSolutions/15.png)
