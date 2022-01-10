@@ -20,7 +20,7 @@ FROM
 WHERE
   Client.idVille = Hôtel.idVille;
 ```
-![résultat](capturesSolutions/1.png)
+![Résultat de la requête 1](capturesSolutions/1.png)
 
 ### 2. Le prix minimum et le prix maximum pour passer une nuit dans une chambre d'hôtel dans la ville d'Interlaken.
 
@@ -35,7 +35,7 @@ FROM
 WHERE
   Ville.nom = 'Interlaken';
 ```
-![résultat](capturesSolutions/2.png)
+![Résultat de la requête 2](capturesSolutions/2.png)
 
 ### 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage. Classer les résultats par ordre croissant du prix moyen.
 
@@ -55,7 +55,7 @@ GROUP BY
 ORDER BY
   "Prix moyen par étage";
 ```
-![résultat](capturesSolutions/3.png)
+![Résultat de la requête 3](capturesSolutions/3.png)
 
 ### 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.
 
@@ -70,7 +70,7 @@ WHERE
   AND Chambre_Equipement.quantité > 1;
 ```
 
-![résultat](capturesSolutions/4.png)
+![Résultat de la requête 4](capturesSolutions/4.png)
 
 ### 5. L'hôtel qui a le plus de tarifs de chambres différents.
 
@@ -93,7 +93,7 @@ ORDER BY
 LIMIT
   1;
 ```
-![résultat](capturesSolutions/5.png)
+![Résultat de la requête 5](capturesSolutions/5.png)
 
 ### 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées.
 
@@ -116,7 +116,7 @@ HAVING
   COUNT(*) > 1;
 ```
 
-![résultat](capturesSolutions/6.png)
+![Résultat de la requête 6](capturesSolutions/6.png)
 
 
 ### 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.
@@ -153,7 +153,7 @@ FROM
 WHERE
   Réservation.dateRéservation >= MembresAlpine.membreDepuis;
 ```
-![résultat](capturesSolutions/7.png)
+![Résultat de la requête 7](capturesSolutions/7.png)
 
 ### 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels).
 
@@ -172,7 +172,7 @@ ORDER BY
   SUM(Lit.nbPlaces * Chambre_Equipement.quantité) DESC;
 ```
 
-![résultat](capturesSolutions/8.png)
+![Résultat de la requête 8](capturesSolutions/8.png)
 
 ### 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations.
 
@@ -202,7 +202,7 @@ WHERE
   );
 ```
 
-![résultat](capturesSolutions/9.png)
+![Résultat de la requête 9](capturesSolutions/9.png)
 
 ### 10. Les chambres réservées pour la nuit du 24 décembre (de cette année).
 
@@ -236,7 +236,7 @@ WHERE
   )
 ```
 
-![résultat](capturesSolutions/10.png)
+![Résultat de la requête 10](capturesSolutions/10.png)
 
 ### 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.
 
@@ -272,7 +272,7 @@ HAVING
   SUM(Chambre_Equipement.quantité) > Réservation.nbPersonnes;
 ```
 
-![résultat](capturesSolutions/11.png)
+![Résultat de la requête 11](capturesSolutions/11.png)
 
 ### 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.
 
@@ -296,7 +296,7 @@ GROUP BY
   Hôtel.nom;
 ```
 
-![résultat](capturesSolutions/12.png)
+![Résultat de la requête 12](capturesSolutions/12.png)
 
 ### 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.
 
@@ -335,7 +335,7 @@ WHERE
   );
 ```
 
-![résultat](capturesSolutions/13.png)
+![Résultat de la requête 13](capturesSolutions/13.png)
 
 ### 14. Pour l'hôtel "Hôtel Royal", lister toutes les réservations en indiquant de combien de jours elles ont été faites à l'avance (avant la date d'arrivée) ainsi que si la réservation a été faite en tant que membre de l'hôtel. Trier les résultats par ordre des réservations (en 1 er celles faites le plus à l’avance), puis par clients (ordre croissant du nom puis du prénom).
 
@@ -375,7 +375,7 @@ ORDER BY
   Client.prénom DESC;
 ```
 
-![résultat](capturesSolutions/14.png)
+![Résultat de la requête 14](capturesSolutions/14.png)
 
 ### 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal".
 
@@ -399,7 +399,7 @@ WHERE
   Hôtel.nom = 'Hôtel Royal';
 ```
 
-![résultat](capturesSolutions/15.png)
+![Résultat de la requête 15](capturesSolutions/15.png)
 
 ## Conclusion
 Ce laboratoire nous a permis d'explorer les multiples possibilités des requêtes `SELECT`en SQL. Le plus grand défi a été certaines fois d'obtenir des résultats cohérents, d'autre fois d'écrire des reqêtes pas trop longues.
