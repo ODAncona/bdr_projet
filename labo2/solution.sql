@@ -40,7 +40,7 @@ ORDER BY
 
 /* 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.*/
 SELECT
-  DISTINCT Hôtel.nom AS "Nom Hôtel"
+  DISTINCT Hôtel.nom AS "Hôtel ayant plus d'une baignoire dans une chambre"
 FROM
   Hôtel
   INNER JOIN Chambre_Equipement ON Hôtel.id = Chambre_Equipement.idChambre
@@ -227,7 +227,7 @@ HAVING
 
 /* 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.*/
 SELECT
-  Hôtel.nom
+  Hôtel.nom AS "Hôtels avec chambres sans TV"
 FROM
   Hôtel
   INNER JOIN Chambre ON Chambre.idHôtel = Hôtel.id
@@ -242,7 +242,7 @@ WHERE
       Chambre_Equipement.nomEquipement = 'TV'
   )
 GROUP BY
-  Hôtel.nom
+  Hôtel.nom;
   /* 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.*/
   WITH ChambresLausanne AS (
     SELECT
@@ -325,7 +325,7 @@ SELECT
       -- Sans Rabais
       ELSE Chambre.prixParNuit * Réservation.nbNuits
     END
-  )
+  ) AS "Prix total réservations"
 FROM
   Réservation
   INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
