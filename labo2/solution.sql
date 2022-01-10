@@ -106,14 +106,17 @@ WHERE nbSéjourParVille.nbSéjour >= ALL
      FROM nbSéjourParVille);
 
 /* 10. Les chambres réservées pour la nuit du 24 décembre (de cette année). */
+WITH CurrentYear AS (
+  SELECT * FROM MAKE_DATE(EXTRACT(YEAR FROM CURRENT_DATE)::SMALLINT, 12, 24) AS christmas
+)
 SELECT DISTINCT Hôtel.nom AS "Nom Hôtel",
                 Chambre.Numéro
 FROM Chambre
 INNER JOIN Hôtel ON Chambre.idHôtel = Hôtel.id
 INNER JOIN Réservation ON Réservation.idChambre = Chambre.idHôtel
 AND Réservation.numéroChambre = Chambre.numéro
-WHERE Réservation.dateArrivée <= '2021-12-24'
-  AND Réservation.dateArrivée + Réservation.nbNuits >= '2021-12-24'
+WHERE Réservation.dateArrivée <= (SELECT christmas FROM CurrentYear)
+  AND Réservation.dateArrivée + Réservation.nbNuits >= (SELECT christmas FROM CurrentYear)
 
 /* 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.*/
 SELECT Réservation.idClient AS "Id Client",
