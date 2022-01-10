@@ -72,6 +72,7 @@ WHERE
 
 ![Résultat de la requête 4](capturesSolutions/4.png)
 
+\pagebreak
 ### 5. L'hôtel qui a le plus de tarifs de chambres différents.
 
 ```SQL
@@ -94,6 +95,8 @@ LIMIT
   1;
 ```
 ![Résultat de la requête 5](capturesSolutions/5.png)
+
+\pagebreak
 
 ### 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées.
 
@@ -118,6 +121,7 @@ HAVING
 
 ![Résultat de la requête 6](capturesSolutions/6.png)
 
+\pagebreak
 
 ### 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.
 
@@ -149,11 +153,14 @@ SELECT
   MembresAlpine.prénom
 FROM
   MembresAlpine
-  INNER JOIN Réservation ON (MembresAlpine.id, MembresAlpine.idHôtel) = (Réservation.idClient, Réservation.idChambre)
+  INNER JOIN Réservation ON (MembresAlpine.id, MembresAlpine.idHôtel) = 
+                            (Réservation.idClient, Réservation.idChambre)
 WHERE
   Réservation.dateRéservation >= MembresAlpine.membreDepuis;
 ```
 ![Résultat de la requête 7](capturesSolutions/7.png)
+
+\pagebreak
 
 ### 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels).
 
@@ -173,6 +180,8 @@ ORDER BY
 ```
 
 ![Résultat de la requête 8](capturesSolutions/8.png)
+
+\pagebreak 
 
 ### 9. Les villes dans lesquelles ont été faites le plus grand nombre de réservations.
 
@@ -204,6 +213,8 @@ WHERE
 
 ![Résultat de la requête 9](capturesSolutions/9.png)
 
+\pagebreak
+
 ### 10. Les chambres réservées pour la nuit du 24 décembre (de cette année).
 
 ```SQL
@@ -233,10 +244,12 @@ WHERE
       christmas
     FROM
       CurrentYear
-  )
+  );
 ```
 
-![Résultat de la requête 10](capturesSolutions/10.png)
+![Résultat de la requête 10](capturesSolutions/10.png) 
+
+\pagebreak 
 
 ### 11. Les réservations faites dans des chambres qui ont un nombre de lits supérieur au nombre de personnes de la réservation.
 
@@ -255,7 +268,8 @@ FROM
   Réservation
   INNER JOIN CLient ON Réservation.idClient = Client.id
   INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
-  INNER JOIN Chambre_Equipement ON Réservation.numéroChambre = Chambre_Equipement.numéroChambre
+  INNER JOIN Chambre_Equipement
+    ON Réservation.numéroChambre = Chambre_Equipement.numéroChambre
   AND Réservation.idChambre = Chambre_Equipement.idChambre
   INNER JOIN Lit ON Chambre_Equipement.nomEquipement = Lit.nomEquipement
 GROUP BY
@@ -272,7 +286,9 @@ HAVING
   SUM(Chambre_Equipement.quantité) > Réservation.nbPersonnes;
 ```
 
-![Résultat de la requête 11](capturesSolutions/11.png)
+![Résultat de la requête 11](capturesSolutions/11.png)  
+
+\pagebreak 
 
 ### 12. Les hôtels dont pas toutes les chambres sont équipées d'une TV. N'utiliser ni EXCEPT, ni INTERSECT.
 
@@ -298,6 +314,8 @@ GROUP BY
 
 ![Résultat de la requête 12](capturesSolutions/12.png)
 
+\pagebreak  
+
 ### 13. Les chambres à Lausanne ayant au moins une TV et un lit à 2 places.
 
 ```SQL
@@ -311,8 +329,10 @@ GROUP BY
     FROM
       Hôtel
       INNER JOIN Ville ON Ville.id = Hôtel.idVille
-      INNER JOIN Chambre_Equipement ON Chambre_Equipement.idChambre = Hôtel.id
-      LEFT JOIN Lit ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
+      INNER JOIN Chambre_Equipement
+        ON Chambre_Equipement.idChambre = Hôtel.id
+      LEFT JOIN Lit
+        ON Lit.nomEquipement = Chambre_Equipement.nomEquipement
     WHERE
       Ville.nom = 'Lausanne'
   )
@@ -337,6 +357,7 @@ WHERE
 
 ![Résultat de la requête 13](capturesSolutions/13.png)
 
+\pagebreak 
 ### 14. Pour l'hôtel "Hôtel Royal", lister toutes les réservations en indiquant de combien de jours elles ont été faites à l'avance (avant la date d'arrivée) ainsi que si la réservation a été faite en tant que membre de l'hôtel. Trier les résultats par ordre des réservations (en 1 er celles faites le plus à l’avance), puis par clients (ordre croissant du nom puis du prénom).
 
 ```SQL
@@ -370,12 +391,14 @@ FROM
 WHERE
   Hôtel.nom = 'Hôtel Royal'
 ORDER BY
-  Avance ASC,
-  Client.nom ASC,
+  Avance,
+  Client.nom,
   Client.prénom DESC;
 ```
 
 ![Résultat de la requête 14](capturesSolutions/14.png)
+
+\pagebreak 
 
 ### 15. Calculer le prix total de toutes les réservations faites pour l'hôtel "Hôtel Royal".
 
@@ -385,7 +408,8 @@ SELECT
     CASE
       --Rabais Membre
       WHEN Réservation.dateRéservation > membre.depuis
-      THEN Chambre.prixParNuit * Réservation.nbNuits * (100 - Hôtel.rabaisMembre) / 100
+      THEN Chambre.prixParNuit * Réservation.nbNuits * 
+                      (100 - Hôtel.rabaisMembre) / 100
       -- Sans Rabais
       ELSE Chambre.prixParNuit * Réservation.nbNuits
     END
@@ -393,8 +417,12 @@ SELECT
 FROM
   Réservation
   INNER JOIN Hôtel ON Réservation.idChambre = Hôtel.id
-  INNER JOIN Chambre ON (Réservation.idChambre, Réservation.numéroChambre) = (Chambre.idHôtel, Chambre.numéro)
-  LEFT JOIN Membre ON (Réservation.idChambre, Réservation.idClient) = (Membre.idHôtel, Membre.idClient)
+  INNER JOIN Chambre
+    ON (Réservation.idChambre, Réservation.numéroChambre) =
+       (Chambre.idHôtel, Chambre.numéro)
+  LEFT JOIN Membre
+    ON (Réservation.idChambre, Réservation.idClient) =
+       (Membre.idHôtel, Membre.idClient)
 WHERE
   Hôtel.nom = 'Hôtel Royal';
 ```
