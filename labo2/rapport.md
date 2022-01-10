@@ -17,6 +17,7 @@ FROM
 WHERE
   Client.idVille = Hôtel.idVille;
 ```
+![résultat](capturesSolutions/1.png)
 
 ### 2. Le prix minimum et le prix maximum pour passer une nuit dans une chambre d'hôtel dans la ville d'Interlaken.
 ```SQL
@@ -30,6 +31,7 @@ FROM
 WHERE
   Ville.nom = 'Interlaken';
 ```
+![résultat](capturesSolutions/2.png)
 
 ### 3. Pour l'hôtel "JungFrau Petrus Palace", lister le prix moyen des chambres par étage. Classer les résultats par ordre croissant du prix moyen.
 ```SQL
@@ -48,6 +50,7 @@ GROUP BY
 ORDER BY
   "Prix moyen par étage";
 ```
+![résultat](capturesSolutions/3.png)
 
 ### 4. Les hôtels proposant au moins une chambre disposant de plus d'une baignoire.
 ```SQL
@@ -61,6 +64,7 @@ WHERE
   AND Chambre_Equipement.quantité > 1;
 ```
 
+![résultat](capturesSolutions/4.png)
 
 ### 5. L'hôtel qui a le plus de tarifs de chambres différents.
 ```SQL
@@ -82,6 +86,7 @@ ORDER BY
 LIMIT
   1;
 ```
+![résultat](capturesSolutions/5.png)
 
 
 ### 6. Les clients ayant réservé plus d'une fois la même chambre. Indiquer les clients et les chambres concernées.
@@ -104,6 +109,7 @@ HAVING
   COUNT(*) > 1;
 ```
 
+![résultat](capturesSolutions/6.png)
 
 
 ### 7. Les membres de l'hôtel "Kurz Alpinhotel" qui n'ont fait aucune réservation depuis qu'ils en sont devenus membre.
@@ -139,6 +145,7 @@ FROM
 WHERE
   Réservation.dateRéservation >= MembresAlpine.membreDepuis;
 ```
+![résultat](capturesSolutions/7.png)
 
 
 ### 8. Les villes, classées dans l'ordre décroissant de leur capacité d'accueil totale (nombre de places des lits de leurs hôtels).
