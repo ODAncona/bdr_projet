@@ -7,8 +7,9 @@
     <h4><b>Rubriques</b></h4>
   </div>
   <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+    <!-- ici boucle pour afficher les menus -->
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Brasseurs</a> 
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bières</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"></i>Favoris</a>
   </div>
-</nav>  
+</nav>
