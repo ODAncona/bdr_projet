@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS Adresse CASCADE;
 CREATE TABLE Adresse (
 	id SERIAL,
 	rue STRING,
-	numéro VARCHAR(5),
+	numéro INTEGER,
 	codePostal INTEGER,
 	ville STRING NOT NULL,
 	CONSTRAINT PK_Adresse PRIMARY KEY (id)
@@ -264,11 +264,10 @@ ON UPDATE RESTRICT;
 ALTER TABLE Brasserie
 ADD CONSTRAINT FK_Brasserie_idBrasseur
 FOREIGN KEY (idBrasseur)
-REFERENCES Brasseur (id)
+REFERENCES Brasseur (idPersonne)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
-
 /*------------------------------------------------------------------*/
 ALTER TABLE Bière
 ADD CONSTRAINT FK_Bière_idBrasserie
