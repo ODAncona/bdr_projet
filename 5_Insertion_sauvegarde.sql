@@ -19,22 +19,64 @@ INSERT INTO brasseur(prénom, nom, genre, pseudo, courriel, motdepasse, idadress
 /*------------------------------------------------------------------*/
 /* Image */
 /*------------------------------------------------------------------*/
-
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
+INSERT INTO Image(idBrasserie, nomBière, idBrasserieBière, nomFichier, titre) VALUES ();
 /*------------------------------------------------------------------*/
 /* Brasserie */
 /*------------------------------------------------------------------*/
-
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
+INSERT INTO Brasserie(nom, revendiquée) VALUES();
 /*------------------------------------------------------------------*/
 /* TypeBière */
 /*------------------------------------------------------------------*/
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
+INSERT INTO TypeBière(nom, description) VALUES ();
 
 /*------------------------------------------------------------------*/
 /* Bière */
 /*------------------------------------------------------------------*/
-
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
 /*------------------------------------------------------------------*/
 /* InfoBrasserie */
 /*------------------------------------------------------------------*/
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES ();
 
 /*------------------------------------------------------------------*/
 /* Adresse */
@@ -52,23 +94,124 @@ INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Rue Pierre Viret'
 /*------------------------------------------------------------------*/
 /* Commande_Adresse */
 /*------------------------------------------------------------------*/
-
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
+INSERT INTO Commande_Adresse(idCommande, idAdresse) VALUES();
 /*------------------------------------------------------------------*/
 /* Commande_Bière */
 /*------------------------------------------------------------------*/
-
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
+	
 /*------------------------------------------------------------------*/
 /* Avis */
 /*------------------------------------------------------------------*/
-
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
+--INSERT INTO Avis(idBière, nomBière, dateCréation,contenu) VALUES ();
 /*------------------------------------------------------------------*/
 /* AvisBière */
 /*------------------------------------------------------------------*/
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
+INSERT INTO AvisBière(idBière, nomBière, dateCréation, contenu) VALUES();
 
 /*------------------------------------------------------------------*/
 /* RéponseAvisBière */
 /*------------------------------------------------------------------*/
-
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES();
 /*------------------------------------------------------------------*/
 /* Bière_Personne */
 /*------------------------------------------------------------------*/
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
+INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES ();
