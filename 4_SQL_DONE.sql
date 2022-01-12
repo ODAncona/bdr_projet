@@ -14,7 +14,7 @@ CREATE TABLE Personne (
 	bdate DATE,
 	courriel STRING,
 	motDePasse STRING,
-	idAdresse SERIAL NOT NULL,
+	idAdresse INT NOT NULL,
 	CONSTRAINT PK_Personne PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -42,7 +42,7 @@ CREATE TABLE Image (
 DROP TABLE IF EXISTS Image_Brasserie CASCADE;
 CREATE TABLE Image_Brasserie (
 	idImage SERIAL,
-	idBrasserie SERIAL NOT NULL,
+	idBrasserie INT NOT NULL,
 	CONSTRAINT PK_Image_Brasserie PRIMARY KEY (idImage)
 );
 /*------------------------------------------------------------------*/
@@ -51,7 +51,7 @@ CREATE TABLE Image_Brasserie (
 DROP TABLE IF EXISTS Image_Bière CASCADE;
 CREATE TABLE Image_Bière (
 	idImage SERIAL,
-	BièreIdBrasserie SERIAL NOT NULL,
+	BièreIdBrasserie INT NOT NULL,
 	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
 );
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SERIAL,
 	nom STRING NOT NULL,
-	idBrasseur SERIAL,
+	idBrasseur INT,
 	CONSTRAINT PK_Brasserie PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -85,7 +85,7 @@ CREATE TABLE Bière (
   dateEnregistrement DATE,
   description TEXT,
   nomTypeBière STRING NOT NULL,
-  idPersonne SERIAL NOT NULL,
+  idPersonne INT NOT NULL,
   CONSTRAINT PK_Bière PRIMARY KEY (idBrasserie, nomBière)
 );
 /*------------------------------------------------------------------*/
@@ -98,8 +98,8 @@ CREATE TABLE InfoBrasserie (
 	longitude NUMERIC(6,2),
 	latitude NUMERIC(6,2),
 	rayon NUMERIC(6,2),
-	idBrasserie SERIAL NOT NULL,
-	idAdresse SERIAL NOT NULL,
+	idBrasserie INT NOT NULL,
+	idAdresse INT NOT NULL,
 	CONSTRAINT PK_InfoBrasserie PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -124,8 +124,8 @@ CREATE TABLE Commande (
 	id SERIAL,
 	dateCréation DATE,
 	status Status,
-	idBrasserie SERIAL NOT NULL,
-	idPersonne SERIAL NOT NULL,
+	idBrasserie INT NOT NULL,
+	idPersonne INT NOT NULL,
 	CONSTRAINT PK_Commande PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -134,7 +134,7 @@ CREATE TABLE Commande (
 DROP TABLE IF EXISTS Commande_Adresse CASCADE;
 CREATE TABLE Commande_Adresse (
 	idCommande SERIAL,
-	idAdresse SERIAL NOT NULL,
+	idAdresse INT NOT NULL,
 	CONSTRAINT PK_Commande_Adresse PRIMARY KEY (idCommande)
 );
 /*------------------------------------------------------------------*/
@@ -143,7 +143,7 @@ CREATE TABLE Commande_Adresse (
 DROP TABLE IF EXISTS Commande_Bière CASCADE;
 CREATE TABLE Commande_Bière (
 	idCommande SERIAL,
-	idBrasserie SERIAL,
+	idBrasserie INT,
 	nomBière STRING,
 	quantité SMALLINT NOT NULL,
 	CONSTRAINT PK_Commande_Bière PRIMARY KEY (idCommande, idBrasserie, nomBière)
@@ -156,7 +156,7 @@ CREATE TABLE Avis (
 	id SERIAL,
 	contenu TEXT,
 	dateCréation DATE,
-	idBrasserie SERIAL,
+	idBrasserie INT,
 	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Avis PRIMARY KEY (id)
 );
@@ -171,7 +171,7 @@ CREATE TABLE AvisBière (
 	amertume SMALLINT,
 	douceur SMALLINT,
 	pétillance SMALLINT,
-	idPersonne SERIAL NOT NULL,
+	idPersonne INT NOT NULL,
 	CONSTRAINT PK_AvisBière PRIMARY KEY (idAvis)
 );
 /*------------------------------------------------------------------*/
@@ -182,8 +182,8 @@ CREATE TABLE RéponseAvisBière (
 	idAvis SERIAL,
 	utile INTEGER DEFAULT 0,
 	inutile INTEGER DEFAULT 0,
-	idAvisBière SERIAL NOT NULL,
-	idBrasseur SERIAL NOT NULL,
+	idAvisBière INT NOT NULL,
+	idBrasseur INT NOT NULL,
 	CONSTRAINT PK_RéponseAvisBière PRIMARY KEY (idAvis)
 );
 /*------------------------------------------------------------------*/
@@ -192,7 +192,7 @@ CREATE TABLE RéponseAvisBière (
 DROP TABLE IF EXISTS Bière_Personne CASCADE;
 CREATE TABLE Bière_Personne (
 	idPersonne SERIAL,
-	idBrasserie SERIAL,
+	idBrasserie INT,
 	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
 	CONSTRAINT PK_Bière_Personne PRIMARY KEY (idPersonne, idBrasserie, nomBière)
