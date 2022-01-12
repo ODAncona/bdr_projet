@@ -22,7 +22,7 @@ CREATE TABLE Personne (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
-	idPersonne SERIAL,
+	idPersonne INT,
 	actif BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
@@ -41,7 +41,7 @@ CREATE TABLE Image (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Image_Brasserie CASCADE;
 CREATE TABLE Image_Brasserie (
-	idImage SERIAL,
+	idImage INT,
 	idBrasserie INT NOT NULL,
 	CONSTRAINT PK_Image_Brasserie PRIMARY KEY (idImage)
 );
@@ -50,7 +50,7 @@ CREATE TABLE Image_Brasserie (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Image_Bière CASCADE;
 CREATE TABLE Image_Bière (
-	idImage SERIAL,
+	idImage INT,
 	BièreIdBrasserie INT NOT NULL,
 	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
@@ -133,7 +133,7 @@ CREATE TABLE Commande (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Adresse CASCADE;
 CREATE TABLE Commande_Adresse (
-	idCommande SERIAL,
+	idCommande INT,
 	idAdresse INT NOT NULL,
 	CONSTRAINT PK_Commande_Adresse PRIMARY KEY (idCommande)
 );
@@ -142,7 +142,7 @@ CREATE TABLE Commande_Adresse (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Bière CASCADE;
 CREATE TABLE Commande_Bière (
-	idCommande SERIAL,
+	idCommande INT,
 	idBrasserie INT,
 	nomBière STRING,
 	quantité SMALLINT NOT NULL,
@@ -191,7 +191,7 @@ CREATE TABLE RéponseAvisBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière_Personne CASCADE;
 CREATE TABLE Bière_Personne (
-	idPersonne SERIAL,
+	idPersonne INT,
 	idBrasserie INT,
 	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
@@ -211,18 +211,22 @@ ADD CONSTRAINT UC_RéponseAvisBière_idAvisBière UNIQUE (idAvisBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière
-ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_nomBière UNIQUE (nomBière);
+
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_idBrasserieNomBière UNIQUE (idBrasserie, nomBière);
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_nomTypeBière UNIQUE (nomTypeBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière
-ADD CONSTRAINT UC_Bière_nomTypeBière UNIQUE (nomTypeBière);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Bière
-ADD CONSTRAINT UC_Bière_idPersonne UNIQUE (idPersonne);
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_idPersonne UNIQUE (idPersonne);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -291,7 +295,16 @@ REFERENCES Personne (id)
 ON DELETE RESTRICT
 ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
 
+-- Cette contrainte ne doit pas exister car c'est la pk de image
+--ALTER TABLE Image
+--ADD CONSTRAINT FK_Image_Brasserie_idImage
+--FOREIGN KEY (idImage)
+--REFERENCES Image (id)
+--ON DELETE RESTRICT
+--ON UPDATE RESTRICT;
+/*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 ALTER TABLE Image_Brasserie
 ADD CONSTRAINT FK_Image_Brasserie_idImage
@@ -306,6 +319,23 @@ FOREIGN KEY (idBrasserie)
 REFERENCES Brasserie (id)
 ON DELETE RESTRICT
 ON UPDATE RESTRICT;
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+ALTER TABLE Image_Bière
+ADD CONSTRAINT FK_Image_Bière_idImage
+FOREIGN KEY (idImage)
+REFERENCES Image(id)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
+
+ALTER TABLE Image_Bière
+ADD CONSTRAINT FK_Image_Bière_Bière
+FOREIGN KEY (bièreIdBrasserie, nomBière)
+REFERENCES Bière(idBrasserie, nomBière)
+ON DELETE RESTRICT
+-- Mise à jour dans le cas où l'on changerait le nom de la bière
+ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
@@ -339,6 +369,20 @@ REFERENCES Personne (id)
 ON DELETE RESTRICT
 ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+ALTER TABLE Avis
+ADD CONSTRAINT FK_Avis_idBrasserie
+FOREIGN KEY (idBrasserie, nomBière)
+REFERENCES Bière (idBrasserie, nomBière)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+--ALTER TABLE Avis
+--ADD CONSTRAINT FK_Avis_nomBière
+--FOREIGN KEY (nomBière)
+--REFERENCES Bière (nomBière)
+--ON DELETE CASCADE
+--ON UPDATE RESTRICT;
 
 /*------------------------------------------------------------------*/
 -- Héritage
@@ -408,23 +452,6 @@ ON UPDATE RESTRICT;
 ALTER TABLE Commande_Bière
 ADD CONSTRAINT FK_Commande_Bière_Bière
 FOREIGN KEY (idBrasserie, nomBière)
-REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE RESTRICT
--- Mise à jour dans le cas où l'on changerait le nom de la bière
-ON UPDATE CASCADE;
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_idImage
-FOREIGN KEY (idImage)
-REFERENCES Image(id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_Bière
-FOREIGN KEY (bièreIdBrasserie, nomBière)
 REFERENCES Bière(idBrasserie, nomBière)
 ON DELETE RESTRICT
 -- Mise à jour dans le cas où l'on changerait le nom de la bière
