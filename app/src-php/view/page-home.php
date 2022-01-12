@@ -1,7 +1,12 @@
-<?php require("header.php"); ?>
+<?php require("head.php"); ?>
 
-<h1>HOME</h1>
+<?php require("components/sidebar-menu.php"); ?>
 
-<p>Hello <?= $CURRENT_USER ?> </p>
+<div class="w3-main" style="margin-left:300px">
+
+<?php require("components/pagetitle.php"); ?>
+
+<!-- End page content -->
+</div>
 
 <?php require("footer.php"); ?>

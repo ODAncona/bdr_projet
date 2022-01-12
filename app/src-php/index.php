@@ -52,8 +52,6 @@ switch ($request) {
         break;
     case '/biere':
         break;
-    case '/brasseries':
-        break;
     case '/brasserie':
         break;
     case '/recherche':
