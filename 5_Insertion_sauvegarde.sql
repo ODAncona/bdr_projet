@@ -56,16 +56,17 @@ INSERT INTO TypeBière(nom, description) VALUES ();
 /*------------------------------------------------------------------*/
 /* Bière */
 /*------------------------------------------------------------------*/
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
-INSERT INTO Bière(idBrasserie, nomBière, dateEnregistrement,  description, nomTypeBière, idPersonne) VALUES ();
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'Equinox', 3, NULL, "Pour l’été, quoi de mieux qu’une bière blanche légère et épicée qui remet en valeur toute la fraîcheur qu’on peut tirer d’un malt de froment ? Le pari de ces brasseurs lausannois est réussi, et on s’en régale. Santé ! ", "BLANCHE", NULL)
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'Wanderer', 3, NULL, "Une American IPA brassée avec le souci de ne pas effrayer les nouveaux amateurs de bières, la Wanderer permet de découvrir le style de l’IPA et ses arômes frais qui évitent avec bon goût l’écueil d’une amertume trop tranchée.", "", NULL)
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'Cimpaye', 3, NULL, "Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été !", "", NULL)
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'Halfwit', 3, NULL, "C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!", "", NULL)
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'White Rabbit', 3, NULL, "C’est la bière blanche du pack. Brassée à Rolle, elle offre des arômes de fruits à noyaux, de pommes et de miel avec un final rond et minéral agrémenté de notes fumées. Une blanche qui a du goût !", "BLANCHE", NULL)
+
 /*------------------------------------------------------------------*/
 /* InfoBrasserie */
 /*------------------------------------------------------------------*/
@@ -127,7 +128,7 @@ INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUE
 INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
 INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
 INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES ();
-	
+
 /*------------------------------------------------------------------*/
 /* Avis */
 /*------------------------------------------------------------------*/
