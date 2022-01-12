@@ -211,11 +211,11 @@ ADD CONSTRAINT UC_RéponseAvisBière_idAvisBière UNIQUE (idAvisBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
-ALTER TABLE Bière
-ADD CONSTRAINT UC_Bière_nomBière UNIQUE (nomBière);
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_nomBière UNIQUE (nomBière);
 
-ALTER TABLE Bière
-ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
+--ALTER TABLE Bière
+--ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
 --ALTER TABLE Bière
 --ADD CONSTRAINT UC_Bière_idBrasserieNomBière UNIQUE (idBrasserie, nomBière);
 /*------------------------------------------------------------------*/
@@ -775,6 +775,36 @@ INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUE
 
 INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUES (5, 1, 'Wanderer', 10);
 
+/*------------------------------------------------------------------*/
+/* Avis*/
+/*------------------------------------------------------------------*/
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit', '2021-10-01', 'good ....'); --1
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit', '2021-10-01', 'agréable ....'); --2
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit', '2021-10-01', 'doux ....'); --3
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox', '2021-10-01', 'delicieux ....'); --4
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox', '2021-10-01', ' plaisant ....'); --5
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox', '2021-10-01', ' good ....'); --6
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer', '2021-10-01', 'délicat ....'); --7
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer', '2021-10-01', 'enivrant ....'); --8
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (2, 'Cimpaye', '2021-10-01', 'pas bon ....'); --9
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (2, 'Cimpaye', '2021-10-01', 'amère ....'); --10
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'White Rabbit', '2021-10-01','exquis ....'); --11
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'White Rabbit', '2021-10-01', 'suave ....');  --12
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer', '2021-10-01', 'good ....'); --13
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer', '2021-10-01', 'excellent ....'); --14
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit' ,'2021-10-06','Merci '); --15
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit' ,'2021-10-06','Merci  '); --16
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Halfwit' , '2021-10-06',' Merci '); --17
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox' , '2021-10-06','Merci  '); --18
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox' , '2021-10-06',' Merci  '); --19
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Equinox', '2021-10-06',' Merci  ');  --20
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer',  '2021-10-06',' Merci  '); --21
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (1, 'Wanderer', '2021-10-06',' Merci  ');  --22
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (2, 'Cimpaye', '2021-10-06','Merci ');  --23
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'White Rabbit', '2021-10-06','Merci...'); --24
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'White Rabbit', '2021-10-06','Merci!!!'); --25
+INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'White Rabbit', '2021-10-06', 'Merci...'); --26
+
 
 /*------------------------------------------------------------------*/
 /* AvisBière */
@@ -782,36 +812,36 @@ INSERT INTO Commande_Bière(idCommande, idBrasserie, nomBière, quantité) VALUE
 /*Les personnes de 1 à 8 ont mis des avis*/
 
 /*Tous les avis datent du '2021-10-01'*/
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(3, 'Halfwit', '2021-10-01', " good ....", 3, 2, 6, 2, 4 , 1);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(3, 'Halfwit', '2021-10-01', "agréable ....", 3, 2, 6, 2, 4 ,1);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(3, 'Halfwit', '2021-10-01', " doux ....", 3, 2, 6, 2, 4 , 2);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Equinox', '2021-10-01', " delicieux ....",  3, 2, 6, 2, 1, 3 );
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Equinox', '2021-10-01', " plaisant ....",  3, 2, 4, 2, 4, 4 );
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Equinox', '2021-10-01', " good ....",  3, 2, 6, 2, 4 , 5);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Wanderer', '2021-10-01', " délicat ....",  3, 0, 6, 2, 4 , 6);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Wanderer', '2021-10-01', " enivrant ....",  3, 2, 6, 2, 4 , 7);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(2, 'Cimpaye', '2021-10-01', " pas bon ....",  3, 2, 6, 5, 4, 8 );
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(2, 'Cimpaye', '2021-10-01', " amère ....",  3, 2, 6, 2, 4, 8 );
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(3, 'White Rabbit', '2021-10-01', " exquis ....",  3, 2, 4, 2, 9 , 7);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(3, 'White Rabbit', '2021-10-01', " suave ....",  3, 2, 6, 7, 4 , 7);
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES(1, 3, 2, 6, 2, 4 , 1);
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES(2, 3, 2, 6, 2, 4 ,1);
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 3, 3, 2, 6, 2, 4 , 2);
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 4, 3, 2, 6, 2, 1, 3 );
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 5,  3, 2, 4, 2, 4, 4 );
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 6, 3, 2, 6, 2, 4 , 5);
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 7,  3, 1, 6, 2, 4 , 6);
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 8, 3, 2, 6, 2, 4 , 7);
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 9, 3, 2, 6, 5, 4, 8 );
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 10, 3, 2, 6, 2, 4, 8 );
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES( 11, 3, 2, 4, 2, 9 , 7);
+INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES(  12, 3, 2, 6, 7, 4 , 7);
 
 -- Commentaires n'ayant pas de réponses;
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Wanderer', '2021-10-01', " good ....", 3, 2, 6, 2, 4 ,6);
-INSERT INTO AvisBière(idBrasserie, nomBière, dateCréation, contenu,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(1, 'Wanderer', '2021-10-01', " excellent ....", 3, 2, 6, 2, 4 ,5);
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES(13,  3, 2, 6, 2, 4 ,6);
+INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
+VALUES(14, 3, 2, 6, 2, 4 ,5);
 
 /*------------------------------------------------------------------*/
 /* RéponseAvisBière */
@@ -819,30 +849,30 @@ VALUES(1, 'Wanderer', '2021-10-01', " excellent ....", 3, 2, 6, 2, 4 ,5);
 /* les brasseurs ayant répondus sont des personnes de 9 à 11*/
 
 /*Toutes les reponses aux avis datent du '2021-10-06'*/
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(3, 'Halfwit' ,'2021-10-06',"  Merci ",3, 2, 1,11);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(3, 'Halfwit' ,'2021-10-06'," Merci  ", 2, 0, 2, 11);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(3, 'Halfwit' , '2021-10-06',"  Merci ",  3, 0, 3, 11);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(1, 'Equinox' , '2021-10-06'," Merci  ",  3, 0, 4, 9);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(1, 'Equinox' , '2021-10-06'," Merci  ",  0, 0,5,9 );
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(1, 'Equinox', '2021-10-06'," Merci  ",  4, 4, 6, 9);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(1, 'Wanderer',  '2021-10-06'," Merci  ",  1, 0, 7, 9);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(1, 'Wanderer', '2021-10-06'," Merci  ",  3, 0, 8, 9);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(2, 'Cimpaye', '2021-10-06',"  Merci ",  7, 1, 9, 10 );
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(2, 'Cimpaye',  '2021-10-06'," Merci  ", 2, 1, 10, 10);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(3, 'White Rabbit', '2021-10-06'," Merci   ", 4 , 1, 11, 11);
-INSERT INTO RéponseAvisBière(idBière, nomBière, dateCréation,contenu, utile, inutile, idAvisBière, idBrasseur) VALUES
-(3, 'White Rabbit',  '2021-10-06', " Merci.....  ",  0, 0, 12, 11);
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES
+(15, 3, 2, 1,11);
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES
+(16, 2, 0, 2, 11);
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES
+(17, 3, 0, 3, 11);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(18, 3, 0, 4, 9);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(19, 0, 0,5,9 );
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(20, 4, 4, 6, 9);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(21, 1, 0, 7, 9);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(22, 3, 0, 8, 9);
+INSERT INTO RéponseAvisBière(idAvis, utile, inutile, idAvisBière, idBrasseur) VALUES
+(23, 7, 1, 9, 10 );
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(24, 2, 1, 10, 10);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(25, 4 , 1, 11, 11);
+INSERT INTO RéponseAvisBière(idAvis,utile, inutile, idAvisBière, idBrasseur) VALUES
+(26, 0, 0, 12, 11);
 
 /*------------------------------------------------------------------*/
 /* Bière_Personne */ /* AJOUT AUX FAVORIS */
@@ -859,7 +889,7 @@ INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (4
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (4, 4, 'Gurten Bier', '2020-08-19');
 
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (5, 4, 'Haldengut', '2020-08-19');
-INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (5, 4, 'La Meynite', '2020-08-19');
+--INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (5, 4, 'La Meynite', '2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (5, 4, 'Ittinger Klosterbrau', '2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (6, 4, 'Hürlimann', '2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (6, 4, 'La Nébuleuse', '2020-08-19');
@@ -871,11 +901,6 @@ INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (3
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (1, 4, 'Boxer' ,'2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (1, 4, 'Buse','2020-08-19');
 
-
-
-/*------------------------------------------------------------------*/
-/* Bière_Personne */ /* AJOUT AUX FAVORIS */
-/*------------------------------------------------------------------*/
 
 
 
