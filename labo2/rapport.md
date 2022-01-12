@@ -1,3 +1,11 @@
+---
+title: "BDR : Laboratoire no 2"
+titlepage: true
+author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
+date: "10 janvier 2022"
+keywords: [BDR]
+...
+
 # BDR : Laboratoire no 2
 
 ## Introduction
@@ -430,4 +438,4 @@ WHERE
 ![Résultat de la requête 15](capturesSolutions/15.png)
 
 ## Conclusion
-Ce laboratoire nous a permis d'explorer les multiples possibilités des requêtes `SELECT`en SQL. Le plus grand défi a été certaines fois d'obtenir des résultats cohérents, d'autre fois d'écrire des reqêtes pas trop longues.
+Ce laboratoire nous a permis d'explorer les multiples possibilités des requêtes `SELECT`en SQL. Le plus grand défi a été certaines fois d'obtenir des résultats cohérents, d'autre fois d'écrire des requêtes pas trop longues.
