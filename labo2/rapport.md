@@ -1,3 +1,11 @@
+---
+title: "BDR : Laboratoire no 2"
+titlepage: true
+author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
+date: "10 janvier 2022"
+keywords: [BDR]
+...
+
 # BDR : Laboratoire no 2
 
 ## Introduction
