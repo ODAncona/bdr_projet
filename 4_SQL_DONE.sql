@@ -22,7 +22,7 @@ CREATE TABLE Personne (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
-	idPersonne SERIAL,
+	idPersonne INT,
 	actif BOOLEAN DEFAULT FALSE,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
@@ -41,7 +41,7 @@ CREATE TABLE Image (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Image_Brasserie CASCADE;
 CREATE TABLE Image_Brasserie (
-	idImage SERIAL,
+	idImage INT,
 	idBrasserie INT NOT NULL,
 	CONSTRAINT PK_Image_Brasserie PRIMARY KEY (idImage)
 );
@@ -50,7 +50,7 @@ CREATE TABLE Image_Brasserie (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Image_Bière CASCADE;
 CREATE TABLE Image_Bière (
-	idImage SERIAL,
+	idImage INT,
 	BièreIdBrasserie INT NOT NULL,
 	nomBière STRING NOT NULL,
 	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
@@ -79,7 +79,7 @@ CREATE TABLE TypeBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière CASCADE;
 CREATE TABLE Bière (
-  idBrasserie SERIAL,
+  idBrasserie INT,
   nomBière STRING,
   prix NUMERIC(5,2),
   dateEnregistrement DATE,
@@ -133,7 +133,7 @@ CREATE TABLE Commande (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Adresse CASCADE;
 CREATE TABLE Commande_Adresse (
-	idCommande SERIAL,
+	idCommande INT,
 	idAdresse INT NOT NULL,
 	CONSTRAINT PK_Commande_Adresse PRIMARY KEY (idCommande)
 );
@@ -142,7 +142,7 @@ CREATE TABLE Commande_Adresse (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Commande_Bière CASCADE;
 CREATE TABLE Commande_Bière (
-	idCommande SERIAL,
+	idCommande INT,
 	idBrasserie INT,
 	nomBière STRING,
 	quantité SMALLINT NOT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE Avis (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS AvisBière CASCADE;
 CREATE TABLE AvisBière (
-	idAvis SERIAL,
+	idAvis INT,
 	score SMALLINT,
 	acidité SMALLINT,
 	amertume SMALLINT,
@@ -179,7 +179,7 @@ CREATE TABLE AvisBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS RéponseAvisBière CASCADE;
 CREATE TABLE RéponseAvisBière (
-	idAvis SERIAL,
+	idAvis INT,
 	utile INTEGER DEFAULT 0,
 	inutile INTEGER DEFAULT 0,
 	idAvisBière INT NOT NULL,
@@ -191,7 +191,7 @@ CREATE TABLE RéponseAvisBière (
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Bière_Personne CASCADE;
 CREATE TABLE Bière_Personne (
-	idPersonne SERIAL,
+	idPersonne INT,
 	idBrasserie INT,
 	nomBière STRING,
 	date DATE DEFAULT '2021-12-14',
