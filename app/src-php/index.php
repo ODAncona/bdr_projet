@@ -36,11 +36,6 @@ if (isset($_SESSION['idUtilisateur']) && $_SESSION['idUtilisateur'] > 0) {
     $_SESSION['idUtilisateur'] = 0;
 }
 
-/**** Tests ****/
-
-
-
-/*****************/
 $request;
 if (isset($_SERVER['REDIRECT_URL'])) {
     $request = $_SERVER['REDIRECT_URL'];
@@ -54,10 +49,16 @@ $siteMainMenu->putItem(new MenuItem("Accueil", "accueil", 1, 1));
 $siteMainMenu->putItem(new MenuItem("Bières", "bieres", 1, 1));
 $siteMainMenu->putItem(new MenuItem("Brasseries", "brasseries",1, 1));
 $siteMainMenu->putItem(new MenuItem("Recherche", "recherche", 1, 1));
-$siteMainMenu->putItem(new MenuItem("Favoris", "favoris", 1, 1));
+
+if ($CURRENT_USER->isAuthenticated()) {
+    $siteMainMenu->putItem(new MenuItem("Favoris", "favoris", 1, 1));
+}
+
 $siteMainMenu->putItem(new MenuItem("DB Tables", "tables", 1, 1));
 
 
+
+$beer = new Beer($DB_CLIENT);
 
 
 switch ($request) {
