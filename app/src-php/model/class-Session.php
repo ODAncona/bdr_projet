@@ -29,7 +29,7 @@ class Session {
         return $this->idUtilisateur;
     }
 
-    public function enregistrer($idUtilisateur)
+    public function save($idUtilisateur)
     {
         $this->idUtilisateur = intval($this->dbClient->quote($idUtilisateur));
         if ($this->idUtilisateur > 0) {

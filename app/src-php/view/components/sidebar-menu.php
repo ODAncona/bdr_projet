@@ -6,10 +6,10 @@
     </a>
     <h4><b>Rubriques</b></h4>
   </div>
-  <div class="w3-bar-block">
-    <!-- ici boucle pour afficher les menus -->
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Brasseurs</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bières</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"></i>Favoris</a>
-  </div>
+  <?= 
+  $siteMainMenu;
+  ?>
 </nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

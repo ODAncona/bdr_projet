@@ -1,6 +1,6 @@
 <?php
 // $pageTitle = 
-require("header.php");
+require("head.php");
 
 
 require("components/login-form.php");
