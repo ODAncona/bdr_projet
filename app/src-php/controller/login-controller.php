@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET['identifiant']) && isset($_GET['motDePasse'])) {
+if (isset($_REQUEST['identifiant']) && isset($_REQUEST['motDePasse'])) {
 
     try {
 
-        $CURRENT_USER->fetchByPseudo($_GET['identifiant']);
+        $CURRENT_USER->fetchByPseudo($_REQUEST['identifiant']);
 
     } catch (Exception $e) {
         unset($_SERVER['REDIRECT_QUERY_STRING']);
@@ -12,7 +12,7 @@ if (isset($_GET['identifiant']) && isset($_GET['motDePasse'])) {
         exit();
     }
 
-    if($CURRENT_USER->checkPassword($_GET['motDePasse'])) {
+    if($CURRENT_USER->checkPassword($_REQUEST['motDePasse'])) {
         $_SESSION['idUtilisateur'] = $CURRENT_USER->getId();
         header("Location: / ", true, 302);
     } else {
