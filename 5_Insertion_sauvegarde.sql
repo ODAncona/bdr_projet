@@ -1,9 +1,42 @@
+SET client_encoding TO 'UTF8';
+/*------------------------------------------------------------------*/
+/* Réinitialisation */
+/*------------------------------------------------------------------*/
+DELETE FROM image_brasserie CASCADE;
+DELETE FROM image_bière CASCADE;
+DELETE FROM image CASCADE;
+DELETE FROM commande_bière;
+DELETE FROM commande_adresse;
+DELETE FROM commande;
+DELETE FROM bière_personne;
+DELETE FROM bière;
+DELETE FROM typebière;
+DELETE FROM réponseavisbière;
+DELETE FROM avisbière;
+DELETE FROM avis;
+DELETE FROM infobrasserie;
+DELETE FROM brasserie;
+DELETE FROM brasseur;
+DELETE FROM personne;
+DELETE FROM adresse;
 
-
-/*----------------------------------------------------------------------------------------------------------*/
---SET client_encoding TO 'UTF8';
-
---ALTER SEQUENCE SERIAL RESTART START with 1;
+ALTER SEQUENCE IF EXISTS brasseur_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS image_bière_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS image_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS typebière_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS bière_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS brasserie_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS image_brasserie_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS adresse_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS avis_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS commande_adresse_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS commande_bière_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS personne_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS commande_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS infobrasserie_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS bière_personne_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS réponseavisbière_id_seq RESTART WITH 1;
+ALTER SEQUENCE IF EXISTS avisbière_id_seq RESTART WITH 1;
 
 /*------------------------------------------------------------------*/
 /* Adresse */
