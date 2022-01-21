@@ -1,12 +1,7 @@
 SET client_encoding TO 'UTF8';
-/*--------------------------*/
-
-SET client_encoding TO 'UTF8';
 /*------------------------------------------------------------------*/
 /* Réinitialisation */
 /*------------------------------------------------------------------*/
-DELETE FROM image_brasserie CASCADE;
-DELETE FROM image_bière CASCADE;
 DELETE FROM image CASCADE;
 DELETE FROM commande_bière;
 DELETE FROM commande_adresse;
@@ -24,8 +19,6 @@ DELETE FROM personne;
 DELETE FROM adresse;
 
 ALTER SEQUENCE IF EXISTS brasseur_id_seq RESTART WITH 1;
-ALTER SEQUENCE IF EXISTS image_bière_id_seq RESTART WITH 1;
-ALTER SEQUENCE IF EXISTS image_id_seq RESTART WITH 1;
 ALTER SEQUENCE IF EXISTS typebière_id_seq RESTART WITH 1;
 ALTER SEQUENCE IF EXISTS bière_id_seq RESTART WITH 1;
 ALTER SEQUENCE IF EXISTS brasserie_id_seq RESTART WITH 1;
@@ -100,11 +93,14 @@ INSERT INTO brasseur(idPersonne, actif) VALUES (11, TRUE); --11
 /*------------------------------------------------------------------*/
 INSERT INTO TypeBière(nom, description) VALUES ('BLANCHE', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('BLONDE', NULL);
-INSERT INTO TypeBière(nom, description) VALUES ('BELGE', NULL);
+INSERT INTO TypeBière(nom, description) VALUES ('LAGER', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('ANGLAISE', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('GUINNESS', NULL);
-INSERT INTO TypeBière(nom, description) VALUES ('LAGER', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('CARBONNADE', NULL);
+INSERT INTO TypeBière(nom, description) VALUES ('BRUNE', NULL);
+INSERT INTO TypeBière(nom, description) VALUES ('AMBREE', NULL);
+
+
 
 /*------------------------------------------------------------------*/
 /* Brasserie */
@@ -132,7 +128,7 @@ VALUES (1, 'Wanderer', 3, NULL,'Une American IPA brassée avec le souci de ne pa
 'BLONDE', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (2, 'Cimpaye', 3, NULL, 'Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été ! ',
-'BELGE', 1);
+'LAGER', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (3, 'Halfwit', 3, NULL, 'C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!',
 'GUINNESS', 1);
@@ -144,7 +140,7 @@ VALUES (3, 'White Rabbit', 3, NULL, 'C’est la bière blanche du pack. Brassée
 /*Elles ont été ajoutée le '2020-08-01' et '2020-08-03' par les personnes d'id 3 4*/
 /* Elles ont été ajoutée aux favoris mais il n'ya pas encore d'avis dessus*/
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Chopfab',NULL ,'2020-08-01', NULL, 'BELGE', 2);
+VALUES (4, 'Chopfab',NULL ,'2020-08-01', NULL, 'LAGER', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES ( 4, 'Egger', NULL ,'2020-08-01', NULL, 'BLONDE',2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
@@ -154,23 +150,23 @@ VALUES (4, 'Eichhof', NULL, '2020-08-01', NULL, 'BLANCHE',2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (4, 'Einsidler', NULL ,'2020-08-01', NULL, 'CARBONNADE', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Falken',NULL ,'2020-08-01', NULL, 'BELGE', 2);
+VALUES (4, 'Falken',NULL ,'2020-08-01', NULL, 'LAGER', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Feldschlösschen',NULL ,'2020-08-01', NULL, 'BELGE', 2);
+VALUES (4, 'Feldschlösschen',NULL ,'2020-08-01', NULL, 'LAGER', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES ( 4, 'Felsenau',NULL ,'2020-08-01', NULL, 'BELGE', 2);
+VALUES ( 4, 'Felsenau',NULL ,'2020-08-01', NULL, 'LAGER', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES ( 4, 'Gurten Bier', NULL ,'2020-08-01', NULL, 'BELGE', 2);
+VALUES ( 4, 'Gurten Bier', NULL ,'2020-08-01', NULL, 'LAGER', 2);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES ( 4, 'Haldengut',NULL ,'2020-08-02', NULL,'GUINNESS', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES ( 4, 'Ittinger Klosterbrau',NULL ,'2020-08-02', NULL, 'GUINNESS', 3);
+VALUES ( 4, 'Ittinger Klosterbrau',NULL ,'2020-08-02', NULL, 'AMBREE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Hürlimann' ,NULL ,'2020-08-02', NULL, 'BELGE', 3);
+VALUES (4, 'Hürlimann' ,NULL ,'2020-08-02', NULL, 'LAGER', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES ( 4, 'La Nébuleuse',NULL ,'2020-08-02', NULL, 'CARBONNADE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Adler',NULL ,'2020-08-02', NULL, 'BELGE', 3);
+VALUES (4, 'Adler',NULL ,'2020-08-02', NULL, 'LAGER', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (4, 'Appenzeller Bier',NULL ,'2020-08-02', NULL, 'BLONDE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
@@ -178,9 +174,9 @@ VALUES (4, 'Bière du Lac',NULL ,'2020-08-02', NULL, 'CARBONNADE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (4, 'Blanche Pierre',NULL ,'2020-08-02', NULL,'BLANCHE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES ( 4, 'Blonde 25',NULL ,'2020-08-02', NULL, 'BELGE', 3);
+VALUES ( 4, 'Blonde 25',NULL ,'2020-08-02', NULL, 'LAGER', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (4, 'Boxer' ,NULL ,'2020-08-02', NULL, 'GUINNESS', 3);
+VALUES (4, 'Boxer' ,NULL ,'2020-08-02', NULL, 'BRUNE', 3);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
 VALUES (4, 'Buse',NULL ,'2020-08-02', NULL,'CARBONNADE', 3);
 
@@ -191,39 +187,39 @@ VALUES (4, 'Buse',NULL ,'2020-08-02', NULL,'CARBONNADE', 3);
 /*  nomBière et idBrasserieBière Null car ce sont des photos de Brasséries*/
 /* À idBrasserie on retrouve les id des brasserie dont les photos ont été ajoutées*/
 
-INSERT INTO Image(nomFichier, titre) VALUES ('aaa.png', NULL); --1
-INSERT INTO Image(nomFichier, titre) VALUES ('bbb.png', NULL);   --2
-INSERT INTO Image(nomFichier, titre) VALUES ( 'ccc.png', NULL); --3
-INSERT INTO Image(nomFichier, titre) VALUES ( 'ddd.png', NULL); --4
-INSERT INTO Image(nomFichier, titre) VALUES ('eee.png', NULL );   --5
-INSERT INTO Image(nomFichier, titre) VALUES ( 'fff.png', NULL); --6
-INSERT INTO Image(nomFichier, titre) VALUES ( 'ggg.png', NULL);   --7
-INSERT INTO Image(nomFichier, titre) VALUES ('hhh.png', NULL ); --8
-INSERT INTO Image(nomFichier, titre) VALUES ( 'iii.png', NULL);   --9
-INSERT INTO Image(nomFichier, titre) VALUES ( 'jjj.png', NULL);   --10
-INSERT INTO Image(nomFichier, titre) VALUES ('kkk.png', NULL ); --11
+INSERT INTO Image(nomFichier) VALUES ('aaa.png'); --1
+INSERT INTO Image(nomFichier) VALUES ('bbb.png');   --2
+INSERT INTO Image(nomFichier) VALUES ( 'ccc.png'); --3
+INSERT INTO Image(nomFichier) VALUES ( 'ddd.png'); --4
+INSERT INTO Image(nomFichier) VALUES ('eee.png');   --5
+INSERT INTO Image(nomFichier) VALUES ( 'fff.png'); --6
+INSERT INTO Image(nomFichier) VALUES ( 'ggg.png');   --7
+INSERT INTO Image(nomFichier) VALUES ('hhh.png'); --8
+INSERT INTO Image(nomFichier) VALUES ( 'iii.png');   --9
+INSERT INTO Image(nomFichier) VALUES ( 'jjj.png');   --10
+INSERT INTO Image(nomFichier) VALUES ('kkk.png'); --11
 
 /* idBrasserie NULL Car ce sont des photos de bières*/
-INSERT INTO Image(nomFichier, titre) VALUES ('lll.png', NULL );   --12
-INSERT INTO Image(nomFichier, titre) VALUES ( 'mmm.png', NULL);      --13
-INSERT INTO Image(nomFichier, titre) VALUES ( 'nnn.png', NULL);    --14
-INSERT INTO Image(nomFichier, titre) VALUES ( 'ooo.png', NULL);    --15
-INSERT INTO Image(nomFichier, titre) VALUES ('ppp.png', NULL);   --16
-INSERT INTO Image(nomFichier, titre) VALUES ( 'qqq.png', NULL);    --17
-INSERT INTO Image(nomFichier, titre) VALUES ('rrr.png', NULL );     --18
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('chopfab_1.jpg', 4, 'Chopfab' );   --12
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'egger_1.jpg', 4, 'Egger');      --13
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'einsidler_1.jpg', 4, 'Einsidler');    --14
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'falken_1.png', 4, 'Falken');    --15
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('ittinger_klosterbrau_1.jpg', 4,  'Ittinger Klosterbrau');   --16
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'adler_1.jpg', 4,  'Adler');    --17
+INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('boxer_1.jpg', 4, 'Boxer');     --18
 
 /*------------------------------------------------------------------*/
 /* Image_Bière */
 /*------------------------------------------------------------------*/
 /*J'ai mis ici je ne sais pas si c'est correct, les images de bières*/
 
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (12, 4, 'Chopfab');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (13, 4, 'Egger');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (14, 4, 'Einsidler');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (15, 4, 'Falken');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (16, 4,  'Ittinger Klosterbrau');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (17, 4,  'Adler');
-INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (18, 4, 'Boxer');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (12, 4, 'Chopfab');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (13, 4, 'Egger');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (14, 4, 'Einsidler');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (15, 4, 'Falken');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (16, 4,  'Ittinger Klosterbrau');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (17, 4,  'Adler');
+-- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (18, 4, 'Boxer');
 
 /*------------------------------------------------------------------*/
 /* Image_Brasserie */
@@ -231,17 +227,17 @@ INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (18, 4, '
 
 /*J'ai mis ici je ne sais pas si c'est correct, les images de brasseries*/
 
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (1, 1);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (2, 1);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (3, 1);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (4, 2);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (5, 2);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (6, 2);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (7, 3);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (8, 3);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (9, 3);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (10, 4);
-INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (11, 4);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (1, 1);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (2, 1);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (3, 1);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (4, 2);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (5, 2);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (6, 2);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (7, 3);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (8, 3);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (9, 3);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (10, 4);
+-- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (11, 4);
 
 /*------------------------------------------------------------------*/
 /* InfoBrasserie */
@@ -415,33 +411,3 @@ INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (2
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (3, 4, 'Blonde 25','2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (1, 4, 'Boxer' ,'2020-08-19');
 INSERT INTO Bière_Personne (idPersonne, idBrasserie, nomBière, date) VALUES (1, 4, 'Buse','2020-08-19');
-
-
-
--- AJOUT DE 5 utilisateurs avec adresse
-INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Ch. de la Valleyre', 31, 1052, 'Le Mont');
-INSERT INTO personne (prénom, nom, genre, pseudo, courriel, motdepasse, idadresse)
-VALUES ('Alain', 'Dupont', 'm', 'Alain', 'alain.dupont@example.com', '1234',
- 										currval(pg_get_serial_sequence('adresse','id')));
-										
-INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Ch. des Eglantines', 12, 1000, 'Lausanne');
-INSERT INTO personne (prénom, nom, genre, pseudo, courriel, motdepasse, idadresse)
-VALUES ('Jeanne', 'Moretti', 'f', 'Jeanne23', 'jeanne.moretti@example.com', '1234',
- 										currval(pg_get_serial_sequence('adresse','id')));
-
-INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Route du Village', 9, 1078, 'Essertes');
-INSERT INTO personne (prénom, nom, genre, pseudo, courriel, motdepasse, idadresse)
-VALUES ('Gertrude', 'Favre', 'f', 'Trudi', 'gertrude.favre@example.com', '1234',
- 										currval(pg_get_serial_sequence('adresse','id')));
-
-INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Ch. de la Valleyre', 14, 1052, 'Le Mont');
-INSERT INTO personne (prénom, nom, genre, pseudo, courriel, motdepasse, idadresse)
-VALUES ('Philippe', 'Perrin', 'm', 'fil94', 'philippe.perrin@example.com', '1234',
- 										currval(pg_get_serial_sequence('adresse','id')));
-
-INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Rue Pierre Viret', 99, 1000, 'Lausanne');
-INSERT INTO personne (prénom, nom, genre, pseudo, courriel, motdepasse, idadresse)
-VALUES ('Raoul', 'Laplace', 'm', 'rala', 'raoul.laplace@example.com', '1234',
- 										currval(pg_get_serial_sequence('adresse','id')));
-
-/*--------------------------*/

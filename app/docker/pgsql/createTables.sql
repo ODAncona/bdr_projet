@@ -33,29 +33,13 @@ DROP TABLE IF EXISTS Image CASCADE;
 CREATE TABLE Image (
 	id SERIAL,
 	nomFichier STRING NOT NULL,
-	titre STRING,
+	idBrasserie INT,
+	BièreIdBrasserie INT,
+	nomBière STRING,
 	CONSTRAINT PK_Image PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
 
-/*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Image_Brasserie CASCADE;
-CREATE TABLE Image_Brasserie (
-	idImage INT,
-	idBrasserie INT NOT NULL,
-	CONSTRAINT PK_Image_Brasserie PRIMARY KEY (idImage)
-);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-DROP TABLE IF EXISTS Image_Bière CASCADE;
-CREATE TABLE Image_Bière (
-	idImage INT,
-	BièreIdBrasserie INT NOT NULL,
-	nomBière STRING NOT NULL,
-	CONSTRAINT PK_Image_Bière PRIMARY KEY (idImage)
-);
-/*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
 DROP TABLE IF EXISTS Brasserie CASCADE;
@@ -297,45 +281,19 @@ ON UPDATE RESTRICT;
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 
--- Cette contrainte ne doit pas exister car c'est la pk de image
---ALTER TABLE Image
---ADD CONSTRAINT FK_Image_Brasserie_idImage
---FOREIGN KEY (idImage)
---REFERENCES Image (id)
---ON DELETE RESTRICT
---ON UPDATE RESTRICT;
-/*------------------------------------------------------------------*/
-/*------------------------------------------------------------------*/
-ALTER TABLE Image_Brasserie
-ADD CONSTRAINT FK_Image_Brasserie_idImage
-FOREIGN KEY (idImage)
-REFERENCES Image (id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-
-ALTER TABLE Image_Brasserie
-ADD CONSTRAINT FK_Image_Brasserie_idBrasserie
-FOREIGN KEY (idBrasserie)
-REFERENCES Brasserie (id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_idImage
-FOREIGN KEY (idImage)
-REFERENCES Image(id)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT;
-
-ALTER TABLE Image_Bière
-ADD CONSTRAINT FK_Image_Bière_Bière
-FOREIGN KEY (bièreIdBrasserie, nomBière)
-REFERENCES Bière(idBrasserie, nomBière)
-ON DELETE RESTRICT
--- Mise à jour dans le cas où l'on changerait le nom de la bière
+ALTER TABLE Image
+ADD CONSTRAINT FK_Image_idBrasserie
+FOREIGN KEY (idBrasserie) REFERENCES Brasserie (id)
+ON DELETE CASCADE
 ON UPDATE CASCADE;
+
+ALTER TABLE Image
+ADD CONSTRAINT FK_Image_BièreIdBrasserie_nomBière
+FOREIGN KEY (BièreIdBrasserie, nomBière) REFERENCES Bière (idBrasserie, nomBière)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+/*------------------------------------------------------------------*/
+
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/

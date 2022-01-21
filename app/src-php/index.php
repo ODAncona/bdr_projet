@@ -59,6 +59,7 @@ $siteMainMenu->putItem(new MenuItem("DB Tables", "tables", 1, 1));
 
 
 $beer = new Beer($DB_CLIENT);
+$beer->fetch();
 
 
 switch ($request) {
@@ -76,6 +77,9 @@ switch ($request) {
         require('controller/logout-controller.php');
         break;
     case '/bieres':
+        $currentPageName = "Bières";
+        require('controller/beer-controller.php');
+        break;
     case '/brasseries':
     case '/recherche':
     case '/favoris':
