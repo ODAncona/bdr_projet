@@ -1,3 +1,6 @@
+# Fichiers du projet à exclure
+app/docker/pgsql/*.sql
+SQL/*.sql
 
 # IDEs
 
@@ -22,3 +25,4 @@ Temporary Items
 .DS_Store
 .AppleDouble
 .LSOverride
+
