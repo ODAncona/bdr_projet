@@ -11,8 +11,8 @@ $password   = "default";
 $dbname     = "Beergarden"; // sensible à la casse
 
 try {
-    $DB_CLIENT = db_connect($servername, $username, $password, $dbname);
-} catch (PDOException $e) {
+    $DB_CLIENT = db_connect();
+} catch (Exception $e) {
     $noErreur = 500;
     $message = $e->getMessage();
     require("view/error.php");
