@@ -1,3 +1,5 @@
+/* ------------------------- */
+-- Vue Bière
 CREATE VIEW vBière AS
 SELECT
 	Bière.nomBière,
