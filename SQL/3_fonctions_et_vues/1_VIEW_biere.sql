@@ -1,9 +1,13 @@
 /* ------------------------- */
 -- Vue Bière
+DROP VIEW IF EXISTS vFavoris;
+DROP VIEW IF EXISTS vBrasserie;
+DROP VIEW IF EXISTS vBière;
 CREATE VIEW vBière AS
 SELECT
 	Bière.nomBière,
 	Brasserie.nom AS nomBrasseur,
+	Bière.nomTypeBière,
 	Brasserie.id AS idbrasserie,
 	COUNT(Avis.nomBière) AS nbAvis,
 	round(AVG(AvisBière.score), 2) AS noteMoyenne,
