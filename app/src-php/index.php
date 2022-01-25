@@ -80,6 +80,9 @@ switch ($request) {
         require('controller/favourites-controller.php');
         break;
     case '/brasseries':
+        $currentPageName = 'Brasseries';
+        require('controller/brewer-controller.php');
+        break;
     case '/recherche':
         $currentPageName = $request;
         require('controller/default-controller.php');
