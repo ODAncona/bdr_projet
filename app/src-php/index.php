@@ -5,11 +5,6 @@ require_once("helpers.php");
 
 $DB_CLIENT;
 
-$servername = "postgres";
-$username   = "default";
-$password   = "default";
-$dbname     = "Beergarden"; // sensible à la casse
-
 try {
     $DB_CLIENT = db_connect();
 } catch (Exception $e) {
@@ -80,9 +75,12 @@ switch ($request) {
         $currentPageName = "Bières";
         require('controller/beer-controller.php');
         break;
+    case '/favoris':
+        $currentPageName = 'Favoris';
+        require('controller/favourites-controller.php');
+        break;
     case '/brasseries':
     case '/recherche':
-    case '/favoris':
         $currentPageName = $request;
         require('controller/default-controller.php');
         break;

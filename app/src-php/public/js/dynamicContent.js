@@ -5,7 +5,7 @@
 const buttons = document.querySelectorAll(".btn-filter");
 buttons.forEach((element) => {
   element.addEventListener("click", (event) => {
-    fetch("/tables?ajax=true&table=" + event.target.id)
+    fetch( window.location.pathname + "?ajax=true&table=" + event.target.id)
       .then((response) => {
         return response.text();
       })

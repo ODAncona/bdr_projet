@@ -20,3 +20,4 @@ Notre application a besoin de docker pour fonctionner.
 Nous avons mis en place tous les scripts nécessaires pour créer un environnemnt Apache-PHP capable de communiquer avec la base de donnée.
 
 ## Lancer l'application sans docker
+Le script `app-build-run.sh` de toutes les opérations nécessaires au lancement de l'application.

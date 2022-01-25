@@ -10,19 +10,6 @@ function init_session()
     }
 }
 
-/* function db_connect(string $serverName, string $userName, string $password, string $dbName, int $port = 5432) : PDO
-{
-    $servername = "postgres";
-    $username = "default";
-    $password = "default";
-    $dbname = "Beergarden"; // sensible à la casse
-    $port = "5432";
-    $conn = new PDO("pgsql:host=$servername;port=$port;dbname=$dbname",$username,$password);
-    $conn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    
-    return $conn;
-} */
-
 function db_connect() : PDO
 {
     $servername = getenv('DB_SERVER_HOST');
@@ -39,7 +26,10 @@ function db_connect() : PDO
             throw new Exception("Les variables d'environnement ne sont pas correctement définies.");
         }
         
+
     $conn = new PDO("pgsql:host=$servername;port=$port;dbname=$dbname", $username,$password);
+
+    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
     $conn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     
     return $conn;
