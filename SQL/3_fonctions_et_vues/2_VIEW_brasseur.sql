@@ -6,10 +6,10 @@ CREATE VIEW vBrasserie AS
 SELECT
     Brasserie.nom AS nomBrasserie,
     InfoBrasserie.description,
-	COUNT(*) AS nbBieres,
+	COUNT(*) AS nbBières,
 	round(AVG(vBière.noteMoyenne), 2) AS moyenneNotesAvis,
     CASE WHEN Brasserie.idbrasseur IS NOT NULL
-        THEN 'oui' ELSE 'non' END AS revendique,
+        THEN 'oui' ELSE 'non' END AS revendiquée,
     CASE WHEN Brasseur.actif
         THEN 'oui' ELSE 'non' END AS actif,
     Adresse.ville AS localiteBrasserie,

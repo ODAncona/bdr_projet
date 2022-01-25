@@ -8,7 +8,7 @@ SELECT
 	Bière.nomBière,
 	Brasserie.nom AS nomBrasseur,
 	Bière.nomTypeBière,
-	Brasserie.id AS idbrasserie,
+	Brasserie.id AS idBrasserie,
 	COUNT(Avis.nomBière) AS nbAvis,
 	round(AVG(AvisBière.score), 2) AS noteMoyenne,
 	round(AVG(AvisBière.acidité), 2) AS aciditeMoyenne,
