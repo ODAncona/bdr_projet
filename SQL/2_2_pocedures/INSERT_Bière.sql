@@ -10,7 +10,7 @@ DROP PROCEDURE IF EXISTS insérer_bière;
 CREATE OR REPLACE PROCEDURE insérer_bière (
     p_nomBière STRING,
     p_nomBrasserie STRING,
-    p_prix INTEGER,
+    p_prix REAL,
     p_typeBière STRING, 
     p_description TEXT,
     p_pseudoPersonne STRING )
