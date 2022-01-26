@@ -10,6 +10,7 @@ fi
 echo "Génération du fichier sql unique ..."
 cat 1_creation_tables/*.sql > $fileName;
 cat 2_1_triggers/*.sql >> $fileName;
+cat 2_2_procedures/*.sql >> $fileName;
 cat 3_fonctions_et_vues/*.sql >> $fileName;
 cat 4_peuplement/*.sql >> $fileName;
 

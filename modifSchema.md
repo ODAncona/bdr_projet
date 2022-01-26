@@ -1,1 +1,0 @@
-- Bière.prix -> double

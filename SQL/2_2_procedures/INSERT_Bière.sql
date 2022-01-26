@@ -6,7 +6,7 @@ Si le type de bière n'existe pas, un nouveau type est créé.
 Si l'utilisateur n'existe pas, alors la procédure échoue.
 */
 -- Le type STRING est défini lors de la création des tables comme VARCHAR(30)
-DROP PROCEDURE IF EXISTS insérer_bière;
+-- DROP PROCEDURE IF EXISTS insérer_bière;
 CREATE OR REPLACE PROCEDURE insérer_bière (
     p_nomBière STRING,
     p_nomBrasserie STRING,
