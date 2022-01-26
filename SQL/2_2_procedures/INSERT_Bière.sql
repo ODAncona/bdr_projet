@@ -32,7 +32,7 @@ BEGIN
         INSERT INTO Brasserie (nom) VALUES (p_nomBrasserie);
         _idBrasserie := currval(pg_get_serial_sequence('brasserie','id'));
     END IF;
-    SELECT INTO _typeBière nom FROM TypeBière WHERE nom = p_typeBière;
+    SELECT INTO _typeBière nom FROM TypeBière WHERE nom = UPPER(p_typeBière);
     IF _typeBière IS NULL THEN
         RAISE NOTICE 'Ajout d''un nouveau type de bière --> %', p_typeBière;
         INSERT INTO typeBière VALUES (UPPER(p_typeBière), 'lorem ipsum');
