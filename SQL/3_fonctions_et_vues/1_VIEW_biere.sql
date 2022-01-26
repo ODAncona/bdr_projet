@@ -1,7 +1,7 @@
 /* ------------------------- */
 -- Vue Bière
-DROP VIEW IF EXISTS vFavoris;
-DROP VIEW IF EXISTS vBrasserie;
+--DROP VIEW IF EXISTS vFavoris;
+--DROP VIEW IF EXISTS vBrasserie;
 DROP VIEW IF EXISTS vBière;
 CREATE VIEW vBière AS
 SELECT
@@ -14,8 +14,8 @@ SELECT
 	round(AVG(AvisBière.acidité), 2) AS aciditeMoyenne,
 	round(AVG(AvisBière.amertume), 2) AS amertumeMoyenne,
 	round(AVG(AvisBière.douceur), 2) AS douceurMoyenne,
-	round(AVG(AvisBière.pétillance), 2) AS petillanceMoyenne,
-	Bière.description
+	round(AVG(AvisBière.pétillance), 2) AS petillanceMoyenne
+	-- ,Bière.description
 FROM Bière
 INNER JOIN Brasserie
     ON Brasserie.id = Bière.idBrasserie
