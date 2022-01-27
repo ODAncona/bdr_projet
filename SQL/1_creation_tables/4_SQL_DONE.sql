@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS Brasseur CASCADE;
 CREATE TABLE Brasseur (
 	idPersonne INT,
 	actif BOOLEAN DEFAULT FALSE,
+	idBrasserie INT NOT NULL,
 	CONSTRAINT PK_Brasseur PRIMARY KEY (idPersonne)
 );
 /*------------------------------------------------------------------*/
@@ -46,7 +47,6 @@ DROP TABLE IF EXISTS Brasserie CASCADE;
 CREATE TABLE Brasserie (
 	id SERIAL,
 	nom STRING NOT NULL,
-	idBrasseur INT,
 	CONSTRAINT PK_Brasserie PRIMARY KEY (id)
 );
 /*------------------------------------------------------------------*/
@@ -247,12 +247,12 @@ FOREIGN KEY (idPersonne)
 REFERENCES Personne (id)
 ON DELETE RESTRICT
 ON UPDATE RESTRICT;
-/*------------------------------------------------------------------*/
-/*------------------------------------------------------------------*/
-ALTER TABLE Brasserie
-ADD CONSTRAINT FK_Brasserie_idBrasseur
-FOREIGN KEY (idBrasseur)
-REFERENCES Brasseur (idPersonne)
+
+
+ALTER TABLE Brasseur
+ADD CONSTRAINT FK_Brasseur_idBrasserie
+FOREIGN KEY (idBrasserie)
+REFERENCES Brasserie (id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 /*------------------------------------------------------------------*/
