@@ -7,8 +7,8 @@ RUN docker-php-ext-install pdo pdo_pgsql pgsql
 #RUN sed -i -e 's/;extension=pdo_pgsql/extension=pdo_pgsql/' /usr/local/etc/php/php.ini
 
 # installation des outils de dubuggage
-RUN pecl install xdebug && docker-php-ext-enable xdebug
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-COPY error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+#RUN pecl install xdebug && docker-php-ext-enable xdebug
+#COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+#COPY error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
 
 RUN a2enmod rewrite
