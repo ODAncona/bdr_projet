@@ -9,53 +9,33 @@ keywords: [BDR]
 
 ## Table des matières
 
-1.  Contexte
+1.  Table des matières
 2.  Introduction
-3.  Structure du projet
-4.  Structure de la base de donnée
-    4.1 Modèle entité association
-    4.2 Modèle relationnel
-5.  Mise en route
-6.  Structure de l'application
-7.  Conclusion
-8.  Annexes
-
-## Contexte
+3.  Descriptif du projet réalisé
+4.  Modèle entité association
+5.  Modèle relationnel
+    -   Représentation graphique
+    -   Description des tables / attributs
+6.  Description de l'application réalisée
+    -   interface
+    -   manuel utilisateur
+7.  Bugs connus
+8.  Conclusion
+9.  Annexes
+    -   Guide d'installation
+    -   Structure du projet
 
 ## Introduction
 
-## Structure du projet
+Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles donné en 2021-2022 à l'HEIG-VD. Ce document constitue la clé de voute du projet qui regroupe une vue globale sur le projet et les précédantes étapes. Voici la liste de ce qui a été entrepris préalablement:
 
-## Structure de la base de donnée
+-   Cahier des charges
+-   Modélisation conceptuelle (schéma EA)
+-   Modèle relationnel (script SQL peuplement + structure de la bdd)
+-   Requêtes, vues, triggers et procédures stockées
+-   Réalisation d'une application permettant d'interagir avec la base de donnée
 
-## Modèle EA
-
-![résultat](3_Schéma_EA_Révisé.png)
-
-Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
-
-### Modèle relationnel
-
--   Représentation graphique
--   Description des tables / attributs
-
-Pour une meilleure compréhension du modèle ci dessus, nous allons décrire les tables et les attributs qu'elles comportent.
-
-#### Personne
-
-Elle nous permet de représenter les acteurs de notre système. Elle comporte les informations dont nous souhaitons disposer pour chaque acteur du système: Le prénom, le nom , le genre, le pseudo, la date de naissance le courriel, le mot de passe et l'adresse. L'adresse ici est une information importante car notre application offre la possibilité de passer des commandes de bières. Et dans certains cas, l'adresse de livraison pourra être l'adresse renseignée lors de la création du compte utilisateur.
-
-#### Brasseur
-
-Le brasseur est un acteur du système qui hérite de d'une `Personne` avec pour attribut complémentaire `actif` qui sera à `true` quand le brasseur en question sera actif dans la base de donnée.
-
-#### Image
-
-C'est un table qui permet de stocker les informations basiques sur les images des `Brasseries` et des `Bières` que la BD va stocker. ainsi les tables ``
-
-## Mise en route
-
-## Structure de l'application
+## Descriptif du projet réalisé
 
 ![résultat](app-images/1_accueil.png)
 Après connexion avec les identifiants pseudo:Alicow mot de passe: 1234 de l'utilisateur Alice Dupont.
@@ -78,10 +58,40 @@ L'onglet DBtables donne à l'utilisateur un accès plus rapide aux informations 
 Sur ce onglet, en cliquant sur BrasseriesInfo l'utilisateur accède aisément aux informations de la brasserie.
 ![résultat](app-images/8_infobrasserie.png)
 
+## Structure du projet
+
+## Modèle entité association
+
+![résultat](3_Schéma_EA_Révisé.png)
+
+Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
+
+## Modèle relationnel
+
+### Représentation graphique
+
+### Description des tables / attributs
+
+Pour une meilleure compréhension du modèle ci dessus, nous allons décrire les tables et les attributs qu'elles comportent.
+
+#### Personne
+
+Elle nous permet de représenter les acteurs de notre système. Elle comporte les informations dont nous souhaitons disposer pour chaque acteur du système: Le prénom, le nom , le genre, le pseudo, la date de naissance le courriel, le mot de passe et l'adresse. L'adresse ici est une information importante car notre application offre la possibilité de passer des commandes de bières. Et dans certains cas, l'adresse de livraison pourra être l'adresse renseignée lors de la création du compte utilisateur.
+
+#### Brasseur
+
+Le brasseur est un acteur du système qui hérite de d'une `Personne` avec pour attribut complémentaire `actif` qui sera à `true` quand le brasseur en question sera actif dans la base de donnée.
+
+#### Image
+
+C'est un table qui permet de stocker les informations basiques sur les images des `Brasseries` et des `Bières` que la BD va stocker. ainsi les tables ``
+
+## Mise en route
+
 ## Conclusion
+
+## Bugs connus
 
 ## Annexes
 
-Pour pouvoir lancer l'application sur une machine tournant sous linux. il faut au préalable installer docker-compose dans une version recente en exécutant le script contenu à la racine ./install_docker-compose.sh.
-Une fois exécuté, il faudra lancer le script ./app-build-run.sh
-Ceci étant fait, se rendre sur son navigateur à l'adresse <http://172.18.0.3/> pour acceder à l'interface graphipe.
+-   [Guide Installation](5_Guide_Installation.md)
