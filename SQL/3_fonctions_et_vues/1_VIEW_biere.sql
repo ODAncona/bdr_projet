@@ -6,7 +6,7 @@
 CREATE OR REPLACE VIEW vBière AS
 SELECT
 	Bière.nomBière,
-	Brasserie.nom AS nomBrasseur,
+	Brasserie.nom AS nomBrasserie,
 	Bière.nomTypeBière,
 	Brasserie.id AS idBrasserie,
 	COUNT(Avis.nomBière) AS nbAvis,
