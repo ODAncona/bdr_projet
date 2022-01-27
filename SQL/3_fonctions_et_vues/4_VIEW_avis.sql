@@ -1,5 +1,5 @@
  
--- Créer une vue qui afficher tous les avis, avec les personnes en relation, le nom de la bière, le brasseur, ajout de l'id de la reponse à l'avis.
+-- Créer une vue qui affiche tous les avis, avec les personnes en relation, le nom de la bière, le brasseur, ajout de l'id de la reponse à l'avis.
 DROP VIEW IF EXISTS vAvis;
 CREATE OR REPLACE VIEW vAvis AS
 SELECT
