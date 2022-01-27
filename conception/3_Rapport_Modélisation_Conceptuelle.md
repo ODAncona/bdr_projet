@@ -1,5 +1,4 @@
-* * *
-
+---
 title: "Projet BDR : The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
