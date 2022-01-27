@@ -1,5 +1,4 @@
-* * *
-
+---
 title: "Projet BDR : The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -37,38 +36,40 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 ## Descriptif du projet réalisé
 
-![résultat](app-images/1_accueil.png)
+![résultat](images/1_accueil.png)
 Après connexion avec les identifiants pseudo:Alicow mot de passe: 1234 de l'utilisateur Alice Dupont.
-![résultat](app-images/2_accueil.png)
+![résultat](images/2_accueil.png)
 
 Lorsqu'on clique sur Bières, toutes les bières sont présentées à l'utilisateur.
-![résultat](app-images/3_bieres.png)
+![résultat](images/3_bieres.png)
 Lorsqu'on clique sur Brasseries, toutes les Brasseries sont présentées à l'utilisateur.
 
-![résultat](app-images/4_brasseries.png)
+![résultat](images/4_brasseries.png)
 Dans l'onglet favoris, l'utilisateur peut voir toutes les bières qu'il a ajouté à ses favoris
 
-![résultat](app-images/5_favoris.png)
+![résultat](images/5_favoris.png)
 
 L'onglet recherche n'a pas encore été implémenté
-![résultat](app-images/6_recherche.png)
+![résultat](images/6_recherche.png)
 
 L'onglet DBtables donne à l'utilisateur un accès plus rapide aux informations qu'il pourrait souhaiter obtenir. Par exemple en cliquant sur DBtables
-![résultat](app-images/7_dbtables.png)
+![résultat](images/7_dbtables.png)
 Sur ce onglet, en cliquant sur BrasseriesInfo l'utilisateur accède aisément aux informations de la brasserie.
-![résultat](app-images/8_infobrasserie.png)
+![résultat](images/8_infobrasserie.png)
 
 ## Structure du projet
 
 ## Modèle entité association
 
-![résultat](3_Schéma_EA_Révisé.png)
+![Modèle EA](3_Schéma_EA_Révisé.png)
 
 Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
 
 ## Modèle relationnel
 
 ### Représentation graphique
+
+
 
 ### Description des tables / attributs
 
@@ -85,8 +86,6 @@ Le brasseur est un acteur du système qui hérite de d'une `Personne` avec pour 
 #### Image
 
 C'est un table qui permet de stocker les informations basiques sur les images des `Brasseries` et des `Bières` que la BD va stocker. ainsi les tables ``
-
-## Mise en route
 
 ## Conclusion
 
