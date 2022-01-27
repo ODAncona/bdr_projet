@@ -1,4 +1,5 @@
----
+* * *
+
 title: "Projet BDR : The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -10,14 +11,14 @@ keywords: [BDR]
 
 ## Table des matières
 
-1. Introduction
-2. Modélisation  
-  2.1. Schéma EA  
-  2.2. Contraintes d'intégrité
-3. Choix de conception  
-  3.1. Explications complémentaires
-  3.2. Remarques sur le cahier des charges
-4. Conclusion
+1.  Introduction
+2.  Modélisation  
+    2.1. Schéma EA  
+    2.2. Contraintes d'intégrité
+3.  Choix de conception  
+    3.1. Explications complémentaires
+    3.2. Remarques sur le cahier des charges
+4.  Conclusion
 
 ## Introduction
 
@@ -32,50 +33,62 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 ### Contraintes d'intégrité
 
 #### Personne
-- La date de naissance doit correspondre à un âge de plus de 18 ans.
+
+-   La date de naissance doit correspondre à un âge de plus de 18 ans.
 
 #### Brasseur
-- Un brasseur désactivé ne peut pas répondre à un avis de bière.
+
+-   Un brasseur désactivé ne peut pas répondre à un avis de bière.
 
 #### Bière
-- Le prix doit être supérieur ou égal à 0 lorsqu'il est défini
+
+-   Le prix doit être supérieur ou égal à 0 lorsqu'il est défini
 
 #### Avis
-- La date de création doit être inférieure à la date actuelle.
-- La date de création doit être supérieure à la date de création d'une bière.
+
+-   La date de création doit être inférieure à la date actuelle.
+-   La date de création doit être supérieure à la date de création d'une bière.
 
 #### Avis_Bière
-- Le score doit être compris entre 2 et 10.
-- L'acidité, l'amertume, la douceur et la pétillance ont des valeurs comprises entre 1 et 10.
+
+-   Le score doit être compris entre 2 et 10.
+-   L'acidité, l'amertume, la douceur et la pétillance ont des valeurs comprises entre 1 et 10.
 
 #### Réponse_Avis_Bière
-- `utile` et `inutile` doivent être supérieurs ou égals à 0.
-- Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné.
-- Seuls les brasseurs actifs peuvent donner une réponse.
+
+-   `utile` et `inutile` doivent être supérieurs ou égals à 0.
+-   Une réponse à un avis ne peut pas avoir une date inférieure à l'avis concerné.
+-   Seuls les brasseurs actifs peuvent donner une réponse.
 
 #### Bière - Personne (favoris)
-- La date d'ajout dans les favoris doit être inférieure à la date actuelle.
-- La date d'ajout dans les favoris doit être supérieure à la date de création de la bière.
+
+-   La date d'ajout dans les favoris doit être inférieure à la date actuelle.
+-   La date d'ajout dans les favoris doit être supérieure à la date de création de la bière.
 
 #### Bière - Commande
-- La quantité doit être supérieure à 0.
-- La date de création de bière doit être égale ou inférieure à la date actuelle.
+
+-   La quantité doit être supérieure à 0.
+-   La date de création de bière doit être égale ou inférieure à la date actuelle.
 
 #### Brasserie
-- Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
+
+-   Un brasseur ne peut pas revendiquer une brasserie déjà revendiquée.
 
 #### Adresse
-- Le numéro de rue doit être supérieur à 0.
-- Le numéro postal doit être supérieur à 0.
-- Si un utilisateur ajoute une adresse d'envoi, elle doit être différente de l'adresse de facturation.
+
+-   Le numéro de rue doit être supérieur à 0.
+-   Le numéro postal doit être supérieur à 0.
+-   Si un utilisateur ajoute une adresse d'envoi, elle doit être différente de l'adresse de facturation.
 
 #### Commande
-- La date de commande doit être inférieur ou égale la date actuelle.
-- La date de commande doit être supérieure à la date de création de la bière.
+
+-   La date de commande doit être inférieur ou égale la date actuelle.
+-   La date de commande doit être supérieure à la date de création de la bière.
 
 #### Info_Brasserie
-- Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
-- le rayon doit être supérieur ou égal à 0.
+
+-   Les valeurs de longitude et de latitude sont comprises dans l'intervalle [-180, 180].
+-   le rayon doit être supérieur ou égal à 0.
 
 ## Choix de conception
 
@@ -83,8 +96,8 @@ Voici la suite de la modélisation de notre application beergarden. Dans ce docu
 
 #### Brasserie
 
-- `revendiquée` est un champ booléen. `false` signifie que la brasserie n'a pas été revendiquée.
-- Lorsqu'un brasseur revendique une brasserie, les droits de modification des bières de cette brasserie lui sont transférés par une modification de la relation `modifie` entre `Personne` et `Bière`. Le champ `revendiquée` de l'entité `Brasserie` passe à true.
+-   `revendiquée` est un champ booléen. `false` signifie que la brasserie n'a pas été revendiquée.
+-   Lorsqu'un brasseur revendique une brasserie, les droits de modification des bières de cette brasserie lui sont transférés par une modification de la relation `modifie` entre `Personne` et `Bière`. Le champ `revendiquée` de l'entité `Brasserie` passe à true.
 
 ### Remarques sur le cahier des charges
 
