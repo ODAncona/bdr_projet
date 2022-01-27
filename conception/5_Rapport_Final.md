@@ -45,15 +45,13 @@ L'application est un site web réalisé avec php et bootstrap valorisant tout ce
 
 3. **Catalogue des brasseries** : page qui référence toutes les brasseries avec une barre de recherche.
 
-4. **Liste des avis sur une bière** : permet de consulter les avis sur une bière.
+4. **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
 
-5. **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
+5. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté
 
-6. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté
+6. **Recherche avancée** : page qui permet de faire une recherche multicritère
 
-7. **Recherche avancée** : page qui permet de faire une recherche multicritère
-
-8. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
+7. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
 
 ![résultat](images/2_accueil.png)
 
