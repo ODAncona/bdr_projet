@@ -10,7 +10,7 @@
     <div class="w3-container mt-2 mx-2">
       <h1><b><?= $currentPageName ?></b></h1>
       <!-- Filters -->
-      <?php if (isset($filters)) : ?>
+      <?php if (isset($filters) && !empty($filters)) : ?>
         <div class="w3-section w3-bottombar w3-padding-16">
           <span class="w3-margin-right">Filtres:</span>
           <!-- <button class="w3-button w3-black">Tout</button> -->

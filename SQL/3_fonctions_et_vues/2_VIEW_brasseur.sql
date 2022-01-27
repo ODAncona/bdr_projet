@@ -8,8 +8,6 @@ SELECT
     -- InfoBrasserie.description,
 	COUNT(*) AS nbBières,
 	round(AVG(vBière.noteMoyenne), 2) AS moyenneNotesAvis,
-    CASE WHEN Brasserie.idbrasseur IS NOT NULL
-        THEN 'oui' ELSE 'non' END AS revendiquée,
     CASE WHEN Brasseur.actif
         THEN 'oui' ELSE 'non' END AS brasseurActif,
     Adresse.ville AS localitéBrasserie,
@@ -24,7 +22,7 @@ LEFT JOIN InfoBrasserie
 LEFT JOIN Adresse
 	ON InfoBrasserie.idAdresse = Adresse.id
 LEFT JOIN Brasseur
-    ON Brasserie.idBrasseur = Brasseur.idPersonne
+    ON Brasserie.id = Brasseur.idBrasserie 
 LEFT JOIN Personne
     ON Personne.id = Brasseur.idPersonne
 LEFT JOIN image

@@ -62,6 +62,24 @@ INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Rue Pierre Viret'
 
 -- adresse d'une livraison
 INSERT INTO adresse (rue, numéro, codepostal, ville) VALUES ('Rue Pépinet', 10, 1003, 'Lausanne');  --14
+
+
+/*------------------------------------------------------------------*/
+/* Brasserie */
+/*------------------------------------------------------------------*/
+--revendiquee
+
+  /*  la brasserie 1 est gérée par le brasseur d'id 9  */
+  /*  la brasserie 2 est gérée par le brasseur d'id 10  */
+  /*  la brasserie 3 est gérée par le brasseur d'id 11  */
+
+INSERT INTO Brasserie(nom) VALUES('Brasserie du Virage');
+INSERT INTO Brasserie(nom) VALUES('Brasserie Lipp');
+INSERT INTO Brasserie(nom) VALUES('Brasserie des Murailles');
+-- Non revendiquee
+INSERT INTO Brasserie(nom) VALUES('Le Lyrique');
+
+
 /*------------------------------------------------------------------*/
 /* Personne */
 /*------------------------------------------------------------------*/
@@ -84,12 +102,13 @@ INSERT INTO personne(prénom, nom, genre, pseudo, courriel, motdepasse, idadress
 INSERT INTO personne(prénom, nom, genre, pseudo, courriel, motdepasse, idadresse) VALUES ('verreux', 'Montagneux', 'm', 'DJohns', 'verreuxxx@example.com', '1234', 10); --11
 
 
+
 /*------------------------------------------------------------------*/
 /* Brasseur */
 /*------------------------------------------------------------------*/
-INSERT INTO brasseur(idPersonne, actif) VALUES (9, TRUE); --9
-INSERT INTO brasseur(idPersonne, actif) VALUES (10, TRUE);   --10
-INSERT INTO brasseur(idPersonne, actif) VALUES (11, TRUE); --11
+INSERT INTO brasseur(idPersonne, actif, idBrasserie) VALUES (9, TRUE, 1); --9
+INSERT INTO brasseur(idPersonne, actif, idBrasserie) VALUES (10, TRUE, 2);   --10
+INSERT INTO brasseur(idPersonne, actif, idBrasserie) VALUES (11, TRUE, 3); --11
 
 /*------------------------------------------------------------------*/
 /* TypeBière */
@@ -103,24 +122,6 @@ INSERT INTO TypeBière(nom, description) VALUES ('CARBONNADE', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('BRUNE', NULL);
 INSERT INTO TypeBière(nom, description) VALUES ('AMBREE', NULL);
 
-
-
-
-
-/*------------------------------------------------------------------*/
-/* Brasserie */
-/*------------------------------------------------------------------*/
---revendiquee
-
-  /*  la brasserie 1 est gérée par le brasseur d'id 9  */
-  /*  la brasserie 2 est gérée par le brasseur d'id 10  */
-  /*  la brasserie 3 est gérée par le brasseur d'id 11  */
-
-INSERT INTO Brasserie(nom, idBrasseur) VALUES('Brasserie du Virage', 9);
-INSERT INTO Brasserie(nom, idBrasseur) VALUES('Brasserie Lipp', 10);
-INSERT INTO Brasserie(nom, idBrasseur) VALUES('Brasserie des Murailles', 11);
--- Non revendiquee
-INSERT INTO Brasserie(nom, idBrasseur) VALUES('Le Lyrique', NULL);
 
 /*------------------------------------------------------------------*/
 /* Bière */
@@ -331,33 +332,33 @@ INSERT INTO Avis(idBrasserie, nomBière, dateCréation, contenu) VALUES (3, 'Whi
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
 VALUES(1, 3, 2, 6, 2, 4 , 1);
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(2, 3, 2, 6, 2, 4 ,1);
+VALUES(2, 4, 2, 6, 2, 4 ,1);
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 3, 3, 2, 6, 2, 4 , 2);
+VALUES( 3, 5, 2, 6, 2, 4 , 2);
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 4, 3, 2, 6, 2, 1, 3 );
+VALUES( 4, 2, 2, 6, 2, 1, 3 );
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
 VALUES( 5,  3, 2, 4, 2, 4, 4 );
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 6, 3, 2, 6, 2, 4 , 5);
+VALUES( 6, 4, 2, 6, 2, 4 , 5);
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 7,  3, 1, 6, 2, 4 , 6);
+VALUES( 7,  5, 1, 6, 2, 4 , 6);
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
 VALUES( 8, 3, 2, 6, 2, 4 , 7);
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 9, 3, 2, 6, 5, 4, 8 );
+VALUES( 9, 2, 2, 6, 5, 4, 8 );
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 10, 3, 2, 6, 2, 4, 8 );
+VALUES( 10, 5, 2, 6, 2, 4, 8 );
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES( 11, 3, 2, 4, 2, 9 , 7);
+VALUES( 11, 6, 2, 4, 2, 9 , 7);
 INSERT INTO AvisBière(idAvis,score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(  12, 3, 2, 6, 7, 4 , 7);
+VALUES(  12, 4, 2, 6, 7, 4 , 7);
 
 -- Commentaires n'ayant pas de réponses;
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
 VALUES(13,  3, 2, 6, 2, 4 ,6);
 INSERT INTO AvisBière(idAvis, score,acidité,amertume,douceur,pétillance,idPersonne)
-VALUES(14, 3, 2, 6, 2, 4 ,5);
+VALUES(14, 4, 2, 6, 2, 4 ,5);
 
 /*------------------------------------------------------------------*/
 /* RéponseAvisBière */
