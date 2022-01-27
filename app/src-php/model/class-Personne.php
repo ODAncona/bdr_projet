@@ -4,8 +4,6 @@ use JetBrains\PhpStorm\ExpectedValues;
 
 class Personne {
 
-    //private $dbNomsColonnes = ["id", "prénom", "nom", "genre", "pseudo", "bdate", "courriel", "motdepasse", "idadresse"];
-
     private array $data = [];
 
     public function __construct(private PDO $dbClient)
@@ -33,7 +31,7 @@ class Personne {
     public function checkPassword(string $expextedPassword)
     {
         $password = isset($this->data['motdepasse']) ? $this->data['motdepasse'] : "";
-        return $expextedPassword == $password;
+        return $expextedPassword === $password;
     }
 
     // Getters
