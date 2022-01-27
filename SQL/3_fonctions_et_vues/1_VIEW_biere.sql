@@ -1,7 +1,7 @@
 /* ------------------------- */
 -- Vue Bière
---DROP VIEW IF EXISTS vFavoris;
---DROP VIEW IF EXISTS vBrasserie;
+-- DROP VIEW IF EXISTS vFavoris;
+-- DROP VIEW IF EXISTS vBrasserie;
 -- DROP VIEW IF EXISTS vBière;
 CREATE OR REPLACE VIEW vBière AS
 SELECT
@@ -15,7 +15,8 @@ SELECT
 	round(AVG(AvisBière.amertume), 2) AS amertumeMoyenne,
 	round(AVG(AvisBière.douceur), 2) AS douceurMoyenne,
 	round(AVG(AvisBière.pétillance), 2) AS petillanceMoyenne,
-	Bière.prix
+	Bière.prix,
+	COALESCE(string_agg(Image.nomFichier, ', ')) AS src_images
 	-- ,Bière.description
 FROM Bière
 INNER JOIN Brasserie
@@ -24,5 +25,7 @@ LEFT JOIN Avis
     ON (Avis.nomBière, Avis.idBrasserie) = (Bière.nomBière, Bière.idBrasserie)
 LEFT JOIN AvisBière
 	ON AvisBière.idAvis = Avis.id
-GROUP BY Bière.nomBière, Bière.idBrasserie, Brasserie.id
+LEFT JOIN Image
+	ON (Image.nomBière, Image.bièreIdBrasserie) = (Bière.nomBière, Bière.idBrasserie)
+GROUP BY Bière.nomBière, Bière.idBrasserie, Brasserie.id, Image.nomBière, Image.bièreIdBrasserie
 ORDER BY nbAvis DESC;
