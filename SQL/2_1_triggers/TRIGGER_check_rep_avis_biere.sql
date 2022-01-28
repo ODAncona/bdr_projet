@@ -1,20 +1,24 @@
 /**
-* Ajoute un nouveau type de bière si on tente d'insérer une bière
-* avec un type de bière qui n'existe pas encore.
+* Seul un Brasseur actif peut répondre à un avis
 */
--- CREATE OR REPLACE FUNCTION fn_check_insert_réponse_avis()
---     RETURNS TRIGGER AS
--- $$
--- DECLARE
+CREATE OR REPLACE FUNCTION insert_RéponseAvisBière() RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $BODY$
+BEGIN
+IF(NEW.idBrasseur NOT IN (SELECT idPersonne 
+FROM Brasseur
+WHERE actif = FALSE) ) THEN
+INSERT INTO RéponseAvisBière(idAvis, idAvisBière, idBrasseur)
+VALUES (NEW.idAvis, NEW.idAvisBière, NEW.idBrasseur);
+ELSE
+RAISE EXCEPTION 'Brasseur inactif';
+END IF;
+RETURN NULL; -- NULL car AFTER trigger
+END;
+$BODY$;
 
--- BEGIN
---     -- vérifier que c'est bien un brasseur qui insère l'avis
---     -- vérifier //
--- END;
--- $$
--- LANGUAGE plpgsql;
 
--- CREATE OR REPLACE TRIGGER check_insert_réponse_avis
---     BEFORE INSERT ON RéponseAvisBière 
---     FOR EACH ROW
---         EXECUTE FUNCTION fn_check_insert_réponse_avis();
+CREATE TRIGGER chk_dates_before
+BEFORE INSERT ON RéponseAvisBière
+FOR EACH ROW
+EXECUTE FUNCTION insert_RéponseAvisBière();
