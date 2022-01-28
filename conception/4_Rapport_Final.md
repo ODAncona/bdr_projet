@@ -81,7 +81,7 @@ Sur ce onglet, en cliquant sur BrasseriesInfo l'utilisateur accède aisément au
 
 ## Modèle entité association
 
-![Modèle EA](3_Schéma_EA_Révisé.png)
+![Modèle EA](1_Schéma_EA_Révisé.png)
 
 Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
 
@@ -89,7 +89,7 @@ Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au 
 
 ### Représentation graphique
 
-![Schéma relationnel](4_schéma_relationnel.png)
+![Schéma relationnel](2_schéma_relationnel.png)
 
 ### Description des tables / attributs
 
@@ -115,5 +115,5 @@ La fin du semestre est déjà arrivée et nous avons eu du plaisir à développe
 
 ## Annexes
 
--   [Guide Installation](5_Guide_Installation.pdf)
--   [Manuel Utilisateur](5_Manuel_Utilisateur.pdf)
+-   [Guide Installation](4_Guide_Installation.pdf)
+-   [Manuel Utilisateur](4_Manuel_Utilisateur.pdf)
