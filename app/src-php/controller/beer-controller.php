@@ -29,7 +29,7 @@ try {
 if (isset($_GET['nom']) && isset($_GET['id'])) {
 
     // Récupérer les données sous forme de tableau associatif
-    $data = $dbView->getData();
+    $beers = $dbView->getData();
     // $nom = $_GET['nom'];
     // $id = $_GET['id'];
     // $sql = "SELECT * FROM vBière WHERE nomBière = :nom AND idBrasserie = :id ";
@@ -39,13 +39,13 @@ if (isset($_GET['nom']) && isset($_GET['id'])) {
     // }
     //$PDOStatement->debugDumpParams();
 
-    $data2 = array();
+    $reviews = array();
     $nom = $_GET['nom'];
     $id = $_GET['id'];
     $sql = "SELECT * FROM vAvis WHERE nomBière = :nom AND idBrasserie = :id ";
     $PDOStatement = $DB_CLIENT->prepare($sql);
     if ($PDOStatement->execute([':nom' => $nom, ':id' => $id])) {
-        $data2 = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
+        $reviews = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
     }
     //$PDOStatement->debugDumpParams();
 
