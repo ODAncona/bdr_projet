@@ -43,10 +43,10 @@ if (isset($_GET['nom']) && isset($_GET['id'])) {
 
 
 $tableToPrint = $dbView;
+$beersArray = $dbView->getData();
 if (isset($_GET['ajax']) && $_GET['ajax'] === 'true') {
-    require(__DIR__ . '/../view/components/component-table.php');
+    require(__DIR__ . '/../view/components/component-beer.php');
 } else {
 
-    $beersArray = $dbView->getData();
     require(__DIR__ . '/../view/page-all-beer.php');
 }

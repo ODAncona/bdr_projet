@@ -1,4 +1,4 @@
-<div class="container beer-container">
+<div id="bgrd-table" class="container beer-container">
 <?php
 
 
