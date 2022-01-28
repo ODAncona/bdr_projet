@@ -1,8 +1,5 @@
 <div id="bgrd-table" class="container beer-container">
 <?php
-
-
-
 if (isset($beersArray)) : ?>
   <?php foreach ($beersArray as $beer) :
     $img = "public/images/beer_default.jpg";
