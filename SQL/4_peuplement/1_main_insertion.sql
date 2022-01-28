@@ -126,20 +126,20 @@ INSERT INTO TypeBière(nom, description) VALUES ('AMBREE', NULL);
 /*------------------------------------------------------------------*/
 /* Bière */
 /*------------------------------------------------------------------*/
-INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (1, 'Equinox', 3, NULL, 'Pour l’été, quoi de mieux qu’une bière blanche légère et épicée qui remet en valeur toute la fraîcheur qu’on peut tirer d’un malt de froment ? Le pari de ces brasseurs lausannois est réussi, et on s’en régale. Santé ! ',
+INSERT INTO Bière (idBrasserie, nomBière, prix, description, nomTypeBière, idPersonne)
+VALUES (1, 'Equinox', 4.3, 'Pour l’été, quoi de mieux qu’une bière blanche légère et épicée qui remet en valeur toute la fraîcheur qu’on peut tirer d’un malt de froment ? Le pari de ces brasseurs lausannois est réussi, et on s’en régale. Santé ! ',
 'BLANCHE', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (1, 'Wanderer', 3, NULL,'Une American IPA brassée avec le souci de ne pas effrayer les nouveaux amateurs de bières, la Wanderer permet de découvrir le style de l’IPA et ses arômes frais qui évitent avec bon goût l’écueil d’une amertume trop tranchée.',
+VALUES (1, 'Wanderer', 1.3,'Une American IPA brassée avec le souci de ne pas effrayer les nouveaux amateurs de bières, la Wanderer permet de découvrir le style de l’IPA et ses arômes frais qui évitent avec bon goût l’écueil d’une amertume trop tranchée.',
 'BLONDE', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (2, 'Cimpaye', 3, NULL, 'Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été ! ',
+VALUES (2, 'Cimpaye', 4.3, 'Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été ! ',
 'LAGER', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (3, 'Halfwit', 3, NULL, 'C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!',
+VALUES (3, 'Halfwit', 2.3, 'C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!',
 'GUINNESS', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (3, 'White Rabbit', 3, NULL, 'C’est la bière blanche du pack. Brassée à Rolle, elle offre des arômes de fruits à noyaux, de pommes et de miel avec un final rond et minéral agrémenté de notes fumées. Une blanche qui a du goût !' ,
+VALUES (3, 'White Rabbit', 3.5, 'C’est la bière blanche du pack. Brassée à Rolle, elle offre des arômes de fruits à noyaux, de pommes et de miel avec un final rond et minéral agrémenté de notes fumées. Une blanche qui a du goût !' ,
 'CARBONNADE', 1);
 
 /* Bière venant d'une brasserie non revendiquée ne peut être commandé, PRIX NULL Description NULL*/
@@ -213,37 +213,6 @@ INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'falken_1.p
 INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('ittinger_klosterbrau_1.jpg', 4,  'Ittinger Klosterbrau');   --16
 INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ( 'adler_1.jpg', 4,  'Adler');    --17
 INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('boxer_1.jpg', 4, 'Boxer');     --18
-
-/*------------------------------------------------------------------*/
-/* Image_Bière */
-/*------------------------------------------------------------------*/
-/*J'ai mis ici je ne sais pas si c'est correct, les images de bières*/
-
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (12, 4, 'Chopfab');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (13, 4, 'Egger');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (14, 4, 'Einsidler');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (15, 4, 'Falken');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (16, 4,  'Ittinger Klosterbrau');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (17, 4,  'Adler');
--- INSERT INTO Image_Bière(idImage, BièreIdBrasserie, nomBière) VALUES (18, 4, 'Boxer');
-
-/*------------------------------------------------------------------*/
-/* Image_Brasserie */
-/*------------------------------------------------------------------*/
-
-/*J'ai mis ici je ne sais pas si c'est correct, les images de brasseries*/
-
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (1, 1);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (2, 1);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (3, 1);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (4, 2);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (5, 2);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (6, 2);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (7, 3);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (8, 3);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (9, 3);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (10, 4);
--- INSERT INTO Image_Brasserie(idImage,idBrasserie) VALUES (11, 4);
 
 /*------------------------------------------------------------------*/
 /* InfoBrasserie */

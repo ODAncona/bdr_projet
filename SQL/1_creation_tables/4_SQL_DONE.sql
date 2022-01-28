@@ -66,7 +66,7 @@ CREATE TABLE Bière (
   idBrasserie INT,
   nomBière STRING,
   prix NUMERIC(5,2),
-  dateEnregistrement DATE,
+  dateEnregistrement DATE DEFAULT CURRENT_DATE NOT NULL,
   description TEXT,
   nomTypeBière STRING NOT NULL,
   idPersonne INT NOT NULL,
@@ -195,25 +195,6 @@ ADD CONSTRAINT UC_RéponseAvisBière_idAvisBière UNIQUE (idAvisBière);
 /*------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------*/
---ALTER TABLE Bière
---ADD CONSTRAINT UC_Bière_nomBière UNIQUE (nomBière);
-
---ALTER TABLE Bière
---ADD CONSTRAINT UC_Bière_idBrasserie UNIQUE (idBrasserie);
---ALTER TABLE Bière
---ADD CONSTRAINT UC_Bière_idBrasserieNomBière UNIQUE (idBrasserie, nomBière);
-/*------------------------------------------------------------------*/
-/*------------------------------------------------------------------*/
---ALTER TABLE Bière
---ADD CONSTRAINT UC_Bière_nomTypeBière UNIQUE (nomTypeBière);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
---ALTER TABLE Bière
---ADD CONSTRAINT UC_Bière_idPersonne UNIQUE (idPersonne);
-/*------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------*/
 ALTER TABLE Personne
 ADD CONSTRAINT UC_Personne_pseudo UNIQUE (pseudo);
 
@@ -334,14 +315,6 @@ FOREIGN KEY (idBrasserie, nomBière)
 REFERENCES Bière (idBrasserie, nomBière)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
-
---ALTER TABLE Avis
---ADD CONSTRAINT FK_Avis_nomBière
---FOREIGN KEY (nomBière)
---REFERENCES Bière (nomBière)
---ON DELETE CASCADE
---ON UPDATE RESTRICT;
-
 /*------------------------------------------------------------------*/
 -- Héritage
 ALTER TABLE AvisBière
