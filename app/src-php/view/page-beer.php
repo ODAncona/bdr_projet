@@ -8,15 +8,21 @@ $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
 $vBeer = $beers[0];
-$vAvis = $reviews[0];
-//var_dump($data);
-//var_dump($vAvis)
 ?>
+
 
 
 
 <?php //require("components/component-table.php"); ?>
 
+<?php
+  $img = "public/images/beer_default.jpg";
+if(isset($vBeer['src_images'])) {
+  //array_splice()
+  $img = 'public/images/' . $vBeer['src_images'];
+  //$img = $vBeer['src_images'];
+}
+?>
 
 <div class="container">
   <div class="row">
@@ -39,22 +45,18 @@ $vAvis = $reviews[0];
      </div>
 
     <div class="col-8">
-        <img class="img-beer" src="https://biereartisanale.ch/img/cms/biere.jpg">
+        <img class="img-beer" src="<?= $img ?>">
     </div>
   </div>
 
   <div class="container">
     <h2>Avis</h2>
-
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <img src="https://biereartisanale.ch/img/cms/biere.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?=$vBeer['nombière']?></h5>
-    <p class="card-text"><?=$vBeer['description']?></p>
-    <a href="localhost:9999/bieres?nom=<?=$vBeer['nombière']?>&id=<?=$vBeer['idbrasserie']?>" class="btn btn-primary">Go somewhere</a>
+    <?php foreach ($reviews as $rev) : ?>
+    <?php foreach ($rev as $key => $value) : ?>
+      <p><?= $key ?> : <?= $value ?></p>
+      <?php endforeach ?>
+      <p>-----------------------</p>
+    <?php endforeach ?>
   </div>
 </div>
 

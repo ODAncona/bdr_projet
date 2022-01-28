@@ -1,4 +1,10 @@
 img {
   border-style: none;
-  width: 100%;
+  max-height: 400px;
+}
+
+.beer-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }

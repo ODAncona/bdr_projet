@@ -28,28 +28,14 @@ try {
 
 if (isset($_GET['nom']) && isset($_GET['id'])) {
 
-    // Récupérer les données sous forme de tableau associatif
     $beers = $dbView->getData();
-    // $nom = $_GET['nom'];
-    // $id = $_GET['id'];
-    // $sql = "SELECT * FROM vBière WHERE nomBière = :nom AND idBrasserie = :id ";
-    // $PDOStatement = $DB_CLIENT->prepare($sql);
-    // if ($PDOStatement->execute([':nom' => $nom, ':id' => $id])) {
-    //     $data = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
-    // }
-    //$PDOStatement->debugDumpParams();
 
-    $reviews = array();
-    $nom = $_GET['nom'];
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM vAvis WHERE nomBière = :nom AND idBrasserie = :id ";
-    $PDOStatement = $DB_CLIENT->prepare($sql);
-    if ($PDOStatement->execute([':nom' => $nom, ':id' => $id])) {
-        $reviews = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
-    }
-    //$PDOStatement->debugDumpParams();
-
-
+    $DBViewReviews = new DBView($DB_CLIENT, 'vAvis');
+    $DBViewReviews->addFilter('nomBière', $_GET['nom']);
+    $DBViewReviews->addFilter('idBrasserie', $_GET['id']);
+    $reviews = $DBViewReviews->getData();
+    $DBViewReviews->fetch();
+    $reviews = $DBViewReviews->getData();
     require(__DIR__ . '/../view/page-beer.php');
     exit;
 }
@@ -57,8 +43,10 @@ if (isset($_GET['nom']) && isset($_GET['id'])) {
 
 
 $tableToPrint = $dbView;
+$beersArray = $dbView->getData();
 if (isset($_GET['ajax']) && $_GET['ajax'] === 'true') {
-    require(__DIR__ . '/../view/components/component-table.php');
+    require(__DIR__ . '/../view/components/component-beer.php');
 } else {
-    require(__DIR__ . '/../view/page-table.php');
+
+    require(__DIR__ . '/../view/page-all-beer.php');
 }

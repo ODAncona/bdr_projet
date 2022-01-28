@@ -10,6 +10,8 @@ abstract class DBInterface
     protected PDOStatement $PDOStatement;
     private int $fetchMode = PDO::FETCH_ASSOC;
 
+    private bool $caseSensitive = false;
+
     /**
      * index 0 : nom de la colonne à filtrer
      * index 1 : valeur à tester
@@ -91,6 +93,11 @@ abstract class DBInterface
         $this->fetchMode = $fetchMode;
     }
 
+    public function setCaseSensitivity(bool $caseSensitive) : void
+    {
+        $this->caseSensitive = $caseSensitive;
+    }
+
     /**
      * Constuit la chaîne de caractère pour la requête
      */
@@ -109,9 +116,18 @@ abstract class DBInterface
             if ($filterNb > 0) {
                 $sql .= " $this->logicalLink ";
             }
+
+            $colname = $value[0];
+            $testValue = $value[1];
             $filterPlaceHolder = ":val" . ++$filterNb;
-            $sql .= " " . $value[0] . $value[2] . $filterPlaceHolder;
-            $this->sqlPlaceHolders[$filterPlaceHolder] = $value[1];
+            $this->sqlPlaceHolders[$filterPlaceHolder] = $testValue;
+
+            if ($this->caseSensitive) {
+                $colname = "LOWER($colname)";
+                $filterPlaceHolder = "LOWER($filterPlaceHolder)";
+            }
+
+            $sql .=  $colname . " " . $value[2] . " " . $filterPlaceHolder;
         }
         
         return $sql;
