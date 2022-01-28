@@ -26,13 +26,17 @@ keywords: [BDR]
 
 ## Introduction
 
-Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles du semetre d'automne de l'année académique 2021-2022 à l'HEIG-VD. Ce document présente le projet tel qu'il se présentait pour le rendu final. Il offre une vue générale  sur le projet, sur ce qui a été réalisé ou non réalisé, avec un accent particulier sur la structure des données. Voici la liste de ce qui a été entrepris préalablement:
+Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles du semestre d'automne de l'année académique 2021-2022 à l'HEIG-VD. Ce document présente le projet tel qu'il se présentait pour le rendu final. Il offre une vue générale  sur le projet, sur ce qui a été réalisé ou non réalisé, avec un accent particulier sur la structure des données. Voici la liste de ce qui a été entrepris préalablement:
 
 -   Cahier des charges
 -   Modélisation conceptuelle (schéma EA)
 -   Modèle relationnel (script SQL peuplement + structure de la bdd)
 -   Requêtes, vues, triggers et procédures stockées
 -   Réalisation d'une application permettant d'interagir avec la base de donnée
+
+* [Cahier des charges](0_Cahier_Des_Charges_Final.pdf)
+* [Rapport modélisation conceptuelle](1_Rapport_Modélisation_Conceptuelle_Révisé.pdf)
+* [Rapport modèle relationnel et SQL](2_Rapport_MR_Et_SQL.pdf)
 
 ## Descriptif du projet réalisé
 
