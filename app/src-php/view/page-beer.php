@@ -8,15 +8,24 @@ $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
 $vBeer = $beers[0];
-$vAvis = $reviews[0];
+//$vAvis = $reviews;
 //var_dump($data);
 //var_dump($vAvis)
 ?>
 
 
 
+
 <?php //require("components/component-table.php"); ?>
 
+<?php
+  $img = "public/images/beer_default.jpg";
+if(isset($vBeer['src_images'])) {
+  //array_splice()
+  $img = 'public/images/' . $vBeer['src_images'];
+  //$img = $vBeer['src_images'];
+}
+?>
 
 <div class="container">
   <div class="row">
@@ -39,13 +48,18 @@ $vAvis = $reviews[0];
      </div>
 
     <div class="col-8">
-        <img class="img-beer" src="https://biereartisanale.ch/img/cms/biere.jpg">
+        <img class="img-beer" src="<?= $img ?>">
     </div>
   </div>
 
   <div class="container">
     <h2>Avis</h2>
-
+    <?php foreach ($reviews as $rev) : ?>
+    <?php foreach ($rev as $key => $value) : ?>
+      <p><?= $key ?> : <?= $value ?></p>
+      <?php endforeach ?>
+      <p>-----------------------</p>
+    <?php endforeach ?>
   </div>
 </div>
 

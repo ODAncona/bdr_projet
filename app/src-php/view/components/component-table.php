@@ -1,3 +1,8 @@
+<?php
+/**
+ * 
+ */
+?>
 <div id="bgrd-table" style="overflow-x: scroll;">
     <table class="table">
         <?php
