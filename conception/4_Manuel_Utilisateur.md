@@ -34,7 +34,7 @@ Cette page regroupe toutes les bières disponibles et affiche tous les attributs
 
 ### Bière particulière
 
-Cette page affiche toutes les caractéristiques d'une bière en particulier. On peut accéder à une bière grâce à l'url avec la syntaxe `/bières?nom=NOM&id=ID` avec NOM = nom de la bière et ID = id de la brasserie associée.
+Cette page affiche toutes les caractéristiques d'une bière en particulier.
 
 ## Brasseries
 
