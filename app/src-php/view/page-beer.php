@@ -49,4 +49,13 @@ var_dump($vAvis)
   </div>
 </div>
 
+<div class="card" style="width: 18rem;">
+  <img src="https://biereartisanale.ch/img/cms/biere.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><? echo($vBeer['nombière'])?></h5>
+    <p class="card-text"><? echo($vBeer['description'])?></p>
+    <a href="localhost:9999/bieres?nom=<?echo($vBeer['nombière'])?>&id=<?echo($vBeer['idbrasserie'])?>" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
 <?php require("footer.php"); ?>

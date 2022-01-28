@@ -4,6 +4,7 @@
 DROP VIEW IF EXISTS vBrasserie;
 CREATE VIEW vBrasserie AS
 SELECT
+    Brasserie.id,
     Brasserie.nom AS nomBrasserie,
     -- InfoBrasserie.description,
 	COUNT(*) AS nbBières,
@@ -22,7 +23,7 @@ LEFT JOIN InfoBrasserie
 LEFT JOIN Adresse
 	ON InfoBrasserie.idAdresse = Adresse.id
 LEFT JOIN Brasseur
-    ON Brasserie.id = Brasseur.idBrasserie 
+    ON Brasserie.id = Brasseur.idBrasserie
 LEFT JOIN Personne
     ON Personne.id = Brasseur.idPersonne
 LEFT JOIN image

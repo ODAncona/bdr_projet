@@ -29,7 +29,7 @@ if (isset($_GET['nom']) && isset($_GET['id'])) {
     }
     $data2 = array();
     $sql2 = "SELECT * FROM vAvis WHERE nomBière = :nom AND idBrasserie = :id ";
-    $PDOStatement2 = $DB_CLIENT->prepare($sql);
+    $PDOStatement2 = $DB_CLIENT->prepare($sql2);
     if ($PDOStatement2->execute([':nom' => $nom, ':id' => $id])) {
         $data2 = $PDOStatement2->fetchAll(PDO::FETCH_ASSOC);
     }

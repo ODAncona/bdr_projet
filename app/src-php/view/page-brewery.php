@@ -3,14 +3,12 @@
 
 
 <?php
-
-$currentPageName = $_GET['nom'];
+$vBrewery = $breweries[0];
+$vBeer = $beers[0];
+$currentPageName = $vBrewery['nombrasserie'];
 $filters = array();
 require("components/pagetitle.php");
-$vBeer = $data[0];
-$vAvis = $data2[0];
 //var_dump($data);
-var_dump($vAvis)
 ?>
 
 
@@ -21,30 +19,29 @@ var_dump($vAvis)
 <div class="container">
   <div class="row">
      <div class="col-4">
-       <!-- Caractéristiques !-->
-       <h2>Caractéristiques</h2>
-       <p>Type de bière: <?echo($vBeer['nomtypebière'])?></p>
-       <p>Prix Unitaire: <?echo($vBeer['prix'])?> CHF</p>
+       <!-- Informations !-->
+       <h2>Informations</h2>
+       <p>Moyenne de note: <?echo($vBrewery['moyennenotesavis'])?>/10</p>
+       <p>Localité: <?echo($vBrewery['localitébrasserie'])?></p>
 
-       <!-- Note !-->
-       <h2>Note Utilisateur: <?echo($vBeer['notemoyenne'])?> / 10</h2>
-       <p>Acidité:  <?echo($vBeer['aciditemoyenne'])?>/10</p>
-       <p>Amertume:  <?echo($vBeer['amertumemoyenne'])?>/10</p>
-       <p>Douceur:  <?echo($vBeer['douceurmoyenne'])?>/10</p>
-       <p>Pétillance:  <?echo($vBeer['petillancemoyenne'])?>/10</p>
+       <!-- Contacts !-->
+       <h2>Contacts</h2>
+       <p>Nom: <?echo($vBrewery['nombrasseur'])?></p>
+       <p>Prénom: <?echo($vBrewery['prenombrasseur'])?></p>
+       <p>Courriel: <?echo($vBrewery['courrielbrasseur'])?></p>
 
        <!-- Note !-->
       <h2>Description</h2>
-      <p> <? echo($vBeer['description'])?></p>
+      <p> <? echo($vBrewery['description'])?></p>
      </div>
 
     <div class="col-8">
-        <img class="img-beer" src="https://biereartisanale.ch/img/cms/biere.jpg">
+        <img class="img-beer" src="https://www.bern.com/assets/images/5/tramdepot-header-2786a77d-neu-2baa2b85.jpg">
     </div>
   </div>
 
   <div class="container">
-    <h2>Avis</h2>
+    <h2>Bières</h2>
 
   </div>
 </div>
