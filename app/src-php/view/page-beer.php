@@ -11,7 +11,11 @@ $vBeer = $data[0];
 $vAvis = $data2[0];
 //var_dump($data);
 var_dump($vAvis)
+
+
+
 ?>
+
 
 
 
@@ -45,7 +49,11 @@ var_dump($vAvis)
 
   <div class="container">
     <h2>Avis</h2>
-
+    <?php foreach ($data2 as $value) : ?>
+    <?php foreach ($value as $key2 => $value2) : ?>
+      <p><?= $key2 ?> : <?= $value2?></p>
+      <?php endforeach ?>
+    <?php endforeach ?>
   </div>
 </div>
 
