@@ -1,10 +1,23 @@
 img {
   border-style: none;
+  width: 100%;
+}
+
+.card-img {
+  border-style: none;
   max-height: 400px;
+  width: 400px;
+  height: 250px;
 }
 
 .beer-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: stretch;
+  margin: 1em;
+}
+
+.card {
+  margin: .1em;
+  margin-bottom: .6em;
 }
