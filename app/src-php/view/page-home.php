@@ -11,31 +11,31 @@ require("components/component-beer.php");
 
 <h2>Les mieux notées</h2>
 <?php
-$beerArray = $cheapBeers;
+$beerArray = $bestMarkBeers;
 require("components/component-beer.php");
 ?>
 
 <h2>Les moins connues</h2>
 <?php
-$beerArray = $cheapBeers;
+$beerArray = $lessKnownBeers;
 require("components/component-beer.php");
 ?>
 
 <h2>Les plus commandées</h2>
 <?php
-$beerArray = $cheapBeers;
+$beerArray = $mostOrderedBeers;
 require("components/component-beer.php");
 ?>
 
 <h2>Les plus commentées</h2>
 <?php
-$beerArray = $cheapBeers;
+$beerArray = $mostCommentedBeers;
 require("components/component-beer.php");
 ?>
 
 <h2>Les récentes</h2>
 <?php
-$beerArray = $cheapBeers;
+$beerArray = $mostRecentBeers;
 require("components/component-beer.php");
 ?>
 
