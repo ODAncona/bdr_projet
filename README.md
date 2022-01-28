@@ -1,6 +1,6 @@
 # The Beer Garden
 
-Trouver en un clique les meilleures bières
+Trouver en un clique les meilleures bières.
 
 ## Structure du projet
 
@@ -51,3 +51,5 @@ Le fichier généré se trouve dans le dossier SQL.
 ## Mise en route
 
 Le [Guide_Installation](conception/4_Guide_Installation.pdf) vous fournira tous les détails nécessaire à la mise en route du projet.
+Le [Manuel Utilisateur](conception/4_Manuel_Utilisateur.pdf) vous fournira un aperçu de toutes les fonctionnalités de l'application.
+Le [Rapport Final](conception/4_Rapport_Final.pdf) décrit en détails tous ce qui a été accompli.
