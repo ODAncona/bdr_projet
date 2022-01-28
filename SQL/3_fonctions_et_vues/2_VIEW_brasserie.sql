@@ -13,7 +13,8 @@ SELECT
     Adresse.ville AS localitéBrasserie,
     Personne.prénom AS prenomBrasseur,
     Personne.nom AS nomBrasseur,
-    Personne.courriel AS courrielBrasseur
+    Personne.courriel AS courrielBrasseur,
+	InfoBrasserie.description
 FROM Brasserie
 LEFT JOIN vBière
 	ON vBière.idBrasserie = Brasserie.id
