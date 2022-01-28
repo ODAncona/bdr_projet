@@ -8,7 +8,9 @@ $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
 $vBeer = $data[0];
+$vAvis = $data2[0];
 //var_dump($data);
+var_dump($vAvis)
 ?>
 
 
@@ -30,6 +32,10 @@ $vBeer = $data[0];
        <p>Amertume:  <?echo($vBeer['amertumemoyenne'])?>/10</p>
        <p>Douceur:  <?echo($vBeer['douceurmoyenne'])?>/10</p>
        <p>Pétillance:  <?echo($vBeer['petillancemoyenne'])?>/10</p>
+
+       <!-- Note !-->
+      <h2>Description</h2>
+      <p> <? echo($vBeer['description'])?></p>
      </div>
 
     <div class="col-8">
@@ -40,6 +46,15 @@ $vBeer = $data[0];
   <div class="container">
     <h2>Avis</h2>
 
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img src="https://biereartisanale.ch/img/cms/biere.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><? echo($vBeer['nombière'])?></h5>
+    <p class="card-text"><? echo($vBeer['description'])?></p>
+    <a href="localhost:9999/bieres?nom=<?echo($vBeer['nombière'])?>&id=<?echo($vBeer['idbrasserie'])?>" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
