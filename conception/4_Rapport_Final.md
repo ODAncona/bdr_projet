@@ -36,7 +36,7 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 ## Descriptif du projet réalisé
 
-L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Le site comporte plusieurs rubriques:
+L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Cette ébauche mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières Le site comporte plusieurs rubriques:
 
 1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.
 
@@ -79,8 +79,6 @@ Sur ce onglet, en cliquant sur BrasseriesInfo l'utilisateur accède aisément au
 
 ![résultat](images/8_infobrasserie.png)
 
-## Structure du projet
-
 ## Modèle entité association
 
 ![Modèle EA](3_Schéma_EA_Révisé.png)
@@ -110,6 +108,8 @@ Le brasseur est un acteur du système qui hérite de d'une **Personne** avec pou
 C'est un table qui permet de stocker les informations basiques sur les images des **Brasseries** et des **Bières** que la BD va stocker. ainsi les tables ``
 
 ## Conclusion
+
+La fin du semestre est déjà arrivée et nous avons eu du plaisir à développer une application complète centrée sur la partie base de donnée. Nous avons discuté avec soin des modalités de conception afin de créer une base de donnée utilisable et intéressante du point de vue fonctionnelle. Dans ce projet, nous étions à la fois le mendant et le développeur. Ce qui apporte une grande flexibilité face aux choix de conception ou aux rectifications de modélisation nécessaires. Il a été difficile de tenir le cahier des charges vu l'ampleur de la tâche mais nous sommes fières de vous présenter notre application. La quantité de travail qui a été fournie sur ce projet durant un semestre autant chargé est simplement fantastique. Au final, même si notre cahier des charges diffère de celui initial, nous avons beaucoup appris de ce projet. Il nous a appris à jongler avec les différentes notions du modèle relationnel, de créer des vues intéressantes pour le côté utilisateur etc... Malgré tout, la quantité de travail nécessaire à rendre pour l'application est hors du cadre du cours. Pour cette raison. nous avons placé l'emphase sur la conception, le schéma ainsi que le script de peuplement.
 
 ## Bugs connus
 

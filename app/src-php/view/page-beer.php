@@ -15,35 +15,22 @@ var_dump($data);
 
 <?php //require("components/component-table.php"); ?>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h1>nom</h1>
+</div>
+
+<div class="container">
+  <h1>image</h1>
+  <img src="https://biereartisanale.ch/img/cms/biere.jpg">
+</div>
+
+<div class="container">
+  <h1>nom</h1>
+</div>
+
+
+
+
+<h1>description</h1>
 
 <?php require("footer.php"); ?>

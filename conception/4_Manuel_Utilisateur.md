@@ -15,3 +15,7 @@ Ce document regroupe toutes les procédures de démonstrations afin de découvri
 Pour se connecter en tant qu'Alice Dupont il entrer le pseudo: **Alicow** complété par le mot de passe: **1234**.
 
 ![Alice Dupont est connectée](images/1_accueil.png)
+
+# Favoris
+
+Une fois connecté, on peut accéder aux bières favorites d'une personne grâce à l'onglet **favoris**.
