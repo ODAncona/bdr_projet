@@ -9,8 +9,9 @@ abstract class DBInterface
 
     protected PDOStatement $PDOStatement;
     private int $fetchMode = PDO::FETCH_ASSOC;
-
     private bool $caseSensitive = false;
+
+    private int $limit = 0;
 
     /**
      * index 0 : nom de la colonne à filtrer
@@ -98,6 +99,11 @@ abstract class DBInterface
         $this->caseSensitive = $caseSensitive;
     }
 
+    public function setLimit(int $limit)
+    {
+        $this->limit = $limit;
+    }
+
     /**
      * Constuit la chaîne de caractère pour la requête
      */
@@ -128,6 +134,10 @@ abstract class DBInterface
             }
 
             $sql .=  $colname . " " . $value[2] . " " . $filterPlaceHolder;
+        }
+        
+        if ($this->limit > 0) {
+            $sql .= " LIMIT $this->limit";
         }
         
         return $sql;
