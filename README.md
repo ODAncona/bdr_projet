@@ -13,7 +13,7 @@ Trouver en un clique les meilleures bières
 
 Ce dossier contient tout le code source de notre application. Il y a 3 dossiers:
 
-* docker s'occupant des images
+-   docker s'occupant des images
 
 ### Conception
 
@@ -48,11 +48,6 @@ Pour faciliter les choses, nous mettons un script à disposition pour crééer u
 
 Le fichier généré se trouve dans le dossier SQL.
 
-## Lancer l'application de développement
+## Mise en route
 
-Notre application a besoin de docker pour fonctionner.  
-Nous avons mis en place tous les scripts nécessaires pour créer un environnemnt Apache-PHP capable de communiquer avec la base de donnée.
-
-## Lancer l'application sans docker
-
-Le script `app-build-run.sh` de toutes les opérations nécessaires au lancement de l'application.
+Le [Guide_Installation](conception/4_Guide_Installation.pdf) vous fournira tous les détails nécessaire à la mise en route du projet.

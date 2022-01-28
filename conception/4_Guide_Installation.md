@@ -1,4 +1,5 @@
----
+* * *
+
 title: "Guide Installation: The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -25,7 +26,8 @@ Ce document regroupe toutes les étapes à reproduire afin d'utiliser l'applicat
 
 ### Installation tout en un
 
-La commande `./app-build-run.sh` située à la racine, se charge d'installer et de lancer l'application. Elle effectue:
+Nous avons mis en place tous les scripts nécessaires pour créer un environnemnt Apache-PHP capable de communiquer avec la base de donnée.
+Ainsi, la commande `./app-build-run.sh` située à la racine, se charge d'installer et de lancer l'application. Elle effectue:
 
 1.  Compilation du script SQL
 2.  Construction de toutes les images
@@ -37,3 +39,18 @@ Il faut se placer dans le répertoire `/app` et exécuter `docker-compose build`
 ## Lancement
 
 Afin d'utiliser l'application, il faut ouvrir un navigateur (safari, chrome, opera, firefox, chromium, brave, ...) et se rendre à l'adresse [localhost:9999](http://localhost:9999)
+
+## Gestion des containers
+
+### Commandes utiles
+
+Voici quelques commande utiles qui vous serviront peut-être
+
+-   `docker kill $(docker ps -aq)` permet d'arrêter tous les containers en cours.
+-   `docker rm $(docker ps -aq)` permet de supprimer tous les containers.
+-   `docker rmi $(docker images -q)` permet de supprimer toutes les images.
+
+### Configuration supplémentaire
+
+Si vous avez des application qui tournent en développement sur un port, il peut être utile de changer le port de notre application. Pour ce faire,
+le [fichier de configuration docker-compose](../app/docker-compose.yml) contient le port de nos services. Si vous voulez changer le port de postgres, il faudra modifier la ligne `"5430:5432"` en `xxxx:5432` avec xxxx correspondant au port souhaité. Il en va de paire avec le service web.
