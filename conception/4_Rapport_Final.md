@@ -76,13 +76,15 @@ En l'état, le site comporte les rubriques suivantes :
 
 ![Modèle EA](1_Schéma_EA_Révisé.png)
 
-Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
+Par rapport au modèle fourni dans le dernier rapport, un lien omis entre le brasseur et sa brasserie a été ajouté. Ce qui a entraîné la suppression de l'attribut **revendiqué**. Une brasserie possédant un **idBrasseur** NOT NULL sera considérée comme non revendiquée.
 
 ## Modèle relationnel
 
 ### Représentation graphique
 
 ![Schéma relationnel](2_schéma_relationnel_final.png)
+
+Ce schéma a été réalisé avec dBeaver et représente notre base de donnée en l'état.
 
 ### Description des tables / attributs
 

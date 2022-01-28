@@ -18,6 +18,7 @@ SELECT
 	Bière.prix,
 	Bière.description,
 	COALESCE(string_agg(Image.nomFichier, ', ')) AS src_images
+	-- ,Bière.description
 FROM Bière
 INNER JOIN Brasserie
     ON Brasserie.id = Bière.idBrasserie

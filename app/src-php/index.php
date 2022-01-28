@@ -95,10 +95,6 @@ switch ($request) {
         $currentPageName = "Tables";
         require('controller/table-controller.php');
         break;
-    case '/enregistrer-biere':
-        $currentPageName = "Enregistrer une nouvelle bière";
-        require('controller/register-beer-controller.php');
-        break;
     default:
         $currentPageName = "Erreur";
         $noErreur = 404;
