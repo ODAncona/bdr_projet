@@ -36,7 +36,10 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 ## Descriptif du projet réalisé
 
-L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Cette ébauche mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières Le site comporte plusieurs rubriques:
+L'application est un site web réalisé avec php et bootstrap valorisant la bière en tant que boisson proposée aux consommateurs. Le but premier est d'offrir aux amateurs de bières une base de données de bières, d'avis sur des bières et de brasserie afin de lui permettre de faire des découvertes. L'idée était aussi de permettre l'ajout de nouvelles bières et de nouveaux avis, mais toute la partie insertion n'a pas été réalisée. Du point de vue du producteur de bière, le but était d'offrir la possibilité de répondre aux avis postés sur ses bières, ainsi que celle de décrire ses produits et sa brasserie.
+Un dernier pan de l'application devait être de permettre le passage de commande de bières auprès des brasseurs, mais cela non plus n'a pas pu être réalisé.
+Cependant, tout est en place au niveau de la base de donnée (tables, triggers, procédures, vues) pour permettre la mise en place de ces interactions et mettre en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières.
+En l'état, le site comporte les rubriques suivantes :
 
 1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
 
