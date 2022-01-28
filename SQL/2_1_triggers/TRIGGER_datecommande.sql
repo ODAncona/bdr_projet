@@ -1,6 +1,7 @@
 /**
 *La date de commande doit être inférieure ou égale la date actuelle.
 */
+
 CREATE OR REPLACE FUNCTION before_insert_Commande() RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $BODY$
