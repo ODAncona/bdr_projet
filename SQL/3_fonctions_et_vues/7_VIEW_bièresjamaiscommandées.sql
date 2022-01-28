@@ -1,8 +1,10 @@
 DROP VIEW IF EXISTS vbièresjamaiscommandées;
-CREATE OR REPLACE VIEW vbièresjamaiscommandées AS 
+CREATE OR REPLACE VIEW vbièresjamaiscommandées AS
 SELECT Bière.nomBière,
 Bière.nomTypeBière AS "Type",
-Brasserie.nom AS "Brasserie"
+Brasserie.nom AS "Brasserie",
+Bière.description,
+Bière.idBrasserie
 FROM Bière
 INNER JOIN Brasserie
 	ON Bière.idBrasserie = Brasserie.id

@@ -1,8 +1,8 @@
 <?php
 
 // Les moins chères -----------------------------------
-$vCheap = new DBView($DB_CLIENT, 'vBière');
-$vCheap.setLimit(5);
+$vCheap = new DBView($DB_CLIENT, 'vBièresmoinschèresquelamoyenne');
+$vCheap->setLimit(4);
 
 try {
     // Récupération des Bières
@@ -12,8 +12,8 @@ try {
 }
 
 // Les mieux notées -----------------------------------
-$vBestMark = new DBView($DB_CLIENT, 'vBière');
-$vBestMark.setLimit(5);
+$vBestMark = new DBView($DB_CLIENT, 'vbièresmieuxnotées');
+$vBestMark->setLimit(4);
 try {
     // Récupération des Bières
     $vBestMark->fetch();
@@ -22,8 +22,8 @@ try {
 }
 
 //Les moins connues -----------------------------------
-$vLessKnown = new DBView($DB_CLIENT, 'vBière');
-$vLessKnown.setLimit(5);
+$vLessKnown = new DBView($DB_CLIENT, 'vbièresjamaiscommandées');
+$vLessKnown->setLimit(4);
 try {
     // Récupération des Bières
     $vLessKnown->fetch();
@@ -32,8 +32,8 @@ try {
 }
 
 // Les plus commandées -----------------------------------
-$vMostOrdered = new DBView($DB_CLIENT, 'vBière');
-$vMostOrdered.setLimit(5);
+$vMostOrdered = new DBView($DB_CLIENT, 'vBièrespluscommandées');
+$vMostOrdered->setLimit(4);
 try {
     // Récupération des Bières
     $vMostOrdered->fetch();
@@ -42,8 +42,8 @@ try {
 }
 
 // Les plus commentées -----------------------------------
-$vMostCommented = new DBView($DB_CLIENT, 'vBière');
-$vMostCommented.setLimit(5);
+$vMostCommented = new DBView($DB_CLIENT, 'vBièrespluscommentées');
+$vMostCommented->setLimit(4);
 try {
     // Récupération des Bières
     $vMostCommented->fetch();
@@ -52,8 +52,8 @@ try {
 }
 
 // Les plus récentes -----------------------------------
-$vMostRecent = new DBView($DB_CLIENT, 'vBière');
-$vMostRecent.setLimit(5);
+$vMostRecent = new DBView($DB_CLIENT, 'vBièresplusrécentes');
+$vMostRecent->setLimit(4);
 try {
     // Récupération des Bières
     $vMostRecent->fetch();
