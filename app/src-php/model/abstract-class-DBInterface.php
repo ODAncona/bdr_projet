@@ -5,12 +5,19 @@
 abstract class DBInterface
 {
 
-    private array $data = array();
+    protected array $data = array();
 
     protected PDOStatement $PDOStatement;
     private int $fetchMode = PDO::FETCH_ASSOC;
 
+    /**
+     * index 0 : nom de la colonne à filtrer
+     * index 1 : valeur à tester
+     * index 2 : opérateur logique. Tous les opérateurs logiques SQL sont supportés
+     * @var array
+     */
     private array $filters = array();
+
     private array $sqlPlaceHolders = array();
     private string $logicalLink = 'AND';
     private string $sqlQuery;
@@ -49,7 +56,7 @@ abstract class DBInterface
      /**
       * Permet d'ajouter une clause WHERE à la requête sql
       *
-      * @param string $colname de la collonne à laquelle appliquer le filtre
+      * @param string $colname nom de la collonne à laquelle appliquer le filtre
       * @param string $filterValue valeur à tester
       * @param string $operator opérateur logique. Tous les opérateurs logiques SQL sont supportés
       * @return void
@@ -94,14 +101,17 @@ abstract class DBInterface
         // Sélectionne tous les noms de tables de la base de donnée
         $filterNb = 0;
 
-        // Ajout des clauses WHERE 
+        // Ajout des clauses WHERE
+        if (!empty($this->filters)) {
+            $sql .= " WHERE ";
+        }
         foreach ($this->filters as $value) {
             if ($filterNb > 0) {
                 $sql .= " $this->logicalLink ";
             }
-            $filterName = ":val" . ++$filterNb;
-            $sql .= $value[3] . " WHERE " . $value[0] . $value[2] . $filterName;
-            $this->sqlPlaceHolders[$filterName] = $value[1];
+            $filterPlaceHolder = ":val" . ++$filterNb;
+            $sql .= " " . $value[0] . $value[2] . $filterPlaceHolder;
+            $this->sqlPlaceHolders[$filterPlaceHolder] = $value[1];
         }
         
         return $sql;
