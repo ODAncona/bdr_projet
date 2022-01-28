@@ -5,13 +5,10 @@ CREATE OR REPLACE FUNCTION before_insert_Commande() RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $BODY$
 BEGIN
-IF(NEW.dateCréation <= CURRENT_DATE) THEN
-INSERT INTO Commande(dateCréation,status, idBrasserie, idPersonne )
-VALUES (CURRENT_DATE,'OUVERT', NEW.idBrasserie, NEW.idPersonne);
-ELSE
-RAISE EXCEPTION 'Date invalide';
+IF(NEW.dateCréation > CURRENT_DATE) THEN
+    RAISE EXCEPTION 'Date invalide';
 END IF;
-RETURN NULL;
+RETURN NEW;
 END;
 $BODY$;
 
