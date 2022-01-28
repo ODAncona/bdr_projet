@@ -126,20 +126,20 @@ INSERT INTO TypeBière(nom, description) VALUES ('AMBREE', NULL);
 /*------------------------------------------------------------------*/
 /* Bière */
 /*------------------------------------------------------------------*/
-INSERT INTO Bière (idBrasserie, nomBière, prix, description, nomTypeBière, idPersonne)
-VALUES (1, 'Equinox', 4.3, 'Pour l’été, quoi de mieux qu’une bière blanche légère et épicée qui remet en valeur toute la fraîcheur qu’on peut tirer d’un malt de froment ? Le pari de ces brasseurs lausannois est réussi, et on s’en régale. Santé ! ',
+INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
+VALUES (1, 'Equinox', 4.3, NULL, 'Pour l’été, quoi de mieux qu’une bière blanche légère et épicée qui remet en valeur toute la fraîcheur qu’on peut tirer d’un malt de froment ? Le pari de ces brasseurs lausannois est réussi, et on s’en régale. Santé ! ',
 'BLANCHE', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (1, 'Wanderer', 1.3,'Une American IPA brassée avec le souci de ne pas effrayer les nouveaux amateurs de bières, la Wanderer permet de découvrir le style de l’IPA et ses arômes frais qui évitent avec bon goût l’écueil d’une amertume trop tranchée.',
+VALUES (1, 'Wanderer', 1.3, NULL, 'Une American IPA brassée avec le souci de ne pas effrayer les nouveaux amateurs de bières, la Wanderer permet de découvrir le style de l’IPA et ses arômes frais qui évitent avec bon goût l’écueil d’une amertume trop tranchée.',
 'BLONDE', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (2, 'Cimpaye', 4.3, 'Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été ! ',
+VALUES (2, 'Cimpaye', 4.3, NULL, 'Interprétation radicalement différente du même registre, cette IPA embrasse la diversité de ses arômes houblonnés pour donner une bière rafraîchissante et de caractère, parfaite pour accompagner les grillades cet été ! ',
 'LAGER', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (3, 'Halfwit', 2.3, 'C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!',
+VALUES (3, 'Halfwit', 2.3, NULL, 'C’est la première bière qu’on vous amène de nos partenaires de la première heure, et on s’en veut de tant vous avoir fait attendre ! Cette witbier équilibre subtilement ses arômes fruités et céréaliers, pour un apéro d’été parfait. On y va!',
 'GUINNESS', 1);
 INSERT INTO Bière (idBrasserie, nomBière, prix, dateEnregistrement, description, nomTypeBière, idPersonne)
-VALUES (3, 'White Rabbit', 3.5, 'C’est la bière blanche du pack. Brassée à Rolle, elle offre des arômes de fruits à noyaux, de pommes et de miel avec un final rond et minéral agrémenté de notes fumées. Une blanche qui a du goût !' ,
+VALUES (3, 'White Rabbit', 3.5, NULL, 'C’est la bière blanche du pack. Brassée à Rolle, elle offre des arômes de fruits à noyaux, de pommes et de miel avec un final rond et minéral agrémenté de notes fumées. Une blanche qui a du goût !' ,
 'CARBONNADE', 1);
 
 /* Bière venant d'une brasserie non revendiquée ne peut être commandé, PRIX NULL Description NULL*/
@@ -217,11 +217,11 @@ INSERT INTO Image(nomFichier, BièreIdBrasserie, nomBière) VALUES ('boxer_1.jpg
 /*------------------------------------------------------------------*/
 /* InfoBrasserie */
 /*------------------------------------------------------------------*/
-INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES 
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES
 ('Lorem ipsum dolor sit amet. In animi maxime sed laborum omnis ut alias laudantium', 54.4954, 15.8831, 100,1,11);
-INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES 
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES
 ('ut odit quam vel dolores tenetur. Qui ullam perspiciatis quo vitae accusantium sit quia quis',23.7391, -121.7081, 200, 2, 12);
-INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES 
+INSERT INTO InfoBrasserie (description,longitude, latitude, rayon, idBrasserie, idAdresse) VALUES
 ('Eos aliquid odio est iure soluta ut atque odit et fuga omnis et facere error est enim voluptatum sit obcaecati voluptates.',41.5345, -39.0071, 300, 3,13);
 
 

@@ -66,7 +66,7 @@ CREATE TABLE Bière (
   idBrasserie INT,
   nomBière STRING,
   prix NUMERIC(5,2),
-  dateEnregistrement DATE DEFAULT CURRENT_DATE NOT NULL,
+  dateEnregistrement DATE,
   description TEXT,
   nomTypeBière STRING NOT NULL,
   idPersonne INT NOT NULL,
