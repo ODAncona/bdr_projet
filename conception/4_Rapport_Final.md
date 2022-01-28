@@ -84,7 +84,7 @@ Par rapport au modèle fourni dans le dernier rapport, un lien omis entre le bra
 
 ![Schéma relationnel](2_schéma_relationnel_final.png)
 
-Ce schéma a été réalisé avec dBeaver et représente notre base de donnée en l'état.
+Ce schéma a été réalisé avec dBeaver et représente notre base de donnée en l'état, avec toutes ses relations, leurs attributs et leurs clefs, ainsi que les liens elles.
 
 ### Description des tables / attributs
 
@@ -92,15 +92,19 @@ Pour une meilleure compréhension du modèle ci dessus, nous allons décrire les
 
 #### Personne
 
-Elle nous permet de représenter les acteurs de notre système. Elle comporte les informations dont nous souhaitons disposer pour chaque acteur du système: Le prénom, le nom , le genre, le pseudo, la date de naissance le courriel, le mot de passe et l'adresse. L'adresse ici est une information importante car notre application offre la possibilité de passer des commandes de bières. Et dans certains cas, l'adresse de livraison pourra être l'adresse renseignée lors de la création du compte utilisateur.
+Une personne est identifiée par son id. Elle nous permet de représenter les acteurs de notre système. Elle comporte les informations dont nous souhaitons disposer pour chaque acteur du système: Le prénom, le nom , le genre, le pseudo, la date de naissance le courriel, le mot de passe et l'adresse. L'adresse ici est une information importante car notre application offre la possibilité de passer des commandes de bières. Dans le cas d'une commande, l'adresse de livraison par défaut sera l'adresse référencée dans la table Personne et sera aussi l'adresse de facturation.
 
 #### Brasseur
 
-Le brasseur est un acteur du système qui hérite de d'une **Personne** avec pour attribut complémentaire **actif** qui sera à **true** quand le brasseur en question sera actif dans la base de donnée.
+Le brasseur est un acteur du système qui hérite d'une **Personne** avec pour attribut complémentaire **actif** qui est à **true** si le brasseur est en activité. Un brasseur est obligatoirement en relation avec une brasserie (sa brasserie donc). Si un brasseur cesse son activité, il peut désactiver son compte, sans que les informations qui lui sont liées (réponses à des avis, commandes, bières) ne soient affectées. Un brasseur inactif ne peut plus répondre à un avis. En outre, il n'est plus possible de lui passer des commandes de bières.
 
+#### Bière
+Une bière est identifiée par son nom et par l'id de la brasserie dont elle provient. Elle a obligatoirement une date de craéation. Elle peut avoir un prix.
 #### Image
 
-C'est un table qui permet de stocker les informations basiques sur les images des **Brasseries** et des **Bières** que la BD va stocker. ainsi les tables ``
+Cette table permet de stocker les noms de fichiers des images liées soit à une brasserie, soit à une bière. Une brasserie ou une bière peut être en relation avec plusieurs images.
+
+
 
 ## Conclusion
 
