@@ -12,6 +12,7 @@ abstract class DBInterface
     private bool $caseSensitive = false;
 
     private int $limit = 0;
+    private array $orderBy = array();
 
     /**
      * index 0 : nom de la colonne à filtrer
@@ -104,6 +105,11 @@ abstract class DBInterface
         $this->limit = $limit;
     }
 
+    public function addOrderByClause(string $fullQualifiedAttributeName) : void
+    {
+        array_push($this->orderBy);
+    }
+
     /**
      * Constuit la chaîne de caractère pour la requête
      */
@@ -135,7 +141,19 @@ abstract class DBInterface
 
             $sql .=  $colname . " " . $value[2] . " " . $filterPlaceHolder;
         }
-        
+
+        if (!empty($this->orderBy)) {
+            $cnt = 0;
+            $sql .= " ORDER BY";
+            foreach ($this->orderBy as $clause) {
+                if ($cnt > 0) {
+                    $sql .= ',';
+                }
+                $sql .= " $clause";
+                $cnt++;
+            }
+        }
+
         if ($this->limit > 0) {
             $sql .= " LIMIT $this->limit";
         }

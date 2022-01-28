@@ -40,10 +40,10 @@ if (!empty($_GET['searchInput'])) {
     }
     $dbView->fetch();
 
-    $beersArray = array();
+    $beerArray = array();
     $breweryArray = array();
     if ($searchCategory === 'beer') {
-        $beersArray = $dbView->getData();
+        $beerArray = $dbView->getData();
     } elseif ($searchCategory === 'brewery') {
         $breweryArray = $dbView->getData();
     }
