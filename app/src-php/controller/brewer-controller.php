@@ -1,39 +1,37 @@
 <?php
 
-$tableToPrint;
-$tableToPrint = new DBView($DB_CLIENT, 'vBrasserie');
+$viewBreweries = new DBView($DB_CLIENT, 'vBrasserie');
+$viewBeer = new DBView($DB_CLIENT, 'vBière');
 
 if (isset($_GET['id'])) {
-
-    // Récupérer les données
-    $breweries = array();
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM vBrasserie WHERE id = :id ";
-    $PDOStatement = $DB_CLIENT->prepare($sql);
-    if ($PDOStatement->execute([':id' => $id])) {
-        $breweries = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
+    // Ajout des clauses WHERE
+    $viewBreweries->addFilter('id', $_GET['id']);
+    $viewBeer->addFilter('idBrasserie', $_GET['id']);
+    // Lien logique entre les clauses WHERE
+    $viewBreweries->setFiltersLogicalLink('AND');
+    $viewBeer->setFiltersLogicalLink('AND');
+    try {
+        // Récupération des Bières
+        $viewBeer->fetch();
+    } catch(PDOException $e) {
+        throw $e;
     }
-    $beers = array();
-    $sql2 = "SELECT * FROM vBière WHERE idBrasserie = :id ";
-    $PDOStatement2 = $DB_CLIENT->prepare($sql2);
-    if ($PDOStatement2->execute([':id' => $id])) {
-        $beers = $PDOStatement2->fetchAll(PDO::FETCH_ASSOC);
-    }
-    //$PDOStatement->debugDumpParams();
-
-    require(__DIR__ . '/../view/page-brewery.php');
-    exit;
 }
 
 try {
-    $tableToPrint->fetch();
-    $tableToPrint->getData();
+    // Récupération des Brasseries
+    $viewBreweries->fetch();
 } catch(PDOException $e) {
     throw $e;
 }
 
-if (isset($_GET['ajax']) && $_GET['ajax'] === 'true') {
-    require(__DIR__ . '/../view/components/component-table.php');
-} else {
-    require(__DIR__ . '/../view/page-table.php');
+if(isset($_GET['id'])){
+      $breweries = $viewBreweries->getData();
+      $beers =  $viewBeer->getData();
+      require(__DIR__ . '/../view/page-brewery.php');
+      exit;
 }
+
+
+$breweryArray = $viewBreweries->getData();
+require(__DIR__ . '/../view/page-all-breweries.php');
