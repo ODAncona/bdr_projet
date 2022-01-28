@@ -5,13 +5,10 @@ CREATE OR REPLACE FUNCTION insert_RéponseAvisBière() RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $BODY$
 BEGIN
-IF(NEW.idBrasseur NOT IN (SELECT idPersonne 
+IF(NEW.idBrasseur IN (SELECT idPersonne 
 FROM Brasseur
-WHERE actif = FALSE) ) THEN
-INSERT INTO RéponseAvisBière(idAvis, idAvisBière, idBrasseur)
-VALUES (NEW.idAvis, NEW.idAvisBière, NEW.idBrasseur);
-ELSE
-RAISE EXCEPTION 'Brasseur inactif';
+WHERE actif = FALSE))
+    THEN RAISE EXCEPTION 'Un brasseur innactif ne peut pas répondre à un avis';
 END IF;
 RETURN NULL; -- NULL car AFTER trigger
 END;
