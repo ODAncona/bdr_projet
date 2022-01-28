@@ -17,7 +17,7 @@ if (isset($_GET['table'])) {
 }
 
 if (isset($_GET['nom']) && isset($_GET['id'])) {
-    
+
     // Récupérer les données
     $data = array();
     $nom = $_GET['nom'];
@@ -28,6 +28,17 @@ if (isset($_GET['nom']) && isset($_GET['id'])) {
         $data = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
     }
     $PDOStatement->debugDumpParams();
+
+    $data2 = array();
+    $nom = $_GET['nom'];
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM vAvis WHERE nomBière = :nom AND idBrasserie = :id ";
+    $PDOStatement = $DB_CLIENT->prepare($sql);
+    if ($PDOStatement->execute([':nom' => $nom, ':id' => $id])) {
+        $data = $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    $PDOStatement->debugDumpParams();
+
 
     require(__DIR__ . '/../view/page-beer.php');
     exit;

@@ -7,43 +7,40 @@
 $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
-
-var_dump($data);
+$vBeer = $data[0];
+//var_dump($data);
 ?>
 
 
 
 <?php //require("components/component-table.php"); ?>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="container">
+  <div class="row">
+     <div class="col-4">
+       <!-- Caractéristiques !-->
+       <h2>Caractéristiques</h2>
+       <p>Type de bière: <?echo($vBeer['nomtypebière'])?></p>
+       <p>Prix Unitaire: <?echo($vBeer['prix'])?> CHF</p>
+
+       <!-- Note !-->
+       <h2>Note Utilisateur: <?echo($vBeer['notemoyenne'])?> / 10</h2>
+       <p>Acidité:  <?echo($vBeer['aciditemoyenne'])?>/10</p>
+       <p>Amertume:  <?echo($vBeer['amertumemoyenne'])?>/10</p>
+       <p>Douceur:  <?echo($vBeer['douceurmoyenne'])?>/10</p>
+       <p>Pétillance:  <?echo($vBeer['petillancemoyenne'])?>/10</p>
+     </div>
+
+    <div class="col-8">
+        <img class="img-beer" src="https://biereartisanale.ch/img/cms/biere.jpg">
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Avis</h2>
+
+  </div>
+</div>
 
 <?php require("footer.php"); ?>

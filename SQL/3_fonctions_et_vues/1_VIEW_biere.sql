@@ -16,6 +16,7 @@ SELECT
 	round(AVG(AvisBière.douceur), 2) AS douceurMoyenne,
 	round(AVG(AvisBière.pétillance), 2) AS petillanceMoyenne,
 	Bière.prix,
+	Bière.description,
 	COALESCE(string_agg(Image.nomFichier, ', ')) AS src_images
 	-- ,Bière.description
 FROM Bière
