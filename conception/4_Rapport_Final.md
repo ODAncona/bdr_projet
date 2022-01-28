@@ -26,7 +26,7 @@ keywords: [BDR]
 
 ## Introduction
 
-Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles donné en 2021-2022 à l'HEIG-VD. Ce document constitue la clé de voute du projet qui regroupe une vue globale sur le projet et les précédantes étapes. Voici la liste de ce qui a été entrepris préalablement:
+Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles donné en 2021-2022 à l'HEIG-VD. Ce document constitue la clé de voute du projet qui regroupe une vue globale sur le projet et les précédentes étapes. Voici la liste de ce qui a été entrepris préalablement:
 
 -   Cahier des charges
 -   Modélisation conceptuelle (schéma EA)
@@ -36,7 +36,7 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 ## Descriptif du projet réalisé
 
-L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Cette ébauche mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières Le site comporte plusieurs rubriques:
+L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Cette ébauche mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières. Le site comporte plusieurs rubriques:
 
 1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
 
@@ -73,13 +73,15 @@ L'application est un site web réalisé avec php et bootstrap valorisant tout ce
 
 ![Modèle EA](1_Schéma_EA_Révisé.png)
 
-Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au dernier modèle fournit, un lien entre le brasseur et sa brasserie a été ajouté, ce qui a induit à la suppression de l'attribut revendiquée. Une brasserie possédant un idBrasseur NOT NULL sera considérée comme non revendiquée.
+Par rapport au modèle fourni dans le dernier rapport, un lien omis entre le brasseur et sa brasserie a été ajouté. Ce qui a entraîné la suppression de l'attribut **revendiqué**. Une brasserie possédant un **idBrasseur** NOT NULL sera considérée comme non revendiquée.
 
 ## Modèle relationnel
 
 ### Représentation graphique
 
 ![Schéma relationnel](2_schéma_relationnel_final.png)
+
+Ce schéma a été réalisé avec dBeaver et représente notre base de donnée en l'état.
 
 ### Description des tables / attributs
 
