@@ -84,6 +84,10 @@ switch ($request) {
         require('controller/brewer-controller.php');
         break;
     case '/recherche':
+        $currentPageName = 'Recherche';
+        require('controller/search-controller.php');
+        break;
+    case '/default':
         $currentPageName = $request;
         require('controller/default-controller.php');
         break;
