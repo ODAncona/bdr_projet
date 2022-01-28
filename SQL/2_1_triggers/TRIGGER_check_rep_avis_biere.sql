@@ -18,7 +18,7 @@ END;
 $BODY$;
 
 
-CREATE TRIGGER chk_dates_before
+CREATE OR REPLACE TRIGGER chk_brasseurstatus
 BEFORE INSERT ON RéponseAvisBière
 FOR EACH ROW
 EXECUTE FUNCTION insert_RéponseAvisBière();
