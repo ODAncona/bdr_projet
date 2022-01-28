@@ -1,4 +1,5 @@
 <?php
+require_once("abstract-class-DBInterface.php");
 require_once("class-Personne.php");
 require_once("class-Session.php");
 require_once("class-Table.php");

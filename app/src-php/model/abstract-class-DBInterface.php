@@ -45,12 +45,15 @@ abstract class DBInterface
         return $this->data;
     }
 
-    /**
-     * Permet d'ajouter une clause WHERE à la requête sql
-     * @param colname de la collonne à laquelle appliquer le filtre
-     * @param filterValue valeur à tester
-     * @param operator opérateur logique. Tous les opérateurs logiques SQL sont supportés
-     */
+    
+     /**
+      * Permet d'ajouter une clause WHERE à la requête sql
+      *
+      * @param string $colname de la collonne à laquelle appliquer le filtre
+      * @param string $filterValue valeur à tester
+      * @param string $operator opérateur logique. Tous les opérateurs logiques SQL sont supportés
+      * @return void
+      */
     public function addFilter(string $colname, string $filterValue, string $operator = '='): void
     {
         array_push($this->filters, [$colname, $filterValue, $operator]);
