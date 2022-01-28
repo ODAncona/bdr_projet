@@ -1,4 +1,5 @@
----
+* * *
+
 title: "Guide Installation: The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -53,3 +54,22 @@ Voici quelques commande utiles qui vous serviront peut-être
 
 Si vous avez des application qui tournent en développement sur un port, il peut être utile de changer le port de notre application. Pour ce faire,
 le [fichier de configuration docker-compose](../app/docker-compose.yml) contient le port de nos services. Si vous voulez changer le port de postgres, il faudra modifier la ligne `"5430:5432"` en `xxxx:5432` avec xxxx correspondant au port souhaité. Il en va de paire avec le service web.
+
+### Scripts SQL
+
+Ce projet est constitué de plusieurs scripts situés dans le dossier `SQL` et séparés en dossiers comme suit :
+
+-   1_creation_tables
+-   2_triggers
+-   3_fonctions_et_vues
+-   4_peuplement  
+
+Nous avons fait en sorte que les noms de dossiers et fichiers expliquent par eux-mêmes ce qu'ils contiennent.
+Pour fonctionner correctement, les scripts doivent être exécutés dans l'ordre de numérotation croissante des dossiers puis des fichiers.  
+Pour faciliter les choses, nous mettons un script à disposition pour crééer un fichier unique concaténant tous les fichiers `SQL` dans le bon ordre. Pour l'utiliser, exécuter :  
+
+```sh
+./SQL/concatSQL.sh
+```
+
+Le fichier généré se trouve dans le dossier SQL.
