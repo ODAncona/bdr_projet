@@ -1,5 +1,4 @@
-* * *
-
+---
 title: "Projet BDR : The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -166,3 +165,4 @@ La fin du semestre est déjà arrivée et nous avons eu du plaisir à développe
 
 -   [Guide Installation](4_Guide_Installation.pdf)
 -   [Manuel Utilisateur](4_Manuel_Utilisateur.pdf)
+-   [Script SQL Complet](../SQL/SCRIPT_FINAL_SQL.sql)

@@ -1,5 +1,4 @@
-* * *
-
+---
 title: "Guide Installation: The Beer Garden"
 titlepage: true
 author: [Erica Akoumba, Olivier D'Ancona, Jean-François Pasche]
@@ -68,8 +67,6 @@ Nous avons fait en sorte que les noms de dossiers et fichiers expliquent par eux
 Pour fonctionner correctement, les scripts doivent être exécutés dans l'ordre de numérotation croissante des dossiers puis des fichiers.  
 Pour faciliter les choses, nous mettons un script à disposition pour crééer un fichier unique concaténant tous les fichiers `SQL` dans le bon ordre. Pour l'utiliser, exécuter :  
 
-```sh
-./SQL/concatSQL.sh
-```
+`sh ./SQL/concatSQL.sh`
 
 Le fichier généré se trouve dans le dossier SQL.
