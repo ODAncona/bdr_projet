@@ -20,11 +20,11 @@ Pour se connecter en tant qu'Alice Dupont il entrer le pseudo: **Alicow** compl�
 
 La page d'accueil regroupe toutes les bières en fonction de critères intéressants:
 
--   Les moins chères
--   Les mieux notées
--   Les moins connues
--   Les plus populaires
--   Les plus récentes
+- Les moins chères
+- Les mieux notées
+- Les moins connues
+- Les plus populaires
+- Les plus récentes
 
 ## Bières
 
@@ -42,7 +42,7 @@ Cet onglet regroupe toutes les Brasseries. Une brasserie particulière peut êtr
 
 ## Recherche
 
-Ce champs permet de faire une recherche avancée
+Ce champs permet de faire une recherche de bières soit par leur nom en indiquant le nom de la bière, soit par le nom de brasserie l'ayant fabriquée si elle est connue.
 
 ## Favoris
 
