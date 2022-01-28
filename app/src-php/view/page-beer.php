@@ -7,30 +7,40 @@
 $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
-
-var_dump($data);
+$vBeer = $data[0];
+//var_dump($data);
 ?>
 
 
 
 <?php //require("components/component-table.php"); ?>
 
-<div class="container">
-  <h1>nom</h1>
-</div>
 
 <div class="container">
-  <h1>image</h1>
-  <img src="https://biereartisanale.ch/img/cms/biere.jpg">
+  <div class="row">
+     <div class="col-4">
+       <!-- Caractéristiques !-->
+       <h2>Caractéristiques</h2>
+       <p>Type de bière: <?echo($vBeer['nomtypebière'])?></p>
+       <p>Prix Unitaire: <?echo($vBeer['prix'])?> CHF</p>
+
+       <!-- Note !-->
+       <h2>Note Utilisateur: <?echo($vBeer['notemoyenne'])?> / 10</h2>
+       <p>Acidité:  <?echo($vBeer['aciditemoyenne'])?>/10</p>
+       <p>Amertume:  <?echo($vBeer['amertumemoyenne'])?>/10</p>
+       <p>Douceur:  <?echo($vBeer['douceurmoyenne'])?>/10</p>
+       <p>Pétillance:  <?echo($vBeer['petillancemoyenne'])?>/10</p>
+     </div>
+
+    <div class="col-8">
+        <img class="img-beer" src="https://biereartisanale.ch/img/cms/biere.jpg">
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Avis</h2>
+
+  </div>
 </div>
-
-<div class="container">
-  <h1>nom</h1>
-</div>
-
-
-
-
-<h1>description</h1>
 
 <?php require("footer.php"); ?>
