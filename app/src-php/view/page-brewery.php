@@ -1,20 +1,16 @@
 <?php require("head.php"); ?>
 
-
-
 <?php
-$vBrewery = $breweries[0];
-$vBeer = $beers[0];
-$currentPageName = $vBrewery['nombrasserie'];
-$filters = array();
-require("components/pagetitle.php");
-//var_dump($data);
+  $vBrewery = $breweries[0];
+  $vBeer = $beers[0];
+  $currentPageName = $vBrewery['nombrasserie'];
+  $filters = array();
+  require("components/pagetitle.php");
+  $img = "public/images/brewery_default.jpg";
+  if(isset($brewery['src_images'])) {
+    $img = 'public/images/' . $brewery['src_images'];
+  }
 ?>
-
-
-
-<?php //require("components/component-table.php"); ?>
-
 
 <div class="container">
   <div class="row">
@@ -36,7 +32,7 @@ require("components/pagetitle.php");
      </div>
 
     <div class="col-8">
-        <img class="img-beer" src="https://www.bern.com/assets/images/5/tramdepot-header-2786a77d-neu-2baa2b85.jpg">
+        <img class="img-beer" src="<?=$img?>">
     </div>
   </div>
 

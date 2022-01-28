@@ -8,9 +8,6 @@ $currentPageName = $_GET['nom'];
 $filters = array();
 require("components/pagetitle.php");
 $vBeer = $beers[0];
-//$vAvis = $reviews;
-//var_dump($data);
-//var_dump($vAvis)
 ?>
 
 
@@ -60,15 +57,6 @@ if(isset($vBeer['src_images'])) {
       <?php endforeach ?>
       <p>-----------------------</p>
     <?php endforeach ?>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <img src="https://biereartisanale.ch/img/cms/biere.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?=$vBeer['nombière']?></h5>
-    <p class="card-text"><?=$vBeer['description']?></p>
-    <a href="localhost:9999/bieres?nom=<?=$vBeer['nombière']?>&id=<?=$vBeer['idbrasserie']?>" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
