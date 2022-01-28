@@ -26,7 +26,7 @@ keywords: [BDR]
 
 ## Introduction
 
-Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles donné en 2021-2022 à l'HEIG-VD. Ce document constitue la clé de voute du projet qui regroupe une vue globale sur le projet et les précédantes étapes. Voici la liste de ce qui a été entrepris préalablement:
+Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases de données relationnelles du semetre d'automne de l'année académique 2021-2022 à l'HEIG-VD. Ce document présente le projet tel qu'il se présentait pour le rendu final. Il offre une vue générale  sur le projet, sur ce qui a été réalisé ou non réalisé, avec un accent particulier sur la structure des données. Voici la liste de ce qui a été entrepris préalablement:
 
 -   Cahier des charges
 -   Modélisation conceptuelle (schéma EA)
