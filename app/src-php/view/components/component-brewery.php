@@ -12,7 +12,7 @@ if (isset($breweryArray)) : ?>
       <div class="card-body">
         <h5 class="card-title"><?= $brewery['nombrasserie'] ?></h5>
         <p class="card-text"><?= $brewery['description'] ?></p>
-        <a href="http://localhost:9999/bieres?id=<?= $brewery['id']?>" class="btn btn-primary">Explore</a>
+        <a href="http://localhost:9999/brasseries?id=<?= $brewery['id']?>" class="btn btn-primary">Explore</a>
       </div>
     </div>
   <?php endforeach ?>
