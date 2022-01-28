@@ -105,11 +105,30 @@ Une personne est identifiée par son id. Elle nous permet de représenter les ac
 Le brasseur est un acteur du système qui hérite d'une **Personne** avec pour attribut complémentaire **actif** qui est à **true** si le brasseur est en activité. Un brasseur est obligatoirement en relation avec une brasserie (sa brasserie donc). Si un brasseur cesse son activité, il peut désactiver son compte, sans que les informations qui lui sont liées (réponses à des avis, commandes, bières) ne soient affectées. Un brasseur inactif ne peut plus répondre à un avis. En outre, il n'est plus possible de lui passer des commandes de bières.
 
 #### Bière
-Une bière est identifiée par son nom et par l'id de la brasserie dont elle provient. Elle a obligatoirement une date de craéation. Elle peut avoir un prix.
+Une bière est identifiée par son nom et par l'id de la brasserie dont elle provient. Elle a obligatoirement une date de craéation. Elle est caractérisée par un type de bière. Elle peut avoir un prix, mais pas obligatoirement, de même qu'une description, qui est un texte général de présentation. Une bière est liée à la personne qui a enregistré la bière.
+
+#### TypeBière
+Un type de bière est identifié par son nom. Comme convention, le nom est en majuscule. La description n'est pas obligatoire. Elle est uniquement un texte général de présentation.
 #### Image
 
 Cette table permet de stocker les noms de fichiers des images liées soit à une brasserie, soit à une bière. Une brasserie ou une bière peut être en relation avec plusieurs images.
 
+#### Avis
+Avis est une table parente. Elle contient une date de création obligatoirement renseignée ainsi que le lien vers la bière qu'elle concerne.
+
+#### AvisBière
+Cette table hérite d'Avis. Elle contient spécifiquement les avis laissés par les utilisteurs. Elle a un score, qui est l'appréciation quantifiée (note de 1 à 10) donnée par l'utilisateur. Les autres attributs sont là pour que l'utilisateur puisse décrire des aspects ciblés de la bière quant à son goût.
+
+#### RéponseAvisBière
+Cette table hérite d'avis. Elle contient des informations sur l'utilité de l'avis, apréciation qui peut être laissée par un utilisateur.
+
+#### Bière_Personne
+Cette table contient les favoris ajoutés par un utilisateurs à sa liste.
+
+#### adresse
+Cette table contient toutes les information constituant une adresse postale. Elle est identifiée par un id pour faciliter les sélections.
+
+#### 
 
 
 ## Conclusion
