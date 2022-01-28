@@ -1,14 +1,13 @@
 <div id="bgrd-table" class="container beer-container">
 <?php
-if (isset($beersArray)) : ?>
-  <?php foreach ($beersArray as $beer) :
+if (isset($beerArray)) : ?>
+  <?php foreach ($beerArray as $beer) :
     $img = "public/images/beer_default.jpg";
     if(isset($beer['src_images'])) {
     //array_splice()
     $img = 'public/images/' . $beer['src_images'];
     //$img = $vBeer['src_images'];
     }
-    
     ?>
     <div class="card" style="width: 18rem;">
       <img src="<?= $img ?>" class="card-img-top" alt="...">
