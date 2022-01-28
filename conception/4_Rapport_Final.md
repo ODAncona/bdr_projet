@@ -40,31 +40,31 @@ L'application est un site web réalisé avec php et bootstrap valorisant tout ce
 
 1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
 
-![résultat](Bière_détails.png)
+![Bière](images/Bière_détails.png)
 
 2. **Catalogue des bières** : page qui référence toutes les bières.
 
-![résultat](Bières.png)
+![Catalogue de bière](images/Bières.png)
 
 3. **Catalogue des brasseries** : page qui référence toutes les brasseries.
 
-![résultat](Brasseries.png)
+![Catalogue de brasserie](images/Brasseries.png)
 
 4. **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
 
-![résultat](Brasserie_détails.png)
+![Brasserie](images/Brasserie_détails.png)
 
 5. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté.
 
-![résultat](Favoris.png)
+![Bière favorite](images/Favoris.png)
 
 6. **Recherche** : page qui permet de faire une recherche par nom
 
-![résultat](Recherche.png)
+![Recherche](images/Recherche.png)
 
 7. **Page Accueil**: donne un aperçu des meilleures bières.
 
-![résultat](Accueil.png)
+![Accueil](images/Accueil.png)
 
 8. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
 
