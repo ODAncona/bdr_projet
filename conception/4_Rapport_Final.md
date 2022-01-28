@@ -34,8 +34,10 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 -   Requêtes, vues, triggers et procédures stockées
 -   Réalisation d'une application permettant d'interagir avec la base de donnée
 
+Voici la liste des délivrables liés aux étapes ci-dessus:
+
 * [Cahier des charges](0_Cahier_Des_Charges_Final.pdf)
-* [Rapport modélisation conceptuelle](1_Rapport_Modélisation_Conceptuelle_Révisé.pdf)
+* [Rapport modélisation conceptuelle](1_Rapport_Modelisation_Conceptuelle_Révisé.pdf)
 * [Rapport modèle relationnel et SQL](2_Rapport_MR_Et_SQL.pdf)
 
 ## Descriptif du projet réalisé
