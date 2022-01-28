@@ -2,10 +2,12 @@
 app/docker/pgsql/*.sql
 SQL/*.sql
 
+
 # IDEs
 
 .idea
 .vscode
+bdr_projet.session.sql
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100

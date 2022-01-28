@@ -1,7 +1,9 @@
 /**
 * Si un utilisateur ajoute une adresse d’envoi,
-* elle doit être différente de l’adresse de facturation
+* elle doit être différente de son adresse de facturation
 */
+
+/*
 
 CREATE OR REPLACE FUNCTION insert_Commande_Adresse() RETURNS TRIGGER
 LANGUAGE plpgsql
@@ -14,7 +16,7 @@ ON Commande.idPersonne = Personne.id AND Commande.id = NEW.idCommande) ) THEN
 INSERT INTO Commande_Adresse(idCommande, idAdresse)
 VALUES (NEW.idCommande, NEW.idAdresse);
 ELSE
-RAISE EXCEPTION 'Adresse de facturation doit être différente';
+RAISE EXCEPTION 'Adresse de d'envoi doit être différente';
 END IF;
 RETURN NULL; 
 END;
@@ -24,3 +26,4 @@ CREATE TRIGGER chk_adressefacturation
 BEFORE INSERT ON Commande_Adresse
 FOR EACH ROW
 EXECUTE FUNCTION insert_Commande_Adresse(); 
+*/
