@@ -38,46 +38,36 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 L'application est un site web réalisé avec php et bootstrap valorisant tout ce qui touche à la bière. Cette ébauche mettra en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières Le site comporte plusieurs rubriques:
 
-1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. A noter qu'une description de bière n'est pas la même chose qu'un avis laissé par un utilisateur. C'est un texte qui explique comment le brasseur conçoit son propre produit.
+1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
 
-2. **Catalogue des bières** : page qui référence toutes les bières avec une barre de recherche.  
-2.1 Les premières bières visibles sont choisies aléatoirement parmi toutes les bières
+![résultat](Bière_détails.png)
 
-3. **Catalogue des brasseries** : page qui référence toutes les brasseries avec une barre de recherche.
+2. **Catalogue des bières** : page qui référence toutes les bières.
+
+![résultat](Bières.png)
+
+3. **Catalogue des brasseries** : page qui référence toutes les brasseries.
+
+![résultat](Brasseries.png)
 
 4. **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
 
-5. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté
+![résultat](Brasserie_détails.png)
 
-6. **Recherche avancée** : page qui permet de faire une recherche multicritère
+5. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté.
 
-7. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
+![résultat](Favoris.png)
 
-![résultat](images/2_accueil.png)
+6. **Recherche** : page qui permet de faire une recherche par nom
 
-Lorsqu'on clique sur Bières, toutes les bières sont présentées à l'utilisateur.
+![résultat](Recherche.png)
 
-![résultat](images/3_bieres.png)
+7. **Page Accueil**: donne un aperçu des meilleures bières.
 
-Lorsqu'on clique sur Brasseries, toutes les Brasseries sont présentées à l'utilisateur.
+![résultat](Accueil.png)
 
-![résultat](images/4_brasseries.png)
+8. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
 
-Dans l'onglet favoris, l'utilisateur peut voir toutes les bières qu'il a ajouté à ses favoris
-
-![résultat](images/5_favoris.png)
-
-L'onglet recherche n'a pas encore été implémenté
-
-![résultat](images/6_recherche.png)
-
-L'onglet DBtables donne à l'utilisateur un accès plus rapide aux informations qu'il pourrait souhaiter obtenir. Par exemple en cliquant sur DBtables
-
-![résultat](images/7_dbtables.png)
-
-Sur ce onglet, en cliquant sur BrasseriesInfo l'utilisateur accède aisément aux informations de la brasserie.
-
-![résultat](images/8_infobrasserie.png)
 
 ## Modèle entité association
 
