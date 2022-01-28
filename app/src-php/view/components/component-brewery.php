@@ -10,7 +10,7 @@ if (isset($breweryArray)) : ?>
     <div class="card" style="width: 18rem;">
       <img src="<?= $img ?>" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title"><?= $brewery['nomBrasserie'] ?></h5>
+        <h5 class="card-title"><?= $brewery['nombrasserie'] ?></h5>
         <p class="card-text"><?= $brewery['description'] ?></p>
         <a href="http://localhost:9999/bieres?id=<?= $brewery['id']?>" class="btn btn-primary">Explore</a>
       </div>

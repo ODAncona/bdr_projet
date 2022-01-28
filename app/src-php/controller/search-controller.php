@@ -4,14 +4,50 @@ if (!$CURRENT_USER->isAuthenticated()) {
     exit();
 }
 
-$dbView = new DBView($DB_CLIENT, 'vBière');
 
 $beers = array();
 if (!empty($_GET['searchInput'])) {
-    $serachString = '%' . $_GET['searchInput'] . '%';
-    $dbView->addFilter('nomBière', $serachString, 'ILIKE');
+
+    $serachString;
+    if (isset($_GET['searchOption'])) {
+        if ($_GET['searchOption'] === 'exactMatch') {
+            $serachString = $_GET['searchInput'];
+        }
+    } else {
+        $serachString = '%' . $_GET['searchInput'] . '%';
+    }
+
+    
+    $viewName = 'vBière';
+    $columnName = '';
+    $searchCategory = 'beer';
+
+    if (!empty($_GET['radioChoice'])) {
+        if ($_GET['radioChoice'] === 'beer') {
+            $viewName = 'vBière';
+            $columnName = 'nomBière';
+            $searchCategory = 'beer';
+        } elseif ($_GET['radioChoice'] === 'brewery') {
+            $viewName = 'vBrasserie';
+            $columnName = 'nomBrasserie';
+            $searchCategory = 'brewery';
+        }
+    }
+
+    $dbView = new DBView($DB_CLIENT, $viewName);
+    if (!empty($columnName)) {
+        $dbView->addFilter($columnName, $serachString, 'ILIKE');
+    }
     $dbView->fetch();
-    $beersArray = $dbView->getData();
+
+    $beersArray = array();
+    $breweryArray = array();
+    if ($searchCategory === 'beer') {
+        $beersArray = $dbView->getData();
+    } elseif ($searchCategory === 'brewery') {
+        $breweryArray = $dbView->getData();
+    }
+    
 }
 
 require(__DIR__ . '/../view/page-search.php');
