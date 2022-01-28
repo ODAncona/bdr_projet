@@ -124,12 +124,21 @@ Cette table hérite d'avis. Elle contient des informations sur l'utilité de l'a
 #### Bière_Personne
 Cette table contient les favoris ajoutés par un utilisateurs à sa liste.
 
-#### adresse
+#### Adresse
 Cette table contient toutes les information constituant une adresse postale. Elle est identifiée par un id pour faciliter les sélections.
 
-#### 
+#### Brasserie
+Cette table ne contient que le nom de la brasserie et l'id qui l'identifie. Cela permet d'enregistrer une brasserie sans devoir fournir des informations sur elle. Cela permet d'insérer facilement une bière dont la brasserie ne serait pas encore référencée.
 
+#### InfoBrasserie
+Cette table contient les informations complémentaires sur la brasserie. Elles peuvent être ajoutées après coup.
 
+#### Commande
+Cette table permet d'enregistrer les commandes de bières passées par un utilisateur auprès d'un brasseur.
+#### Commande_Bière
+Cette table permet d'enregitré la quantité d'une certaine bière passée dans une commande.
+#### Commande_Adresse
+Cette table contient l'éventuelle adresse de livraison enregistrée pour une commande, si elle est différente de l'adresse de facturation enregitrée dans Personne.
 ## Conclusion
 
 La fin du semestre est déjà arrivée et nous avons eu du plaisir à développer une application complète centrée sur la partie base de donnée. Nous avons discuté avec soin des modalités de conception afin de créer une base de donnée utilisable et intéressante du point de vue fonctionnelle. Dans ce projet, nous étions à la fois le mendant et le développeur. Ce qui apporte une grande flexibilité face aux choix de conception ou aux rectifications de modélisation nécessaires. Il a été difficile de tenir le cahier des charges vu l'ampleur de la tâche mais nous sommes fières de vous présenter notre application. La quantité de travail qui a été fournie sur ce projet durant un semestre autant chargé est simplement fantastique. Au final, même si notre cahier des charges diffère de celui initial, nous avons beaucoup appris de ce projet. Il nous a appris à jongler avec les différentes notions du modèle relationnel, de créer des vues intéressantes pour le côté utilisateur etc... Malgré tout, la quantité de travail nécessaire à rendre pour l'application est hors du cadre du cours. Pour cette raison. nous avons placé l'emphase sur la conception, le schéma ainsi que le script de peuplement.
