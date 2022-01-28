@@ -38,7 +38,9 @@
 
   <div class="container">
     <h2>Bières</h2>
-
+    <?php
+    $beerArray = $beers;
+    require("components/component-beer.php"); ?>
   </div>
 </div>
 
