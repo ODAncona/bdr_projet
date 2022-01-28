@@ -50,7 +50,7 @@ if (isset($_GET['radioChoice'])) {
 
 
 <?php
-if (!empty($beersArray)) {
+if (!empty($beerArray)) {
   require("components/component-beer.php");
 } elseif (!empty($breweryArray)) {
   require("components/component-brewery.php");
