@@ -36,9 +36,9 @@ Ce projet a été suivi par le Pr. Rentsch dans le cadre du cours sur les bases 
 
 Voici la liste des délivrables liés aux étapes ci-dessus:
 
-* [Cahier des charges](0_Cahier_Des_Charges_Final.pdf)
-* [Rapport modélisation conceptuelle](1_Rapport_Modelisation_Conceptuelle_Révisé.pdf)
-* [Rapport modèle relationnel et SQL](2_Rapport_MR_Et_SQL.pdf)
+-   [Cahier des charges](0_Cahier_Des_Charges_Final.pdf)
+-   [Rapport modélisation conceptuelle](1_Rapport_Modelisation_Conceptuelle_Révisé.pdf)
+-   [Rapport modèle relationnel et SQL](2_Rapport_MR_Et_SQL.pdf)
 
 ## Descriptif du projet réalisé
 
@@ -47,36 +47,35 @@ Un dernier pan de l'application devait être de permettre le passage de commande
 Cependant, tout est en place au niveau de la base de donnée (tables, triggers, procédures, vues) pour permettre la mise en place de ces interactions et mettre en relation des amateurs et amatrices et des professionnels de la bière artisanale. Ils et elle pourront ainsi partager leurs avis respectifs sur différentes bières.
 En l'état, le site comporte les rubriques suivantes :
 
-1. **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
+1.  **Bière** : une page qui permet d'afficher tous les détails d'une bière. C'est un onglet qui explique comment le brasseur conçoit son propre produit.
 
 ![Bière](images/Bière_détails.png)
 
-2. **Catalogue des bières** : page qui référence toutes les bières.
+2.  **Catalogue des bières** : page qui référence toutes les bières.
 
 ![Catalogue de bière](images/Bières.png)
 
-3. **Catalogue des brasseries** : page qui référence toutes les brasseries.
+3.  **Catalogue des brasseries** : page qui référence toutes les brasseries.
 
 ![Catalogue de brasserie](images/Brasseries.png)
 
-4. **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
+4.  **Brasserie** : c'est une page qui référence des bières ainsi que les détails de l'établissement.
 
 ![Brasserie](images/Brasserie_détails.png)
 
-5. **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté.
+5.  **Bières favorites** : une page qui contient les bières favorites de l'utilisateur connecté.
 
 ![Bière favorite](images/Favoris.png)
 
-6. **Recherche** : page qui permet de faire une recherche par nom
+6.  **Recherche** : page qui permet de faire une recherche par nom
 
 ![Recherche](images/Recherche.png)
 
-7. **Page Accueil**: donne un aperçu des meilleures bières.
+7.  **Page Accueil**: donne un aperçu des meilleures bières.
 
 ![Accueil](images/Accueil.png)
 
-8. **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
-
+8.  **Enregistrer une nouvelle bière** : page qui permet d'ajouter une bière au catalogue global.
 
 ## Modèle entité association
 
@@ -111,7 +110,7 @@ Une bière est identifiée par son nom et par l'id de la brasserie dont elle pro
 Un type de bière est identifié par son nom. Comme convention, le nom est en majuscule. La description n'est pas obligatoire. Elle est uniquement un texte général de présentation.
 #### Image
 
-Cette table permet de stocker les noms de fichiers des images liées soit à une brasserie, soit à une bière. Une brasserie ou une bière peut être en relation avec plusieurs images.
+Une image est identifiée par son id. Cette table permet de stocker les noms de fichiers des images liées soit à une brasserie, soit à une bière. Une brasserie ou une bière peut être en relation avec plusieurs images.
 
 #### Avis
 Avis est une table parente. Elle contient une date de création obligatoirement renseignée ainsi que le lien vers la bière qu'elle concerne.
