@@ -89,7 +89,7 @@ Le modèle EA ci dessus est le modèle EA final de notre projet. Par rapport au 
 
 ### Représentation graphique
 
-![Schéma relationnel](2_schéma_relationnel.png)
+![Schéma relationnel](2_schéma_relationnel_final.png)
 
 ### Description des tables / attributs
 
